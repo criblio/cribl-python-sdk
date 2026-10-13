@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Resources on Cribl Python SDK</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/</link><description>Recent content in Resources on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/index.xml" rel="self" type="application/rss+xml"/><item><title>Collectors</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/collectors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/collectors/</guid><description>&lt;p&gt;Manage Collectors (scheduled data collection jobs).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Resources on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/</link><description>Recent content in Resources on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/index.xml" rel="self" type="application/rss+xml"/><item><title>Collectors</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</guid><description>&lt;p&gt;Manage Collectors (scheduled data collection jobs).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.collectors&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -89,7 +89,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Databaseconnections</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/databaseconnections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/databaseconnections/</guid><description>&lt;p&gt;Manage Database Connection configurations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Databaseconnections</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/databaseconnections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/databaseconnections/</guid><description>&lt;p&gt;Manage Database Connection configurations.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.databaseconnections&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -241,7 +241,7 @@
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;tls&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/models/tlsclientparams/"&gt;TLSClientParams&lt;/a&gt; | &lt;code&gt;None&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/tlsclientparams/"&gt;TLSClientParams&lt;/a&gt; | &lt;code&gt;None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
 					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;TLS client connection settings&lt;/td&gt;
@@ -256,7 +256,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Datasets</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/datasets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/datasets/</guid><description>&lt;p&gt;Manage Cribl Lake Datasets.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Datasets</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/datasets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/datasets/</guid><description>&lt;p&gt;Manage Cribl Lake Datasets.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.datasets&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -292,7 +292,7 @@
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;client.datasets.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create Lake Datasets (Cribl.Cloud only).&lt;/p&gt;
-&lt;p&gt;Creates one or more Lake Datasets in the specified Lake in a single transaction (Cribl.Cloud only). Send a single Lake Dataset object to create just one, or an array to bulk-create multiple. When an array is sent, the response is &lt;code&gt;{ items, errors }&lt;/code&gt; &amp;ndash; &lt;code&gt;items&lt;/code&gt; contains the successfully created Lake Datasets, and &lt;code&gt;errors&lt;/code&gt; contains an entry (&lt;code&gt;{ id, reason }&lt;/code&gt;) for each Lake Dataset that failed validation, so a per-item failure does not fail the rest of the batch.&lt;/p&gt;</description></item><item><title>Functions</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/functions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/functions/</guid><description>&lt;p&gt;List available Cribl processing functions.&lt;/p&gt;
+&lt;p&gt;Creates one or more Lake Datasets in the specified Lake in a single transaction (Cribl.Cloud only). Send a single Lake Dataset object to create just one, or an array to bulk-create multiple. When an array is sent, the response is &lt;code&gt;{ items, errors }&lt;/code&gt; &amp;ndash; &lt;code&gt;items&lt;/code&gt; contains the successfully created Lake Datasets, and &lt;code&gt;errors&lt;/code&gt; contains an entry (&lt;code&gt;{ id, reason }&lt;/code&gt;) for each Lake Dataset that failed validation, so a per-item failure does not fail the rest of the batch.&lt;/p&gt;</description></item><item><title>Functions</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/functions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/functions/</guid><description>&lt;p&gt;List available Cribl processing functions.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.functions&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -343,7 +343,7 @@
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;(200) &lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/models/paginatedresponse/"&gt;PaginatedResponse&lt;/a&gt; containing the requested &lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/models/functiondef/"&gt;FunctionDef&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;(200) &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/paginatedresponse/"&gt;PaginatedResponse&lt;/a&gt; containing the requested &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/functiondef/"&gt;FunctionDef&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;functions&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(&lt;span style="color:#f92672"&gt;...&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; item &lt;span style="color:#f92672"&gt;in&lt;/span&gt; response&lt;span style="color:#f92672"&gt;.&lt;/span&gt;data&lt;span style="color:#f92672"&gt;.&lt;/span&gt;items:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(item)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="errors"&gt;Errors&lt;a class="anchor" href="#errors"&gt;#&lt;/a&gt;&lt;/h4&gt;
@@ -358,18 +358,18 @@
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/errors/authenticationerror/"&gt;&lt;code&gt;AuthenticationError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/errors/authenticationerror/"&gt;&lt;code&gt;AuthenticationError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;401&lt;/td&gt;
 					&lt;td&gt;Authentication failed (missing or invalid credentials or Bearer token).&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/errors/servererror/"&gt;&lt;code&gt;ServerError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/errors/servererror/"&gt;&lt;code&gt;ServerError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;500&lt;/td&gt;
 					&lt;td&gt;Unexpected server error.&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;Get the Eval Function — Response&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Packs</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/packs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/packs/</guid><description>&lt;p&gt;Manage Packs — bundled, reusable configurations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Get the Eval Function — Response&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Packs</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</guid><description>&lt;p&gt;Manage Packs — bundled, reusable configurations.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.packs&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -435,7 +435,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Pipelines</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/pipelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/pipelines/</guid><description>&lt;p&gt;Manage processing pipelines (create, list, update, delete).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Pipelines</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/pipelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/pipelines/</guid><description>&lt;p&gt;Manage processing pipelines (create, list, update, delete).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.pipelines&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -505,7 +505,7 @@
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;conf&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/models/pipelineconfparam/"&gt;PipelineConfParam&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/pipelineconfparam/"&gt;PipelineConfParam&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
 					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Configuration for the Pipeline, including functions and settings&lt;/td&gt;
@@ -520,7 +520,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Routes</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/routes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/routes/</guid><description>&lt;p&gt;Manage data routing rules connecting sources to pipelines and destinations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Routes</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/routes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/routes/</guid><description>&lt;p&gt;Manage data routing rules connecting sources to pipelines and destinations.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.routes&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -587,7 +587,7 @@
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;routes&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;list[&lt;a href="https://criblio.github.io/cribl-python-sdk/latest/docs/models/routeconfparam/"&gt;RouteConfParam&lt;/a&gt;]&lt;/td&gt;
+					&lt;td&gt;list[&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/routeconfparam/"&gt;RouteConfParam&lt;/a&gt;]&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
 					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Route configurations to append to the Routing table&lt;/td&gt;

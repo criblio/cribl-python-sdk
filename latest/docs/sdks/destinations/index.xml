@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Destinations on Cribl Python SDK</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/</link><description>Recent content in Destinations on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/index.xml" rel="self" type="application/rss+xml"/><item><title>PQ</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/pq/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/pq/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › PQ&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Destinations on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/</link><description>Recent content in Destinations on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/index.xml" rel="self" type="application/rss+xml"/><item><title>PQ</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/pq/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/pq/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › PQ&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;destinations.pq&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Persistent queue operations for Destinations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.destinations.pq&lt;/code&gt;&lt;/p&gt;
@@ -57,7 +57,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Samples</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/samples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/samples/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › Samples&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Samples</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/samples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/samples/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › Samples&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;destinations.samples&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Sample/test operations for Destinations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.destinations.samples&lt;/code&gt;&lt;/p&gt;
@@ -126,7 +126,7 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Statuses</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/statuses/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/sdks/destinations/statuses/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › Statuses&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Statuses</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/statuses/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/destinations/statuses/</guid><description>&lt;p class="breadcrumb"&gt;Destinations › Statuses&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;destinations.statuses&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Status operations for Destinations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.destinations.statuses&lt;/code&gt;&lt;/p&gt;
