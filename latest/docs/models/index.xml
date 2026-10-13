@@ -3757,6 +3757,31 @@ explicitly for type-checker visibility.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;routes&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;sources&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>DownWorkerStatus</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/downworkerstatus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/downworkerstatus/</guid><description>&lt;p&gt;Worker health status when no Worker Processes are up, or the server is shutting down / in standby.&lt;/p&gt;
+&lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Field&lt;/th&gt;
+					&lt;th&gt;Type&lt;/th&gt;
+					&lt;th&gt;Required&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;status&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;down&amp;quot;]&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Yes&lt;/td&gt;
+					&lt;td&gt;Always &amp;lsquo;down&amp;rsquo;.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="example"&gt;Example&lt;a class="anchor" href="#example"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; cribl_python_sdk.models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; DownWorkerStatus
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;obj &lt;span style="color:#f92672"&gt;=&lt;/span&gt; DownWorkerStatus(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; status&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;down&amp;#34;&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>ElasticsearchTokenMetadataConf</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/elasticsearchtokenmetadataconf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/elasticsearchtokenmetadataconf/</guid><description>&lt;p&gt;Elasticsearch settings for an authentication token.&lt;/p&gt;
 &lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -5420,6 +5445,35 @@ explicitly for type-checker visibility.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;obj &lt;span style="color:#f92672"&gt;=&lt;/span&gt; HealthServerStatus(
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; overlay&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{},
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; start_time&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; status&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;healthy&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>HealthyWorkerStatus</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/healthyworkerstatus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/healthyworkerstatus/</guid><description>&lt;p&gt;Worker health status when all Worker Processes are up and healthy.&lt;/p&gt;
+&lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Field&lt;/th&gt;
+					&lt;th&gt;Type&lt;/th&gt;
+					&lt;th&gt;Required&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;status&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;healthy&amp;quot;]&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Yes&lt;/td&gt;
+					&lt;td&gt;Always &amp;lsquo;healthy&amp;rsquo;.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="used-by"&gt;Used by&lt;a class="anchor" href="#used-by"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;client.health.workers.get()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="example"&gt;Example&lt;a class="anchor" href="#example"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; cribl_python_sdk.models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; HealthyWorkerStatus
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;obj &lt;span style="color:#f92672"&gt;=&lt;/span&gt; HealthyWorkerStatus(
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; status&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;healthy&amp;#34;&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>HecAuthTokenConf</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/hecauthtokenconf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/hecauthtokenconf/</guid><description>&lt;p&gt;HEC authentication token.&lt;/p&gt;
 &lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
@@ -29225,7 +29279,50 @@ explicitly for type-checker visibility.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;obj: MicrosoftGraphDeltaParam &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;deltaLinkAttribute&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>NameValueParam</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/namevalueparam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/namevalueparam/</guid><description>&lt;p&gt;A name-value pair used for headers, params, etc.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>MixedWorkerStatus</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/mixedworkerstatus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/mixedworkerstatus/</guid><description>&lt;p&gt;Worker health status when some Worker Processes are up and some are not.&lt;/p&gt;
+&lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Field&lt;/th&gt;
+					&lt;th&gt;Type&lt;/th&gt;
+					&lt;th&gt;Required&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;ready&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Yes&lt;/td&gt;
+					&lt;td&gt;Number of probed Worker Processes that reported up.&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;status&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;mixed&amp;quot;]&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Yes&lt;/td&gt;
+					&lt;td&gt;Always &amp;lsquo;mixed&amp;rsquo;.&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;workers&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Yes&lt;/td&gt;
+					&lt;td&gt;Number of Worker Processes probed.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="used-by"&gt;Used by&lt;a class="anchor" href="#used-by"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;client.health.workers.get()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="example"&gt;Example&lt;a class="anchor" href="#example"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; cribl_python_sdk.models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; MixedWorkerStatus
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;obj &lt;span style="color:#f92672"&gt;=&lt;/span&gt; MixedWorkerStatus(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ready&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; status&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;mixed&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; workers&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>NameValueParam</title><link>https://criblio.github.io/cribl-python-sdk/latest/docs/models/namevalueparam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/latest/docs/models/namevalueparam/</guid><description>&lt;p&gt;A name-value pair used for headers, params, etc.&lt;/p&gt;
 &lt;h2 id="fields"&gt;Fields&lt;a class="anchor" href="#fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
 	&lt;thead&gt;
