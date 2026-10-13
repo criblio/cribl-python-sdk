@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from typing import Any, ClassVar, Generic, Literal, NotRequired, TypedDict, TypeVar
+from typing import Annotated, Any, ClassVar, Generic, Literal, NotRequired, TypedDict, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -916,6 +916,37 @@ class HealthServerStatus(CriblModel):
     """Timestamp (Unix epoch) when the Cribl process started."""
     status: Literal["healthy", "standby", "shutting down"] = Field(description="Health state: 'healthy', 'standby', or 'shutting down'.")
     """Health state: 'healthy', 'standby', or 'shutting down'."""
+
+
+class HealthyWorkerStatus(CriblModel):
+    """Worker health status when all Worker Processes are up and healthy."""
+
+    status: Literal["healthy"] = Field(description="Always 'healthy'.")
+    """Always 'healthy'."""
+
+
+class MixedWorkerStatus(CriblModel):
+    """Worker health status when some Worker Processes are up and some are not."""
+
+    ready: int = Field(description="Number of probed Worker Processes that reported up.")
+    """Number of probed Worker Processes that reported up."""
+    status: Literal["mixed"] = Field(description="Always 'mixed'.")
+    """Always 'mixed'."""
+    workers: int = Field(description="Number of Worker Processes probed.")
+    """Number of Worker Processes probed."""
+
+
+class DownWorkerStatus(CriblModel):
+    """Worker health status when no Worker Processes are up, or the server is shutting down / in standby."""
+
+    status: Literal["down"] = Field(description="Always 'down'.")
+    """Always 'down'."""
+
+
+WorkerHealthStatus = Annotated[
+    HealthyWorkerStatus | MixedWorkerStatus, Field(discriminator="status")
+]
+"""Worker Process health payload for a 200 response from `GET /health/workers`: all up ('healthy') or a partial set up ('mixed')."""
 
 
 # --- Git/Versioning ---

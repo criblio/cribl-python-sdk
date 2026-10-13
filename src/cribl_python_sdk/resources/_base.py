@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, ClassVar, Literal, TypeVar
 
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter
 
 from .._response import SDKResponse
 from ..exceptions import ResponseValidationError
@@ -20,10 +20,10 @@ class BaseResource:
     def __init__(self, client: Cribl):
         self._client = client
 
-    def _parse(self, resp: Any, cast_to: type[ModelT]) -> SDKResponse[ModelT]:
+    def _parse(self, resp: Any, cast_to: type[ModelT] | TypeAdapter[ModelT]) -> SDKResponse[ModelT]:
         data = resp.json() if resp.content else None
         try:
-            parsed = cast_to.model_validate(data)
+            parsed = cast_to.model_validate(data) if isinstance(cast_to, type) else cast_to.validate_python(data)
         except Exception as exc:
             raise ResponseValidationError(
                 url=str(resp.url),
@@ -38,10 +38,10 @@ class BaseResource:
             raw_response=resp,
         )
 
-    def _get(self, path: str, *, cast_to: type[ModelT], params: dict[str, Any] | None = None, **kwargs: Any) -> SDKResponse[ModelT]:
+    def _get(self, path: str, *, cast_to: type[ModelT] | TypeAdapter[ModelT], params: dict[str, Any] | None = None, **kwargs: Any) -> SDKResponse[ModelT]:
         return self._parse(self._client._request("GET", path, surface=self._surface, params=params, **kwargs), cast_to)
 
-    async def _get_async(self, path: str, *, cast_to: type[ModelT], params: dict[str, Any] | None = None, **kwargs: Any) -> SDKResponse[ModelT]:
+    async def _get_async(self, path: str, *, cast_to: type[ModelT] | TypeAdapter[ModelT], params: dict[str, Any] | None = None, **kwargs: Any) -> SDKResponse[ModelT]:
         return self._parse(await self._client._request_async("GET", path, surface=self._surface, params=params, **kwargs), cast_to)
 
     def _post(self, path: str, *, cast_to: type[ModelT], json: Any = None, **kwargs: Any) -> SDKResponse[ModelT]:
