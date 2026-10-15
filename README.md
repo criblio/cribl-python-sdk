@@ -2,12 +2,12 @@
 
 Python SDK for the Cribl **Control Plane** API and the **Cribl.Cloud platform** (management) API.
 
-Two OpenAPI files, one client — do not merge the specs:
+| API surface | Purpose | API Reference |
+|-------------|---------|---------------|
+| Control Plane | Manage product resources, such as Pipelines, Sources, Destinations, and Worker Groups. Available in Cloud and on-prem deployments. | [Control Plane API](https://docs.cribl.io/cribl-as-code/api-reference/control-plane/) |
+| Management Plane | Manage Cribl.Cloud Organizations, Workspaces, and other administrative resources. Cloud-only. | [Management Plane API](https://docs.cribl.io/cribl-as-code/api-reference/management-plane/) |
 
-| Surface | Spec | Host | SDK |
-|---------|------|------|-----|
-| Control plane | `openapi/control-plane.yml` (v4.20.0) | Your origin (`server_url`) | `cribl.pipelines`, `cribl.sources`, … — SDK appends `/api/v1` |
-| Cribl.Cloud platform | `openapi/management-plane.yml` | Gateway (`https://gateway.cribl.cloud` by default) | `cribl.cloud.*` — paths as in the spec (`/v1/organizations/…`) |
+For more information about the distinction between these API surfaces, see [Control Plane and Management Plane](https://docs.cribl.io/cribl-as-code/api-reference/) in the official Cribl documentation.
 
 Same `Security` (OAuth2 client credentials) for both Cloud hosts. On-prem username/password authenticates the control plane only.
 
