@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Settings on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/system/settings/</link><description>Recent content in Settings on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/system/settings/index.xml" rel="self" type="application/rss+xml"/><item><title>Cribl</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/system/settings/cribl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/system/settings/cribl/</guid><description>&lt;p class="breadcrumb"&gt;System › Settings › Cribl&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Settings on Cribl Python SDK</title><link>https://criblio.github.io/cribl-python-sdk/v1/docs/sdks/system/settings/</link><description>Recent content in Settings on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://criblio.github.io/cribl-python-sdk/v1/docs/sdks/system/settings/index.xml" rel="self" type="application/rss+xml"/><item><title>Cribl</title><link>https://criblio.github.io/cribl-python-sdk/v1/docs/sdks/system/settings/cribl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://criblio.github.io/cribl-python-sdk/v1/docs/sdks/system/settings/cribl/</guid><description>&lt;p class="breadcrumb"&gt;System › Settings › Cribl&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;system.settings.cribl&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Cribl settings operations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.system.settings.cribl&lt;/code&gt;&lt;/p&gt;
@@ -33,7 +33,7 @@ await client.system.settings.cribl.list_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/
 &lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cribl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;(200) &lt;a href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/models/paginatedresponse/"&gt;PaginatedResponse&lt;/a&gt; containing the requested &lt;a href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/models/systemsettings/"&gt;SystemSettings&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;(200) &lt;a href="https://criblio.github.io/cribl-python-sdk/v1/docs/models/paginatedresponse/"&gt;PaginatedResponse&lt;/a&gt; containing the requested &lt;a href="https://criblio.github.io/cribl-python-sdk/v1/docs/models/systemsettings/"&gt;SystemSettings&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="code-block"&gt;
 &lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cribl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -50,12 +50,12 @@ await client.system.settings.cribl.list_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/errors/authenticationerror/"&gt;&lt;code&gt;AuthenticationError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/v1/docs/errors/authenticationerror/"&gt;&lt;code&gt;AuthenticationError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;401&lt;/td&gt;
 					&lt;td&gt;Authentication failed (missing or invalid credentials or Bearer token).&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/errors/servererror/"&gt;&lt;code&gt;ServerError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://criblio.github.io/cribl-python-sdk/v1/docs/errors/servererror/"&gt;&lt;code&gt;ServerError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;500&lt;/td&gt;
 					&lt;td&gt;Unexpected server error.&lt;/td&gt;
 			&lt;/tr&gt;
