@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Commits on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/versioning/commits/</link><description>Recent content in Commits on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/versioning/commits/index.xml" rel="self" type="application/rss+xml"/><item><title>Files</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/versioning/commits/files/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/versioning/commits/files/</guid><description>&lt;p class="breadcrumb"&gt;Versioning › Commits › Files&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;versioning.commits.files&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Commit file operations&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client.versioning.commits.files&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Method&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a href="#count"&gt;&lt;code&gt;count&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Get a count of files that changed since a commit.&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a href="#list"&gt;&lt;code&gt;list&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Get the names and statuses of files that changed since a commit.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="count"&gt;count&lt;a class="anchor" href="#count"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.versioning.commits.files.count(...)
+await client.versioning.commits.files.count_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get a count of files that changed since a commit.&lt;/p&gt;
+&lt;p&gt;Get a count of the files that changed since a commit. Default is the latest commit (HEAD).&lt;/p&gt;</description></item></channel></rss>

@@ -3,17 +3,21 @@
 &lt;p&gt;Health status of Worker Processes&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.health.workers&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.health.workers.get(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get the health status of Worker Processes.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.health.workers.get(...)
+await client.health.workers.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get the health status of Worker Processes.&lt;/p&gt;
 &lt;p&gt;Get the current health status of Worker Processes that the server manages.&lt;/p&gt;
 &lt;h3 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;health&lt;span style="color:#f92672"&gt;.&lt;/span&gt;workers&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;health&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -22,7 +26,6 @@
 					&lt;td&gt;&lt;code&gt;scope&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;default&amp;quot;, &amp;quot;all&amp;quot;] | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Which Worker Processes to report on. &lt;code&gt;default&lt;/code&gt; reflects only the primary Worker Process (&lt;code&gt;w:0&lt;/code&gt;). &lt;code&gt;all&lt;/code&gt; requires every Worker Process — plus the Load Balancing Worker Process when it exists — to be fully booted, and returns per-process counts. Valid values: &amp;ldquo;default&amp;rdquo;, &amp;ldquo;all&amp;rdquo;&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Health on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/health/</link><description>Recent content in Health on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/health/index.xml" rel="self" type="application/rss+xml"/><item><title>Workers</title><link>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/health/workers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/v1/docs/sdks/health/workers/</guid><description>&lt;p class="breadcrumb"&gt;Health › Workers&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;health.workers&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Health status of Worker Processes&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client.health.workers&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.health.workers.get(...)
+await client.health.workers.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get the health status of Worker Processes.&lt;/p&gt;
+&lt;p&gt;Get the current health status of Worker Processes that the server manages.&lt;/p&gt;
+&lt;h3 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;health&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Parameter&lt;/th&gt;
+					&lt;th&gt;Type&lt;/th&gt;
+					&lt;th&gt;Required&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;scope&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;default&amp;quot;, &amp;quot;all&amp;quot;] | None&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;No&lt;/td&gt;
+					&lt;td&gt;Which Worker Processes to report on. &lt;code&gt;default&lt;/code&gt; reflects only the primary Worker Process (&lt;code&gt;w:0&lt;/code&gt;). &lt;code&gt;all&lt;/code&gt; requires every Worker Process — plus the Load Balancing Worker Process when it exists — to be fully booted, and returns per-process counts. Valid values: &amp;ldquo;default&amp;rdquo;, &amp;ldquo;all&amp;rdquo;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

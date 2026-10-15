@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Resources on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/</link><description>Recent content in Resources on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/index.xml" rel="self" type="application/rss+xml"/><item><title>Collectors</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</guid><description>&lt;p&gt;Manage Collectors (scheduled data collection jobs).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Control Plane on Cribl Python SDK</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/</link><description>Recent content in Control Plane on Cribl Python SDK</description><generator>Hugo</generator><language>en</language><atom:link href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/index.xml" rel="self" type="application/rss+xml"/><item><title>Collectors</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/collectors/</guid><description>&lt;p&gt;Manage Collectors (scheduled data collection jobs).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.collectors&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -33,57 +33,60 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.collectors.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create a Collector.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.collectors.create(...)
+await client.collectors.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create a Collector.&lt;/p&gt;
 &lt;p&gt;Create a new Collector.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for creating a Collector that fetches data from a REST API endpoint on a recurring schedule.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;collectors&lt;span style="color:#f92672"&gt;.&lt;/span&gt;create(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;rest-collector&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; type&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;collection&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; schedule&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;enabled&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;cronSchedule&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;0 */4 * * *&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;tz&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;UTC&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;run&amp;#34;&lt;/span&gt;: {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;mode&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;run&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;timeRangeType&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;relative&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;earliest&amp;#34;&lt;/span&gt;: &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;300&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;expression&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;true&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;logLevel&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; collector&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;rest&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;sendToRoutes&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;throttleRatePerSec&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;conf&amp;#34;&lt;/span&gt;: {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;collectUrl&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#39;https://api.example.com/data&amp;#39;&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;collectMethod&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;get&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;authentication&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;none&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;decodeUrl&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;timeout&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;600&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pipelines&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[&lt;span style="color:#e6db74"&gt;&amp;#34;main&amp;#34;&lt;/span&gt;],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; destinations&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[&lt;span style="color:#e6db74"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# ... (see API docs for full payload)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for creating a Collector that fetches data from a REST API endpoint on a recurring schedule.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;collectors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;rest-collector&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;collection&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;schedule&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;enabled&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;cronSchedule&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0 */4 * * *&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;tz&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;UTC&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;run&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;mode&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;run&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;timeRangeType&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;relative&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;earliest&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;expression&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;logLevel&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;info&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;collector&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;rest&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;sendToRoutes&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;throttleRatePerSec&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;conf&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;collectUrl&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#39;https://api.example.com/data&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;collectMethod&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;authentication&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;none&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;decodeUrl&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;timeout&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;pipelines&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;main&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;# ... (see API docs for full payload)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;collector&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;code&gt;CollectorAzureBlob | CollectorCriblLake | CollectorDatabase | CollectorFilesystem | CollectorGoogleCloudStorage | CollectorHealthCheck | CollectorRest | CollectorS3 | CollectorScript | CollectorSplunk | dict[str, object]&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorazureblob/"&gt;CollectorAzureBlob&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorcribllake/"&gt;CollectorCriblLake&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectordatabase/"&gt;CollectorDatabase&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorfilesystem/"&gt;CollectorFilesystem&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorgooglecloudstorage/"&gt;CollectorGoogleCloudStorage&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorhealthcheck/"&gt;CollectorHealthCheck&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorrest/"&gt;CollectorRest&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectors3/"&gt;CollectorS3&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorscript/"&gt;CollectorScript&lt;/a&gt; | &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/collectorsplunk/"&gt;CollectorSplunk&lt;/a&gt; | &lt;code&gt;dict[str, object]&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Full saved-job configuration as a typed Collector model (e.g. CollectorS3, CollectorScript) or a plain dict matching the &lt;code&gt;POST /lib/jobs&lt;/code&gt; request body&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -124,26 +127,30 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.databaseconnections.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create a Database Connection.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.databaseconnections.create(...)
+await client.databaseconnections.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create a Database Connection.&lt;/p&gt;
 &lt;p&gt;Create a new Database Connection.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for creating a MySQL Database Connection using a connection string with embedded credentials.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;databaseconnections&lt;span style="color:#f92672"&gt;.&lt;/span&gt;create(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;mysql-prod-db&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Production MySQL database for customer data&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; databaseType&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;mysql&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; authType&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;connectionString&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; connectionString&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;mysql://yourUsername:yourPassword@mysql.example.com:3306/production?ssl=true&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; connectionTimeout&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;10000&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tags&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;production,mysql,customer-data&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for creating a MySQL Database Connection using a connection string with embedded credentials.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;databaseconnections&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;mysql-prod-db&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Production MySQL database for customer data&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;databaseType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;mysql&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;authType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;connectionString&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;connectionString&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;mysql://yourUsername:yourPassword@mysql.example.com:3306/production?ssl=true&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;connectionTimeout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;production,mysql,customer-data&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -152,105 +159,90 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Unique identifier for the Database Connection&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;databaseType&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;mysql&amp;quot;, &amp;quot;oracle&amp;quot;, &amp;quot;postgres&amp;quot;, &amp;quot;sqlserver&amp;quot;, &amp;quot;teradata&amp;quot;]&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Type of database engine for the connection. Valid values: &amp;ldquo;mysql&amp;rdquo;, &amp;ldquo;oracle&amp;rdquo;, &amp;ldquo;postgres&amp;rdquo;, &amp;ldquo;sqlserver&amp;rdquo;, &amp;ldquo;teradata&amp;rdquo;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;authType&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;configObj&amp;quot;, &amp;quot;connectionString&amp;quot;, &amp;quot;secret&amp;quot;, &amp;quot;secrets&amp;quot;]&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Authentication method for the Database Connection. Determines how credentials are provided. Valid values: &amp;ldquo;configObj&amp;rdquo;, &amp;ldquo;connectionString&amp;rdquo;, &amp;ldquo;secret&amp;rdquo;, &amp;ldquo;secrets&amp;rdquo;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Brief description of the Database Connection&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;configObj&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;JSON configuration object for advanced SQL Server connection settings&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;connectionString&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Database connection string with embedded credentials or server information&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;connectionTimeout&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;int | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Maximum time (in milliseconds) to wait when establishing the database connection&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;credentialsSecret&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Name of the stored credentials secret containing username and password for SQL Server configObj authentication&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;credsSecrets&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Name of the stored credentials secret containing username and password. Used with Oracle connections&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;password&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Database password for authentication. Used with Oracle connections&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;requestTimeout&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;int | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Maximum time (in milliseconds) to wait for a database query to complete. Applies to SQL Server connections only&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Comma-separated list of tags for categorizing and filtering Database Connections&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;textSecret&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Name of the stored text secret containing the connection string&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;tls&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/tlsclientparams/"&gt;TLSClientParams&lt;/a&gt; | &lt;code&gt;None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;TLS client connection settings&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;user&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Database username for authentication. Used with Oracle connections&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -291,7 +283,10 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.datasets.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create Lake Datasets (Cribl.Cloud only).&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.datasets.create(...)
+await client.datasets.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create Lake Datasets (Cribl.Cloud only).&lt;/p&gt;
 &lt;p&gt;Creates one or more Lake Datasets in the specified Lake in a single transaction (Cribl.Cloud only). Send a single Lake Dataset object to create just one, or an array to bulk-create multiple. When an array is sent, the response is &lt;code&gt;{ items, errors }&lt;/code&gt; &amp;ndash; &lt;code&gt;items&lt;/code&gt; contains the successfully created Lake Datasets, and &lt;code&gt;errors&lt;/code&gt; contains an entry (&lt;code&gt;{ id, reason }&lt;/code&gt;) for each Lake Dataset that failed validation, so a per-item failure does not fail the rest of the batch.&lt;/p&gt;</description></item><item><title>Functions</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/functions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/functions/</guid><description>&lt;p&gt;List available Cribl processing functions.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.functions&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
@@ -315,19 +310,23 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.functions.get(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get a Function.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.functions.get(...)
+await client.functions.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get a Function.&lt;/p&gt;
 &lt;p&gt;Get the specified Function.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;functions&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -336,7 +335,6 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Function to get&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -344,32 +342,12 @@
 &lt;h4 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;SDKResponse&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;(200) &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/paginatedresponse/"&gt;PaginatedResponse&lt;/a&gt; containing the requested &lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/functiondef/"&gt;FunctionDef&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;functions&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(&lt;span style="color:#f92672"&gt;...&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; item &lt;span style="color:#f92672"&gt;in&lt;/span&gt; response&lt;span style="color:#f92672"&gt;.&lt;/span&gt;data&lt;span style="color:#f92672"&gt;.&lt;/span&gt;items:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(item)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="errors"&gt;Errors&lt;a class="anchor" href="#errors"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;This operation may raise the following SDK exceptions.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Error&lt;/th&gt;
-					&lt;th&gt;Status Code&lt;/th&gt;
-					&lt;th&gt;Description&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/errors/authenticationerror/"&gt;&lt;code&gt;AuthenticationError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-					&lt;td&gt;401&lt;/td&gt;
-					&lt;td&gt;Authentication failed (missing or invalid credentials or Bearer token).&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/errors/servererror/"&gt;&lt;code&gt;ServerError&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-					&lt;td&gt;500&lt;/td&gt;
-					&lt;td&gt;Unexpected server error.&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;Get the Eval Function — Response&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Packs</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</guid><description>&lt;p&gt;Manage Packs — bundled, reusable configurations.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;functions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="errors"&gt;Errors&lt;a class="anchor" href="#errors"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This operation may raise the following SDK exceptions.&lt;/p&gt;</description></item><item><title>Packs</title><link>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://super-carnival-y9k6g79.pages.github.io/latest/docs/sdks/packs/</guid><description>&lt;p&gt;Manage Packs — bundled, reusable configurations.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.packs&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;a class="anchor" href="#overview"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;table&gt;
@@ -408,19 +386,23 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.packs.get(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get a Pack.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.packs.get(...)
+await client.packs.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get a Pack.&lt;/p&gt;
 &lt;p&gt;Get the specified Pack.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;packs&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;packs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -429,7 +411,6 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Pack to get. Use the &lt;code&gt;id&lt;/code&gt; field from the list response&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -470,28 +451,32 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.pipelines.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Create a Pipeline.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.pipelines.create(...)
+await client.pipelines.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create a Pipeline.&lt;/p&gt;
 &lt;p&gt;Create a new Pipeline.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for creating a new Pipeline with no functions.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pipelines&lt;span style="color:#f92672"&gt;.&lt;/span&gt;create(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;empty-pipeline&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; conf&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;output&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;streamtags&amp;#34;&lt;/span&gt;: [],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;groups&amp;#34;&lt;/span&gt;: {},
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;asyncFuncTimeout&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;functions&amp;#34;&lt;/span&gt;: [],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for creating a new Pipeline with no functions.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pipelines&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;empty-pipeline&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;conf&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;output&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;streamtags&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;groups&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;asyncFuncTimeout&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;functions&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -500,21 +485,18 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Unique identifier for the Pipeline&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;conf&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/pipelineconfparam/"&gt;PipelineConfParam&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Configuration for the Pipeline, including functions and settings&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;pack&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Pack ID. If provided, scopes the operation to the specified Pack&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -551,29 +533,33 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="append"&gt;append&lt;a class="anchor" href="#append"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.routes.append(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Add a Route to the end of the Routing table.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.routes.append(...)
+await client.routes.append_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add a Route to the end of the Routing table.&lt;/p&gt;
 &lt;p&gt;Add a Route to the end of the specified Routing table.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for appending a single Route to the end of the default Routing table ( id: default ).&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;routes&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;route-new&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;new-route&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;pipeline&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;main&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;filter&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;source == &lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;new.log&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Route new logs to main pipeline&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;final&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for appending a single Route to the end of the default Routing table ( id: default ).&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;routes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;route-new&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;new-route&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;pipeline&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;main&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;filter&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;source == &lt;/span&gt;&lt;span class="se"&gt;\&amp;#34;&lt;/span&gt;&lt;span class="s2"&gt;new.log&lt;/span&gt;&lt;span class="se"&gt;\&amp;#34;&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Route new logs to main pipeline&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;final&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -582,21 +568,18 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Routing table to add the Route to. The supported value is &lt;code&gt;default&lt;/code&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;routes&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;list[&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/routeconfparam/"&gt;RouteConfParam&lt;/a&gt;]&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;list[&lt;/code&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/routeconfparam/"&gt;RouteConfParam&lt;/a&gt;&lt;code&gt;]&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Route configurations to append to the Routing table&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;pack&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Pack ID. If provided, scopes the operation to the specified Pack&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;

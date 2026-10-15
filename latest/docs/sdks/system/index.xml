@@ -3,16 +3,21 @@
 &lt;p&gt;Capture operations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.system.captures&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.system.captures.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Capture live data as an NDJSON stream.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.system.captures.create(...)
+await client.system.captures.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Capture live data as an NDJSON stream.&lt;/p&gt;
 &lt;p&gt;Initiate a live data capture from Cribl Workers. Yields CapturedEvent objects as they arrive over the wire (line-delimited JSON).&lt;/p&gt;
 &lt;h3 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for capturing events by sourcetype.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;system&lt;span style="color:#f92672"&gt;.&lt;/span&gt;captures&lt;span style="color:#f92672"&gt;.&lt;/span&gt;create(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; filter&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;sourcetype===&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;pan:traffic&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; maxEvents&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; duration&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; level&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for capturing events by sourcetype.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;captures&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;filter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;sourcetype===&lt;/span&gt;&lt;span class="se"&gt;\&amp;#34;&lt;/span&gt;&lt;span class="s2"&gt;pan:traffic&lt;/span&gt;&lt;span class="se"&gt;\&amp;#34;&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;maxEvents&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -76,4 +81,4 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;Generator[CapturedEvent]&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Generator[&lt;/code&gt;&lt;a href="https://super-carnival-y9k6g79.pages.github.io/latest/docs/models/capturedevent/"&gt;CapturedEvent&lt;/a&gt;&lt;code&gt;]&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

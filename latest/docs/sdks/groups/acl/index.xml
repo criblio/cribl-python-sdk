@@ -3,5 +3,8 @@
 &lt;p&gt;Team ACL operations&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.groups.acl.teams&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.groups.acl.teams.get(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get the team access control list for a Worker Group, Outpost Group, or Edge Fleet.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.groups.acl.teams.get(...)
+await client.groups.acl.teams.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get the team access control list for a Worker Group, Outpost Group, or Edge Fleet.&lt;/p&gt;
 &lt;p&gt;Get the Team access control list (ACL) for the specified Worker Group, Outpost Group, or Edge Fleet. This endpoint lists Teams with explicit access assignments on the Group or Fleet. The response does not include access granted to individual Team Members through direct user assignments or inherited based on Team Permissions and Roles at the Organization/Global, Workspace, or product level. To list the user ACL for a Group or Fleet, use &lt;code&gt;GET /products/{product}/groups/{id}/acl&lt;/code&gt;.&lt;/p&gt;</description></item></channel></rss>

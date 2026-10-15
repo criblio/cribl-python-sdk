@@ -23,19 +23,23 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="clear"&gt;clear&lt;a class="anchor" href="#clear"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.pq.clear(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Clear the persistent queue for a Destination.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.pq.clear(...)
+await client.destinations.pq.clear_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Clear the persistent queue for a Destination.&lt;/p&gt;
 &lt;p&gt;Clear the persistent queue (PQ) for the specified Destination.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;destinations&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;clear(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -44,14 +48,12 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Destination to clear the PQ for&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;pack&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Pack ID. If provided, scopes the operation to the specified Pack&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -82,22 +84,26 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="create"&gt;create&lt;a class="anchor" href="#create"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.samples.create(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Send sample event data to a Destination.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.samples.create(...)
+await client.destinations.samples.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Send sample event data to a Destination.&lt;/p&gt;
 &lt;p&gt;Send sample event data to the specified Destination to validate the configuration or test connectivity.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example request body for sending a single test event to the Destination.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;destinations&lt;span style="color:#f92672"&gt;.&lt;/span&gt;samples&lt;span style="color:#f92672"&gt;.&lt;/span&gt;create(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; events&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;_raw&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;This is a test event&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;source&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;test&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;sourcetype&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;manual&amp;#34;&lt;/span&gt;},
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Example request body for sending a single test event to the Destination.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;events&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;_raw&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;This is a test event&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;sourcetype&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;manual&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -106,21 +112,18 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Destination to send sample event data to&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;events&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;list[dict[str, Any]]&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Array of event objects to send to the Destination for testing&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;pack&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Pack ID. If provided, scopes the operation to the specified Pack&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -151,19 +154,23 @@
 &lt;/table&gt;
 &lt;h2 id="operations"&gt;Operations&lt;a class="anchor" href="#operations"&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="get"&gt;get&lt;a class="anchor" href="#get"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.statuses.get(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get the status of a Destination.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;client.destinations.statuses.get(...)
+await client.destinations.statuses.get_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Get the status of a Destination.&lt;/p&gt;
 &lt;p&gt;Get the status and optional metrics for the specified Destination.&lt;/p&gt;
 &lt;h4 id="example-usage"&gt;Example Usage&lt;a class="anchor" href="#example-usage"&gt;#&lt;/a&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;destinations&lt;span style="color:#f92672"&gt;.&lt;/span&gt;statuses&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; id&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;div class="code-block"&gt;
+&lt;button type="button" class="code-copy" data-label="Copy" aria-label="Copy code" hidden&gt;Copy&lt;/button&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;statuses&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id="parameters"&gt;Parameters&lt;a class="anchor" href="#parameters"&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Parameter&lt;/th&gt;
 					&lt;th&gt;Type&lt;/th&gt;
 					&lt;th&gt;Required&lt;/th&gt;
-					&lt;th&gt;Default&lt;/th&gt;
 					&lt;th&gt;Description&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -172,28 +179,24 @@
 					&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;The &lt;code&gt;id&lt;/code&gt; of the Destination to get the status for&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;metrics&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;bool | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Set to &lt;code&gt;true&lt;/code&gt; to include metrics for each Destination. Otherwise, &lt;code&gt;false&lt;/code&gt; (default)&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;type&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;bool | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Set to &lt;code&gt;true&lt;/code&gt; to prefix the Destination &lt;code&gt;id&lt;/code&gt; with the Destination type. Otherwise, &lt;code&gt;false&lt;/code&gt; (default)&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;pack&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;str | None&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;No&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Pack ID. If provided, scopes the operation to the specified Pack&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
