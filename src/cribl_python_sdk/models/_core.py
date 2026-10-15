@@ -883,9 +883,9 @@ class AuthToken(BaseModel):
 class CapturedEvent(CriblModel):
     """A single event from a live data capture (NDJSON stream)."""
 
-    raw: str | None = Field(None, alias="_raw", description="Raw event data.")
+    raw: str | None = Field(default=None, alias="_raw", description="Raw event data.")
     """Raw event data."""
-    time: float | None = Field(None, alias="_time", description="Timestamp of the event.")
+    time: float | None = Field(default=None, alias="_time", description="Timestamp of the event.")
     """Timestamp of the event."""
 
 
@@ -895,7 +895,7 @@ class CapturedEvent(CriblModel):
 class HealthOverlayStatus(CriblModel):
     """Overlay state of a Cribl process."""
 
-    state: Literal["active", "inactive"] | None = Field(None, description="Current overlay state.")
+    state: Literal["active", "inactive"] | None = Field(default=None, description="Current overlay state.")
     """Current overlay state."""
 
 
@@ -903,14 +903,14 @@ class HealthServerStatus(CriblModel):
     """Health status of the Leader or Worker Node."""
 
     is_captain: bool | None = Field(
-        None,
+        default=None,
         alias="isCaptain",
         description="Whether this node is the captain (job scheduling coordinator).",
     )
     """Whether this node is the captain (job scheduling coordinator)."""
     overlay: HealthOverlayStatus = Field(description="Overlay state for this process.")
     """Overlay state for this process."""
-    role: Literal["primary", "standby"] | None = Field(None, description="Leader Node role: 'primary' or 'standby'.")
+    role: Literal["primary", "standby"] | None = Field(default=None, description="Leader Node role: 'primary' or 'standby'.")
     """Leader Node role: 'primary' or 'standby'."""
     start_time: int = Field(alias="startTime", description="Timestamp (Unix epoch) when the Cribl process started.")
     """Timestamp (Unix epoch) when the Cribl process started."""
@@ -960,19 +960,19 @@ class CurrentBranchResult(CriblModel):
 class GitLogResult(BaseModel):
     """A git commit log entry."""
 
-    author_email: str | None = Field(None, alias="author_email", description="Author email.")
+    author_email: str | None = Field(default=None, alias="author_email", description="Author email.")
     """Author email."""
-    author_name: str | None = Field(None, alias="author_name", description="Author name.")
+    author_name: str | None = Field(default=None, alias="author_name", description="Author name.")
     """Author name."""
-    body: str | None = Field(None, description="Commit body/extended message.")
+    body: str | None = Field(default=None, description="Commit body/extended message.")
     """Commit body/extended message."""
-    date: str | None = Field(None, description="Commit date.")
+    date: str | None = Field(default=None, description="Commit date.")
     """Commit date."""
-    hash: str | None = Field(None, description="Commit hash.")
+    hash: str | None = Field(default=None, description="Commit hash.")
     """Commit hash."""
-    message: str | None = Field(None, description="Commit message.")
+    message: str | None = Field(default=None, description="Commit message.")
     """Commit message."""
-    refs: str | None = Field(None, description="Refs associated with this commit.")
+    refs: str | None = Field(default=None, description="Refs associated with this commit.")
     """Refs associated with this commit."""
 
 
@@ -982,13 +982,13 @@ class BranchInfo(BaseModel):
     id: str = Field(description="Unique identifier.")
     """Unique identifier."""
     srcGroup: str | None = Field(
-        None,
+        default=None,
         alias="__srcGroup",
         description="Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted.",
     )
     """Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted."""
     srcOverridden: bool | None = Field(
-        None,
+        default=None,
         alias="__srcOverridden",
         description="If true, the child fleet has a local overlay on an inherited entity. Omitted when inherited and unmodified, or when local and not inherited. Display-only; never persisted.",
     )
@@ -1007,13 +1007,13 @@ class GitCommitAuthor(BaseModel):
 class GitCommitFiles(BaseModel):
     """Files changed in a git commit."""
 
-    created: list[str] | None = Field(None, description="Newly created file paths.")
+    created: list[str] | None = Field(default=None, description="Newly created file paths.")
     """Newly created file paths."""
-    deleted: list[str] | None = Field(None, description="Deleted file paths.")
+    deleted: list[str] | None = Field(default=None, description="Deleted file paths.")
     """Deleted file paths."""
-    modified: list[str] | None = Field(None, description="Modified file paths.")
+    modified: list[str] | None = Field(default=None, description="Modified file paths.")
     """Modified file paths."""
-    renamed: list[dict[str, str]] | None = Field(None, description="Renamed file paths with old/new mapping.")
+    renamed: list[dict[str, str]] | None = Field(default=None, description="Renamed file paths with old/new mapping.")
     """Renamed file paths with old/new mapping."""
 
 
@@ -1031,17 +1031,17 @@ class GitCommitChangeSummary(BaseModel):
 class GitCommitSummary(BaseModel):
     """Result of a git commit operation."""
 
-    author: GitCommitAuthor | None = Field(None, description="Author of the commit.")
+    author: GitCommitAuthor | None = Field(default=None, description="Author of the commit.")
     """Author of the commit."""
-    branch: str | None = Field(None, description="Branch the commit was made on.")
+    branch: str | None = Field(default=None, description="Branch the commit was made on.")
     """Branch the commit was made on."""
-    commit: str | None = Field(None, description="New commit hash.")
+    commit: str | None = Field(default=None, description="New commit hash.")
     """New commit hash."""
-    files: GitCommitFiles | None = Field(None, description="Files changed in the commit.")
+    files: GitCommitFiles | None = Field(default=None, description="Files changed in the commit.")
     """Files changed in the commit."""
-    message: str | None = Field(None, description="Commit summary message.")
+    message: str | None = Field(default=None, description="Commit summary message.")
     """Commit summary message."""
-    summary: GitCommitChangeSummary | None = Field(None, description="Summary of line changes in the commit.")
+    summary: GitCommitChangeSummary | None = Field(default=None, description="Summary of line changes in the commit.")
     """Summary of line changes in the commit."""
 
 
@@ -1057,40 +1057,40 @@ class GitInfo(BaseModel):
 class GitFileStatus(BaseModel):
     """Status of a single file in git."""
 
-    index: str | None = Field(None, description="Index status character.")
+    index: str | None = Field(default=None, description="Index status character.")
     """Index status character."""
-    path: str | None = Field(None, description="File path.")
+    path: str | None = Field(default=None, description="File path.")
     """File path."""
-    working_dir: str | None = Field(None, alias="working_dir", description="Working directory status character.")
+    working_dir: str | None = Field(default=None, alias="working_dir", description="Working directory status character.")
     """Working directory status character."""
 
 
 class GitStatusResult(BaseModel):
     """Status of the current working tree."""
 
-    ahead: int | None = Field(None, description="Number of commits ahead of remote.")
+    ahead: int | None = Field(default=None, description="Number of commits ahead of remote.")
     """Number of commits ahead of remote."""
-    behind: int | None = Field(None, description="Number of commits behind remote.")
+    behind: int | None = Field(default=None, description="Number of commits behind remote.")
     """Number of commits behind remote."""
-    conflicted: list[str] | None = Field(None, description="Conflicted file paths.")
+    conflicted: list[str] | None = Field(default=None, description="Conflicted file paths.")
     """Conflicted file paths."""
-    created: list[str] | None = Field(None, description="Newly created file paths.")
+    created: list[str] | None = Field(default=None, description="Newly created file paths.")
     """Newly created file paths."""
-    current: str | None = Field(None, description="Current branch name.")
+    current: str | None = Field(default=None, description="Current branch name.")
     """Current branch name."""
-    deleted: list[str] | None = Field(None, description="Deleted file paths.")
+    deleted: list[str] | None = Field(default=None, description="Deleted file paths.")
     """Deleted file paths."""
-    files: list[GitFileStatus] | None = Field(None, description="Detailed file status list.")
+    files: list[GitFileStatus] | None = Field(default=None, description="Detailed file status list.")
     """Detailed file status list."""
-    modified: list[str] | None = Field(None, description="Modified file paths.")
+    modified: list[str] | None = Field(default=None, description="Modified file paths.")
     """Modified file paths."""
-    not_added: list[str] | None = Field(None, alias="not_added", description="Untracked file paths.")
+    not_added: list[str] | None = Field(default=None, alias="not_added", description="Untracked file paths.")
     """Untracked file paths."""
-    renamed: list[str] | None = Field(None, description="Renamed file paths.")
+    renamed: list[str] | None = Field(default=None, description="Renamed file paths.")
     """Renamed file paths."""
-    staged: list[str] | None = Field(None, description="Array of file paths that are staged for the next commit.")
+    staged: list[str] | None = Field(default=None, description="Array of file paths that are staged for the next commit.")
     """Array of file paths that are staged for the next commit."""
-    tracking: str | None = Field(None, description="Remote tracking branch.")
+    tracking: str | None = Field(default=None, description="Remote tracking branch.")
     """Remote tracking branch."""
 
 
@@ -1101,9 +1101,9 @@ class DiffLine(CriblModel):
     """Line change type."""
     content: str = Field(description="Full content of the line, including the diff prefix character.")
     """Full content of the line, including the diff prefix character."""
-    new_number: int | None = Field(None, alias="newNumber", description="Line number in the new file.")
+    new_number: int | None = Field(default=None, alias="newNumber", description="Line number in the new file.")
     """Line number in the new file."""
-    old_number: int | None = Field(None, alias="oldNumber", description="Line number in the original file.")
+    old_number: int | None = Field(default=None, alias="oldNumber", description="Line number in the original file.")
     """Line number in the original file."""
 
 
@@ -1118,7 +1118,7 @@ class DiffBlock(CriblModel):
     """Starting line number in the new file for this hunk."""
     old_start_line: int = Field(alias="oldStartLine", description="Starting line number in the original file for this hunk.")
     """Starting line number in the original file for this hunk."""
-    old_start_line2: int | None = Field(None, alias="oldStartLine2", description="Starting line in the original file for the second parent (combined diffs).")
+    old_start_line2: int | None = Field(default=None, alias="oldStartLine2", description="Starting line in the original file for the second parent (combined diffs).")
     """Starting line in the original file for the second parent (combined diffs)."""
 
 
@@ -1135,41 +1135,41 @@ class DiffFile(CriblModel):
     """If true, this is a combined diff (merge commit)."""
     is_git_diff: bool = Field(alias="isGitDiff", description="If true, this diff was generated by Git.")
     """If true, this diff was generated by Git."""
-    language: str | None = Field(None, description="Programming language or file format detected for syntax highlighting. Omitted for extensionless files.")
+    language: str | None = Field(default=None, description="Programming language or file format detected for syntax highlighting. Omitted for extensionless files.")
     """Programming language or file format detected for syntax highlighting. Omitted for extensionless files."""
     new_name: str = Field(alias="newName", description="New file path after the change.")
     """New file path after the change."""
     old_name: str = Field(alias="oldName", description="Original file path before the change.")
     """Original file path before the change."""
-    changed_percentage: float | None = Field(None, alias="changedPercentage", description="Percentage of lines in the file that changed.")
+    changed_percentage: float | None = Field(default=None, alias="changedPercentage", description="Percentage of lines in the file that changed.")
     """Percentage of lines in the file that changed."""
-    checksum_after: str | None = Field(None, alias="checksumAfter", description="Checksum of the new file.")
+    checksum_after: str | None = Field(default=None, alias="checksumAfter", description="Checksum of the new file.")
     """Checksum of the new file."""
-    checksum_before: str | list[str] | None = Field(None, alias="checksumBefore", description="Checksum of the original file. May be an array for combined diffs.")
+    checksum_before: str | list[str] | None = Field(default=None, alias="checksumBefore", description="Checksum of the original file. May be an array for combined diffs.")
     """Checksum of the original file. May be an array for combined diffs."""
-    deleted_file_mode: str | None = Field(None, alias="deletedFileMode", description="File mode of the deleted file.")
+    deleted_file_mode: str | None = Field(default=None, alias="deletedFileMode", description="File mode of the deleted file.")
     """File mode of the deleted file."""
-    is_binary: bool | None = Field(None, alias="isBinary", description="If true, this is a binary file.")
+    is_binary: bool | None = Field(default=None, alias="isBinary", description="If true, this is a binary file.")
     """If true, this is a binary file."""
-    is_copy: bool | None = Field(None, alias="isCopy", description="If true, this file was copied from another path.")
+    is_copy: bool | None = Field(default=None, alias="isCopy", description="If true, this file was copied from another path.")
     """If true, this file was copied from another path."""
-    is_deleted: bool | None = Field(None, alias="isDeleted", description="If true, this file was deleted in the commit.")
+    is_deleted: bool | None = Field(default=None, alias="isDeleted", description="If true, this file was deleted in the commit.")
     """If true, this file was deleted in the commit."""
-    is_new: bool | None = Field(None, alias="isNew", description="If true, this file was added in the commit.")
+    is_new: bool | None = Field(default=None, alias="isNew", description="If true, this file was added in the commit.")
     """If true, this file was added in the commit."""
-    is_rename: bool | None = Field(None, alias="isRename", description="If true, this file was renamed.")
+    is_rename: bool | None = Field(default=None, alias="isRename", description="If true, this file was renamed.")
     """If true, this file was renamed."""
-    is_too_big: bool | None = Field(None, alias="isTooBig", description="If true, the diff was truncated.")
+    is_too_big: bool | None = Field(default=None, alias="isTooBig", description="If true, the diff was truncated.")
     """If true, the diff was truncated."""
-    mode: str | None = Field(None, description="Combined file mode when both old and new modes are the same.")
+    mode: str | None = Field(default=None, description="Combined file mode when both old and new modes are the same.")
     """Combined file mode when both old and new modes are the same."""
-    new_file_mode: str | None = Field(None, alias="newFileMode", description="File mode of the new file (when added).")
+    new_file_mode: str | None = Field(default=None, alias="newFileMode", description="File mode of the new file (when added).")
     """File mode of the new file (when added)."""
-    new_mode: str | None = Field(None, alias="newMode", description="File mode of the new file.")
+    new_mode: str | None = Field(default=None, alias="newMode", description="File mode of the new file.")
     """File mode of the new file."""
-    old_mode: str | list[str] | None = Field(None, alias="oldMode", description="File mode of the original file. May be an array for combined diffs.")
+    old_mode: str | list[str] | None = Field(default=None, alias="oldMode", description="File mode of the original file. May be an array for combined diffs.")
     """File mode of the original file. May be an array for combined diffs."""
-    unchanged_percentage: float | None = Field(None, alias="unchangedPercentage", description="Percentage of lines unchanged.")
+    unchanged_percentage: float | None = Field(default=None, alias="unchangedPercentage", description="Percentage of lines unchanged.")
     """Percentage of lines unchanged."""
 
 
@@ -1189,7 +1189,7 @@ class GitShowResult(CriblModel):
     commit_message: str = Field(alias="commitMessage", description="Full commit message of the specified commit.")
     """Full commit message of the specified commit."""
     diff_json: list[DiffFile] | None = Field(
-        None, alias="diffJson",
+        default=None, alias="diffJson",
         description="Diff of the file changes introduced by the commit.",
     )
     """Diff of the file changes introduced by the commit."""
@@ -1200,22 +1200,22 @@ class GitFile(BaseModel):
 
     name: str = Field(description="Path of the file relative to the configuration root.")
     """Path of the file relative to the configuration root."""
-    autoIncludedInCommit: bool | None = Field(None, description="If true, this file is automatically included in commits without being explicitly listed.")
+    autoIncludedInCommit: bool | None = Field(default=None, description="If true, this file is automatically included in commits without being explicitly listed.")
     """If true, this file is automatically included in commits without being explicitly listed."""
-    children: list["GitFile"] | None = Field(None, description="Nested files and subdirectories when this entry is a directory (recursive).")
+    children: list["GitFile"] | None = Field(default=None, description="Nested files and subdirectories when this entry is a directory (recursive).")
     """Nested files and subdirectories when this entry is a directory (recursive)."""
-    state: str | None = Field(None, description="Git status code for the file: M for modified, A for added, or D for deleted.")
+    state: str | None = Field(default=None, description="Git status code for the file: M for modified, A for added, or D for deleted.")
     """Git status code for the file: M for modified, A for added, or D for deleted."""
 
 
 class GitFilesResponse(BaseModel):
     """Response containing files from a git commit."""
 
-    commit_message: str | None = Field(None, alias="commitMessage", description="Commit message.")
+    commit_message: str | None = Field(default=None, alias="commitMessage", description="Commit message.")
     """Commit message."""
-    count: int | None = Field(None, description="Number of files.")
+    count: int | None = Field(default=None, description="Number of files.")
     """Number of files."""
-    items: list[GitFile] | None = Field(None, description="List of files in the commit.")
+    items: list[GitFile] | None = Field(default=None, description="List of files in the commit.")
     """List of files in the commit."""
 
 
@@ -1233,11 +1233,11 @@ class OutputTestResponse(CriblModel):
     """The id of the Destination that was tested."""
     success: bool = Field(description="If true, the Destination test succeeded. Otherwise, false.")
     """If true, the Destination test succeeded. Otherwise, false."""
-    details: dict[str, Any] | None = Field(None, description="Additional details about the Destination test, such as per-event results and transport-level information.")
+    details: dict[str, Any] | None = Field(default=None, description="Additional details about the Destination test, such as per-event results and transport-level information.")
     """Additional details about the Destination test, such as per-event results and transport-level information."""
-    error: str | None = Field(None, description="Error message that describes a failed Destination test.")
+    error: str | None = Field(default=None, description="Error message that describes a failed Destination test.")
     """Error message that describes a failed Destination test."""
-    successDetail: str | None = Field(None, description="Human-readable description for a successful Destination test result.")
+    successDetail: str | None = Field(default=None, description="Human-readable description for a successful Destination test result.")
     """Human-readable description for a successful Destination test result."""
 
 
@@ -1251,13 +1251,13 @@ class OutputSamplesResponse(CriblModel):
 class GitRevertAuditFiles(CriblModel):
     """Files affected by a revert operation, grouped by change type."""
 
-    created: list[str] | None = Field(None, description="Array of file paths that were created in the commit.")
+    created: list[str] | None = Field(default=None, description="Array of file paths that were created in the commit.")
     """Array of file paths that were created in the commit."""
-    deleted: list[str] | None = Field(None, description="Array of file paths that were deleted in the commit.")
+    deleted: list[str] | None = Field(default=None, description="Array of file paths that were deleted in the commit.")
     """Array of file paths that were deleted in the commit."""
-    modified: list[str] | None = Field(None, description="Array of file paths that were modified in the commit.")
+    modified: list[str] | None = Field(default=None, description="Array of file paths that were modified in the commit.")
     """Array of file paths that were modified in the commit."""
-    renamed: list[dict[str, str]] | None = Field(None, description="Array of file rename operations, each containing the original path and the new path.")
+    renamed: list[dict[str, str]] | None = Field(default=None, description="Array of file rename operations, each containing the original path and the new path.")
     """Array of file rename operations, each containing the original path and the new path."""
 
 
@@ -1266,9 +1266,9 @@ class GitRevertAudit(CriblModel):
 
     id: str = Field(description="SHA-1 hash of the revert commit that was created.")
     """SHA-1 hash of the revert commit that was created."""
-    files: GitRevertAuditFiles | None = Field(None, description="Files affected by the revert, grouped by change type.")
+    files: GitRevertAuditFiles | None = Field(default=None, description="Files affected by the revert, grouped by change type.")
     """Files affected by the revert, grouped by change type."""
-    group: str | None = Field(None, description="Worker Group the revert was applied to, if applicable.")
+    group: str | None = Field(default=None, description="Worker Group the revert was applied to, if applicable.")
     """Worker Group the revert was applied to, if applicable."""
 
 
@@ -1287,37 +1287,37 @@ class GitRevertResult(CriblModel):
 class SystemSettings(CriblModel):
     """System-level settings for a Cribl instance."""
 
-    api: ApiSettingsParam | None = Field(None, description="API server configuration for the Cribl instance.")
+    api: ApiSettingsParam | None = Field(default=None, description="API server configuration for the Cribl instance.")
     """API server configuration for the Cribl instance."""
-    apps: AppsSettingsParam | None = Field(None, description="App configuration.")
+    apps: AppsSettingsParam | None = Field(default=None, description="App configuration.")
     """App configuration."""
-    backups: BackupsSettingsParam | None = Field(None, description="Configuration backup settings, including storage location and retention period.")
+    backups: BackupsSettingsParam | None = Field(default=None, description="Configuration backup settings, including storage location and retention period.")
     """Configuration backup settings, including storage location and retention period."""
-    customLogo: CustomLogoParam | None = Field(None, description="Custom logo configuration for the Cribl UI login page and navigation bar.")
+    customLogo: CustomLogoParam | None = Field(default=None, description="Custom logo configuration for the Cribl UI login page and navigation bar.")
     """Custom logo configuration for the Cribl UI login page and navigation bar."""
-    pii: PiiSettingsParam | None = Field(None, description="Personally identifiable information (PII) detection configuration.")
+    pii: PiiSettingsParam | None = Field(default=None, description="Personally identifiable information (PII) detection configuration.")
     """Personally identifiable information (PII) detection configuration."""
-    proxy: ProxySettingsParam | None = Field(None, description="HTTP proxy configuration for outbound connections.")
+    proxy: ProxySettingsParam | None = Field(default=None, description="HTTP proxy configuration for outbound connections.")
     """HTTP proxy configuration for outbound connections."""
-    rollback: RollbackSettingsParam | None = Field(None, description="Automatic rollback settings applied when an upgrade fails.")
+    rollback: RollbackSettingsParam | None = Field(default=None, description="Automatic rollback settings applied when an upgrade fails.")
     """Automatic rollback settings applied when an upgrade fails."""
-    shutdown: ShutdownSettingsParam | None = Field(None, description="Graceful shutdown configuration.")
+    shutdown: ShutdownSettingsParam | None = Field(default=None, description="Graceful shutdown configuration.")
     """Graceful shutdown configuration."""
-    sni: SniSettingsParam | None = Field(None, description="Server Name Indication (SNI) routing configuration.")
+    sni: SniSettingsParam | None = Field(default=None, description="Server Name Indication (SNI) routing configuration.")
     """Server Name Indication (SNI) routing configuration."""
-    sockets: SocketsSettingsParam | None = Field(None, description="Unix domain socket configuration.")
+    sockets: SocketsSettingsParam | None = Field(default=None, description="Unix domain socket configuration.")
     """Unix domain socket configuration."""
-    support: SupportSettingsParam | None = Field(None, description="Support and diagnostics settings.")
+    support: SupportSettingsParam | None = Field(default=None, description="Support and diagnostics settings.")
     """Support and diagnostics settings."""
-    system: SystemSettingsSystemParam | None = Field(None, description="System-level operational settings for the Cribl instance.")
+    system: SystemSettingsSystemParam | None = Field(default=None, description="System-level operational settings for the Cribl instance.")
     """System-level operational settings for the Cribl instance."""
-    tls: TlsSettingsParam | None = Field(None, description="Global TLS/SSL settings applied to all outbound connections that do not specify their own TLS configuration.")
+    tls: TlsSettingsParam | None = Field(default=None, description="Global TLS/SSL settings applied to all outbound connections that do not specify their own TLS configuration.")
     """Global TLS/SSL settings applied to all outbound connections that do not specify their own TLS configuration."""
-    upgradeGroupSettings: UpgradeGroupSettingsParam | None = Field(None, description="Rolling upgrade group settings that control how many nodes are upgraded at a time.")
+    upgradeGroupSettings: UpgradeGroupSettingsParam | None = Field(default=None, description="Rolling upgrade group settings that control how many nodes are upgraded at a time.")
     """Rolling upgrade group settings that control how many nodes are upgraded at a time."""
-    upgradeSettings: UpgradeSettingsParam | None = Field(None, description="Automatic upgrade scheduling and package source configuration.")
+    upgradeSettings: UpgradeSettingsParam | None = Field(default=None, description="Automatic upgrade scheduling and package source configuration.")
     """Automatic upgrade scheduling and package source configuration."""
-    workers: WorkersSettingsParam | None = Field(None, description="Worker Process configuration.")
+    workers: WorkersSettingsParam | None = Field(default=None, description="Worker Process configuration.")
     """Worker Process configuration."""
 
 
@@ -1329,15 +1329,15 @@ class AwsHeartbeatMetadata(CriblModel):
 
     enabled: bool = Field(description="If true, the AWS metadata collector is enabled on the node.")
     """If true, the AWS metadata collector is enabled on the node."""
-    instanceId: str | None = Field(None, description="AWS EC2 instance ID.")
+    instanceId: str | None = Field(default=None, description="AWS EC2 instance ID.")
     """AWS EC2 instance ID."""
-    region: str | None = Field(None, description="AWS region name.")
+    region: str | None = Field(default=None, description="AWS region name.")
     """AWS region name."""
-    tags: dict[str, str] | None = Field(None, description="AWS EC2 instance tags.")
+    tags: dict[str, str] | None = Field(default=None, description="AWS EC2 instance tags.")
     """AWS EC2 instance tags."""
-    type: str | None = Field(None, description="AWS EC2 instance type.")
+    type: str | None = Field(default=None, description="AWS EC2 instance type.")
     """AWS EC2 instance type."""
-    zone: str | None = Field(None, description="AWS availability zone name.")
+    zone: str | None = Field(default=None, description="AWS availability zone name.")
     """AWS availability zone name."""
 
 
@@ -1346,25 +1346,25 @@ class AzureHeartbeatMetadata(CriblModel):
 
     enabled: bool = Field(description="If true, the Azure metadata collector is enabled on the node.")
     """If true, the Azure metadata collector is enabled on the node."""
-    hostname: str | None = Field(None, description="Azure VM hostname.")
+    hostname: str | None = Field(default=None, description="Azure VM hostname.")
     """Azure VM hostname."""
-    instanceId: str | None = Field(None, description="Azure instance ID.")
+    instanceId: str | None = Field(default=None, description="Azure instance ID.")
     """Azure instance ID."""
-    name: str | None = Field(None, description="Azure VM name.")
+    name: str | None = Field(default=None, description="Azure VM name.")
     """Azure VM name."""
-    region: str | None = Field(None, description="Azure location or region.")
+    region: str | None = Field(default=None, description="Azure location or region.")
     """Azure location or region."""
-    resourceGroup: str | None = Field(None, description="Azure resource group name.")
+    resourceGroup: str | None = Field(default=None, description="Azure resource group name.")
     """Azure resource group name."""
-    subscriptionId: str | None = Field(None, description="Azure subscription ID.")
+    subscriptionId: str | None = Field(default=None, description="Azure subscription ID.")
     """Azure subscription ID."""
-    tags: dict[str, str] | None = Field(None, description="Azure tags.")
+    tags: dict[str, str] | None = Field(default=None, description="Azure tags.")
     """Azure tags."""
-    type: str | None = Field(None, description="Azure VM size or instance type.")
+    type: str | None = Field(default=None, description="Azure VM size or instance type.")
     """Azure VM size or instance type."""
-    vmId: str | None = Field(None, description="Azure VM ID.")
+    vmId: str | None = Field(default=None, description="Azure VM ID.")
     """Azure VM ID."""
-    zone: str | None = Field(None, description="Azure availability zone.")
+    zone: str | None = Field(default=None, description="Azure availability zone.")
     """Azure availability zone."""
 
 
@@ -1373,11 +1373,11 @@ class OsHeartbeatMetadata(CriblModel):
 
     addresses: list[str] = Field(description="Network addresses reported by the operating system.")
     """Network addresses reported by the operating system."""
-    enabled: bool | None = Field(None, description="If true, the OS metadata collector is enabled on the node.")
+    enabled: bool | None = Field(default=None, description="If true, the OS metadata collector is enabled on the node.")
     """If true, the OS metadata collector is enabled on the node."""
-    id: str | None = Field(None, description="Operating system distribution name.")
+    id: str | None = Field(default=None, description="Operating system distribution name.")
     """Operating system distribution name."""
-    version: str | None = Field(None, description="Operating system version.")
+    version: str | None = Field(default=None, description="Operating system version.")
     """Operating system version."""
 
 
@@ -1395,110 +1395,110 @@ class KubeHeartbeatMetadata(CriblModel):
 
     enabled: bool = Field(description="If true, the Kubernetes metadata collector is enabled on the node.")
     """If true, the Kubernetes metadata collector is enabled on the node."""
-    namespace: str | None = Field(None, description="Kubernetes Namespace name.")
+    namespace: str | None = Field(default=None, description="Kubernetes Namespace name.")
     """Kubernetes Namespace name."""
-    node: str | None = Field(None, description="Kubernetes Node name.")
+    node: str | None = Field(default=None, description="Kubernetes Node name.")
     """Kubernetes Node name."""
-    owner: KubeOwnerMetadata | None = Field(None, description="Kubernetes owner resource for the Pod.")
+    owner: KubeOwnerMetadata | None = Field(default=None, description="Kubernetes owner resource for the Pod.")
     """Kubernetes owner resource for the Pod."""
-    pod: str | None = Field(None, description="Kubernetes Pod name.")
+    pod: str | None = Field(default=None, description="Kubernetes Pod name.")
     """Kubernetes Pod name."""
-    source: str | None = Field(None, description="Kubernetes config source.")
+    source: str | None = Field(default=None, description="Kubernetes config source.")
     """Kubernetes config source."""
 
 
 class HeartbeatMetadata(CriblModel):
     """Cloud, Kubernetes, and operating system metadata collected from a node."""
 
-    aws: AwsHeartbeatMetadata | None = Field(None, description="AWS instance metadata collected from the node.")
+    aws: AwsHeartbeatMetadata | None = Field(default=None, description="AWS instance metadata collected from the node.")
     """AWS instance metadata collected from the node."""
-    azure: AzureHeartbeatMetadata | None = Field(None, description="Azure instance metadata collected from the node.")
+    azure: AzureHeartbeatMetadata | None = Field(default=None, description="Azure instance metadata collected from the node.")
     """Azure instance metadata collected from the node."""
-    hostOs: OsHeartbeatMetadata | None = Field(None, description="Host operating system metadata collected from the node.")
+    hostOs: OsHeartbeatMetadata | None = Field(default=None, description="Host operating system metadata collected from the node.")
     """Host operating system metadata collected from the node."""
-    kube: KubeHeartbeatMetadata | None = Field(None, description="Kubernetes metadata collected from the node.")
+    kube: KubeHeartbeatMetadata | None = Field(default=None, description="Kubernetes metadata collected from the node.")
     """Kubernetes metadata collected from the node."""
-    os: OsHeartbeatMetadata | None = Field(None, description="Operating system metadata collected from the node.")
+    os: OsHeartbeatMetadata | None = Field(default=None, description="Operating system metadata collected from the node.")
     """Operating system metadata collected from the node."""
 
 
 class HBCriblConfigInfo(CriblModel):
     """Configuration bundle and policy revision metadata for a node."""
 
-    version: str | None = Field(None, description="Configuration bundle version.")
+    version: str | None = Field(default=None, description="Configuration bundle version.")
     """Configuration bundle version."""
-    hbPeriodSeconds: int | None = Field(None, description="Worker-to-Leader heartbeat interval, in seconds.")
+    hbPeriodSeconds: int | None = Field(default=None, description="Worker-to-Leader heartbeat interval, in seconds.")
     """Worker-to-Leader heartbeat interval, in seconds."""
-    featuresRev: str | None = Field(None, description="Feature flags revision string for the bundle.")
+    featuresRev: str | None = Field(default=None, description="Feature flags revision string for the bundle.")
     """Feature flags revision string for the bundle."""
-    logStreamEnv: str | None = Field(None, description="GitOps or LogStream environment label associated with the bundle.")
+    logStreamEnv: str | None = Field(default=None, description="GitOps or LogStream environment label associated with the bundle.")
     """GitOps or LogStream environment label associated with the bundle."""
-    policyRev: str | None = Field(None, description="Current policies revision string.")
+    policyRev: str | None = Field(default=None, description="Current policies revision string.")
     """Current policies revision string."""
-    apiCredentialsRev: str | None = Field(None, description="Current API credentials revision string.")
+    apiCredentialsRev: str | None = Field(default=None, description="Current API credentials revision string.")
     """Current API credentials revision string."""
-    teamsRev: str | None = Field(None, description="Current teams revision string.")
+    teamsRev: str | None = Field(default=None, description="Current teams revision string.")
     """Current teams revision string."""
-    usersRev: str | None = Field(None, description="Current users revision string.")
+    usersRev: str | None = Field(default=None, description="Current users revision string.")
     """Current users revision string."""
 
 
 class HBLeaderInfo(CriblModel):
     """Leader connection details when the node is a Worker or Edge reporting upstream."""
 
-    host: str | None = Field(None, description="Leader hostname or IP address.")
+    host: str | None = Field(default=None, description="Leader hostname or IP address.")
     """Leader hostname or IP address."""
-    port: int | None = Field(None, description="Leader TCP port.")
+    port: int | None = Field(default=None, description="Leader TCP port.")
     """Leader TCP port."""
-    servername: str | None = Field(None, description="TLS server name (SNI) for the Leader connection.")
+    servername: str | None = Field(default=None, description="TLS server name (SNI) for the Leader connection.")
     """TLS server name (SNI) for the Leader connection."""
-    tls: bool | None = Field(None, description="If true, TLS is enabled for the Leader connection.")
+    tls: bool | None = Field(default=None, description="If true, TLS is enabled for the Leader connection.")
     """If true, TLS is enabled for the Leader connection."""
 
 
 class HBCriblInfo(CriblModel):
     """Cribl software and configuration details reported by a node."""
 
-    config: HBCriblConfigInfo | None = Field(None, description="Configuration bundle and policy revision metadata for the node.")
+    config: HBCriblConfigInfo | None = Field(default=None, description="Configuration bundle and policy revision metadata for the node.")
     """Configuration bundle and policy revision metadata for the node."""
-    deploymentId: str | None = Field(None, description="Unique identifier for the deployment assigned for the node.")
+    deploymentId: str | None = Field(default=None, description="Unique identifier for the deployment assigned for the node.")
     """Unique identifier for the deployment assigned for the node."""
-    disableSNIRouting: bool | None = Field(None, description="If true, SNI-based routing to the Leader is disabled for the connection.")
+    disableSNIRouting: bool | None = Field(default=None, description="If true, SNI-based routing to the Leader is disabled for the connection.")
     """If true, SNI-based routing to the Leader is disabled for the connection."""
-    distMode: str | None = Field(None, description="Distributed deployment mode for the instance.")
+    distMode: str | None = Field(default=None, description="Distributed deployment mode for the instance.")
     """Distributed deployment mode for the instance."""
-    edgeNodes: int | None = Field(None, description="Count of Edge nodes reported in the Leader heartbeat.")
+    edgeNodes: int | None = Field(default=None, description="Count of Edge nodes reported in the Leader heartbeat.")
     """Count of Edge nodes reported in the Leader heartbeat."""
-    group: str | None = Field(None, description="Worker Group or Edge Fleet name.")
+    group: str | None = Field(default=None, description="Worker Group or Edge Fleet name.")
     """Worker Group or Edge Fleet name."""
-    guid: str | None = Field(None, description="Unique instance identifier for the Cribl node.")
+    guid: str | None = Field(default=None, description="Unique instance identifier for the Cribl node.")
     """Unique instance identifier for the Cribl node."""
-    installType: str | None = Field(None, description="Value of the CRIBL_INSTALL_TYPE environment variable.")
+    installType: str | None = Field(default=None, description="Value of the CRIBL_INSTALL_TYPE environment variable.")
     """Value of the CRIBL_INSTALL_TYPE environment variable."""
-    autoLookupVersions: dict[str, dict[str, str]] | None = Field(None, description="Automatically deployed Lookup file names and their deployed versions by context.")
+    autoLookupVersions: dict[str, dict[str, str]] | None = Field(default=None, description="Automatically deployed Lookup file names and their deployed versions by context.")
     """Automatically deployed Lookup file names and their deployed versions by context."""
-    lookupVersions: dict[str, dict[str, str]] | None = Field(None, description="Deployed Lookup file names and their deployed versions by context.")
+    lookupVersions: dict[str, dict[str, str]] | None = Field(default=None, description="Deployed Lookup file names and their deployed versions by context.")
     """Deployed Lookup file names and their deployed versions by context."""
-    master: HBLeaderInfo | None = Field(None, description="Leader connection details when the node is a Worker or Edge reporting upstream.")
+    master: HBLeaderInfo | None = Field(default=None, description="Leader connection details when the node is a Worker or Edge reporting upstream.")
     """Leader connection details when the node is a Worker or Edge reporting upstream."""
-    overlayId: str | None = Field(None, description="Currently active overlay identifier on the node.")
+    overlayId: str | None = Field(default=None, description="Currently active overlay identifier on the node.")
     """Currently active overlay identifier on the node."""
-    pid: int | None = Field(None, description="The process ID.")
+    pid: int | None = Field(default=None, description="The process ID.")
     """The process ID."""
-    socksEnabled: bool | None = Field(None, description="If true, SOCKS proxy connectivity is enabled for the node.")
+    socksEnabled: bool | None = Field(default=None, description="If true, SOCKS proxy connectivity is enabled for the node.")
     """If true, SOCKS proxy connectivity is enabled for the node."""
-    startTime: int | None = Field(None, description="Timestamp (in Unix time) when the Cribl server process started, in milliseconds.")
+    startTime: int | None = Field(default=None, description="Timestamp (in Unix time) when the Cribl server process started, in milliseconds.")
     """Timestamp (in Unix time) when the Cribl server process started, in milliseconds."""
-    tags: list[str] | None = Field(None, description="Tags from the node.")
+    tags: list[str] | None = Field(default=None, description="Tags from the node.")
     """Tags from the node."""
-    version: str | None = Field(None, description="Cribl software version string for the node.")
+    version: str | None = Field(default=None, description="Cribl software version string for the node.")
     """Cribl software version string for the node."""
 
 
 class OutpostNodeInfo(CriblModel):
     """Outpost Node information."""
 
-    groupname: str | None = Field(None, description="Name of the Outpost Group that contains the Outpost Node.")
+    groupname: str | None = Field(default=None, description="Name of the Outpost Group that contains the Outpost Node.")
     """Name of the Outpost Group that contains the Outpost Node."""
     guid: str = Field(description="Unique identifier for the Outpost Node.")
     """Unique identifier for the Outpost Node."""
@@ -1527,35 +1527,35 @@ class NodeProvidedInfo(CriblModel):
     """Operating system kernel release."""
     totalmem: int = Field(description="Total memory on the node, in bytes.")
     """Total memory on the node, in bytes."""
-    apiPort: int | None = Field(None, description="API port exposed by the node.")
+    apiPort: int | None = Field(default=None, description="API port exposed by the node.")
     """API port exposed by the node."""
-    apiScheme: Literal["http", "https"] | None = Field(None, description="API scheme derived from the node API TLS configuration.")
+    apiScheme: Literal["http", "https"] | None = Field(default=None, description="API scheme derived from the node API TLS configuration.")
     """API scheme derived from the node API TLS configuration."""
-    aws: AwsHeartbeatMetadata | None = Field(None, description="AWS metadata collected from the node.")
+    aws: AwsHeartbeatMetadata | None = Field(default=None, description="AWS metadata collected from the node.")
     """AWS metadata collected from the node."""
-    azure: AzureHeartbeatMetadata | None = Field(None, description="Azure metadata collected from the node.")
+    azure: AzureHeartbeatMetadata | None = Field(default=None, description="Azure metadata collected from the node.")
     """Azure metadata collected from the node."""
-    conn_ip: str | None = Field(None, description="Remote ip:port for the worker socket.")
+    conn_ip: str | None = Field(default=None, description="Remote ip:port for the worker socket.")
     """Remote ip:port for the worker socket."""
-    freeDiskSpace: int | None = Field(None, description="Free disk space on the node, in bytes.")
+    freeDiskSpace: int | None = Field(default=None, description="Free disk space on the node, in bytes.")
     """Free disk space on the node, in bytes."""
-    hostOs: OsHeartbeatMetadata | None = Field(None, description="Host operating system metadata collected from the node.")
+    hostOs: OsHeartbeatMetadata | None = Field(default=None, description="Host operating system metadata collected from the node.")
     """Host operating system metadata collected from the node."""
-    isCaptain: bool | None = Field(None, description="If true, the node considers itself the elected captain for its group.")
+    isCaptain: bool | None = Field(default=None, description="If true, the node considers itself the elected captain for its group.")
     """If true, the node considers itself the elected captain for its group."""
-    isSaasWorker: bool | None = Field(None, description="If true, the node runs in Cribl.Cloud.")
+    isSaasWorker: bool | None = Field(default=None, description="If true, the node runs in Cribl.Cloud.")
     """If true, the node runs in Cribl.Cloud."""
-    kube: KubeHeartbeatMetadata | None = Field(None, description="Kubernetes metadata collected from the node.")
+    kube: KubeHeartbeatMetadata | None = Field(default=None, description="Kubernetes metadata collected from the node.")
     """Kubernetes metadata collected from the node."""
-    localTime: int | None = Field(None, description="Local timestamp (in Unix time) on the node, in milliseconds.")
+    localTime: int | None = Field(default=None, description="Local timestamp (in Unix time) on the node, in milliseconds.")
     """Local timestamp (in Unix time) on the node, in milliseconds."""
-    metadata: HeartbeatMetadata | None = Field(None, description="Cloud, Kubernetes, and operating system metadata collected from the node.")
+    metadata: HeartbeatMetadata | None = Field(default=None, description="Cloud, Kubernetes, and operating system metadata collected from the node.")
     """Cloud, Kubernetes, and operating system metadata collected from the node."""
-    os: OsHeartbeatMetadata | None = Field(None, description="Operating system metadata collected from the node.")
+    os: OsHeartbeatMetadata | None = Field(default=None, description="Operating system metadata collected from the node.")
     """Operating system metadata collected from the node."""
-    outpost: OutpostNodeInfo | None = Field(None, description="Outpost Node information when the node is connected to an Outpost.")
+    outpost: OutpostNodeInfo | None = Field(default=None, description="Outpost Node information when the node is connected to an Outpost.")
     """Outpost Node information when the node is connected to an Outpost."""
-    totalDiskSpace: int | None = Field(None, description="Total disk space on the node, in bytes.")
+    totalDiskSpace: int | None = Field(default=None, description="Total disk space on the node, in bytes.")
     """Total disk space on the node, in bytes."""
 
 
@@ -1566,11 +1566,11 @@ class NodeUpgradeStatus(CriblModel):
     """Current upgrade state (0=Active, 1=Current, 2=Failed, 3=Skipped)."""
     timestamp: int = Field(description="Timestamp (in Unix time) when the node entered the upgrade state, in milliseconds.")
     """Timestamp (in Unix time) when the node entered the upgrade state, in milliseconds."""
-    active: NodeActiveUpgradeStatus | int | None = Field(None, description="Secondary upgrade state when state is Active (0=Pending, 1=Queued, 2=Upgrading).")
+    active: NodeActiveUpgradeStatus | int | None = Field(default=None, description="Secondary upgrade state when state is Active (0=Pending, 1=Queued, 2=Upgrading).")
     """Secondary upgrade state when state is Active (0=Pending, 1=Queued, 2=Upgrading)."""
-    failed: NodeFailedUpgradeStatus | int | None = Field(None, description="Secondary upgrade state when state is Failed (0=UpgradeErrorOnNode, 1=UpgradeInstallationRollback).")
+    failed: NodeFailedUpgradeStatus | int | None = Field(default=None, description="Secondary upgrade state when state is Failed (0=UpgradeErrorOnNode, 1=UpgradeInstallationRollback).")
     """Secondary upgrade state when state is Failed (0=UpgradeErrorOnNode, 1=UpgradeInstallationRollback)."""
-    skipped: NodeSkippedUpgradeStatus | int | None = Field(None, description="Secondary upgrade state when state is Skipped.")
+    skipped: NodeSkippedUpgradeStatus | int | None = Field(default=None, description="Secondary upgrade state when state is Skipped.")
     """Secondary upgrade state when state is Skipped."""
 
 
@@ -1594,29 +1594,29 @@ class MasterWorkerEntry(CriblModel):
     """Timestamp (in Unix time) when the Leader last received a message from the node."""
     workerProcesses: int = Field(description="Number of Worker Processes running on the node.")
     """Number of Worker Processes running on the node."""
-    info: NodeProvidedInfo | None = Field(None, description="Metadata reported by the node itself.")
+    info: NodeProvidedInfo | None = Field(default=None, description="Metadata reported by the node itself.")
     """Metadata reported by the node itself."""
-    connectionProtocol: Literal["tcp", "tls", "http2"] | None = Field(None, description="Connection protocol used for node-to-Leader communication.")
+    connectionProtocol: Literal["tcp", "tls", "http2"] | None = Field(default=None, description="Connection protocol used for node-to-Leader communication.")
     """Connection protocol used for node-to-Leader communication."""
-    deployable: bool | None = Field(None, description="If true, the node can receive configuration deployments.")
+    deployable: bool | None = Field(default=None, description="If true, the node can receive configuration deployments.")
     """If true, the node can receive configuration deployments."""
-    disconnected: bool | None = Field(None, description="If true, the node is disconnected from the Leader.")
+    disconnected: bool | None = Field(default=None, description="If true, the node is disconnected from the Leader.")
     """If true, the node is disconnected from the Leader."""
-    offlineDurationMs: int | None = Field(None, description="Maximum configured ephemeral offline duration, in milliseconds (base + jitter cap).")
+    offlineDurationMs: int | None = Field(default=None, description="Maximum configured ephemeral offline duration, in milliseconds (base + jitter cap).")
     """Maximum configured ephemeral offline duration, in milliseconds (base + jitter cap)."""
-    provisioningTokenId: str | None = Field(None, description="The id of the provisioning token used to authenticate the node, if used.")
+    provisioningTokenId: str | None = Field(default=None, description="The id of the provisioning token used to authenticate the node, if used.")
     """The id of the provisioning token used to authenticate the node, if used."""
-    status: str | None = Field(None, description="Health status reported for the node.")
+    status: str | None = Field(default=None, description="Health status reported for the node.")
     """Health status reported for the node."""
-    type: Literal["info", "req", "resp"] | None = Field(None, description="RPC message type reported by the node.")
+    type: Literal["info", "req", "resp"] | None = Field(default=None, description="RPC message type reported by the node.")
     """RPC message type reported by the node."""
-    lastMetrics: dict[str, Any] | None = Field(None, description="Latest total, input, and destination metrics cached for UI display.")
+    lastMetrics: dict[str, Any] | None = Field(default=None, description="Latest total, input, and destination metrics cached for UI display.")
     """Latest total, input, and destination metrics cached for UI display."""
-    metadata: HeartbeatMetadata | None = Field(None, description="Cloud, Kubernetes, and operating system metadata collected from the node.")
+    metadata: HeartbeatMetadata | None = Field(default=None, description="Cloud, Kubernetes, and operating system metadata collected from the node.")
     """Cloud, Kubernetes, and operating system metadata collected from the node."""
-    nodeUpgradeStatus: NodeUpgradeStatus | None = Field(None, description="Upgrade status reported by an Edge Node.")
+    nodeUpgradeStatus: NodeUpgradeStatus | None = Field(default=None, description="Upgrade status reported by an Edge Node.")
     """Upgrade status reported by an Edge Node."""
-    workers: MasterWorkerProcesses | None = Field(None, description="Worker Process counts associated with the node entry.")
+    workers: MasterWorkerProcesses | None = Field(default=None, description="Worker Process counts associated with the node entry.")
     """Worker Process counts associated with the node entry."""
 
 
@@ -1663,7 +1663,7 @@ class DistributedSummary(CriblModel):
 
     groups: DeploymentGroupsSummary = Field(description="Resource counts for Worker Groups or Edge Fleets in the deployment summary.")
     """Resource counts for Worker Groups or Edge Fleets in the deployment summary."""
-    workers: DeploymentWorkersSummary | None = Field(None, description="Worker or Edge Node counts and health statistics in the deployment summary.")
+    workers: DeploymentWorkersSummary | None = Field(default=None, description="Worker or Edge Node counts and health statistics in the deployment summary.")
     """Worker or Edge Node counts and health statistics in the deployment summary."""
 
 
@@ -1674,7 +1674,7 @@ class RestartResponse(CriblModel):
     """Unique identifier for the Worker or Edge Node (GUID)."""
     status: Literal["Error", "Restarting"] = Field(..., description="Result of the restart request for this Node (Restarting or Error).")
     """Result of the restart request for this Node (Restarting or Error)."""
-    message: str | None = Field(None, description="Error message if the restart request failed for this Node.")
+    message: str | None = Field(default=None, description="Error message if the restart request failed for this Node.")
     """Error message if the restart request failed for this Node."""
 
 
@@ -1684,9 +1684,9 @@ class RestartResponse(CriblModel):
 class GitCommitEntry(CriblModel):
     """A Git commit entry from a configuration group's log."""
 
-    author_email: str | None = Field(None, description="Email address of the commit author.")
+    author_email: str | None = Field(default=None, description="Email address of the commit author.")
     """Email address of the commit author."""
-    author_name: str | None = Field(None, description="Name of the commit author.")
+    author_name: str | None = Field(default=None, description="Name of the commit author.")
     """Name of the commit author."""
     date: str = Field(description="Date and time of the commit.")
     """Date and time of the commit."""
@@ -1703,11 +1703,11 @@ class LookupDeploymentEntry(CriblModel):
 
     file: str = Field(description="File name of the deployed lookup.")
     """File name of the deployed lookup."""
-    deployMode: Literal["auto", "manual"] | None = Field(None, description="Deploy mode configured on the lookup file.")
+    deployMode: Literal["auto", "manual"] | None = Field(default=None, description="Deploy mode configured on the lookup file.")
     """Deploy mode configured on the lookup file."""
-    deployedVersion: str | None = Field(None, description="Version of the lookup file currently deployed on the Worker or Node.")
+    deployedVersion: str | None = Field(default=None, description="Version of the lookup file currently deployed on the Worker or Node.")
     """Version of the lookup file currently deployed on the Worker or Node."""
-    version: str | None = Field(None, description="Version of the lookup file currently staged for deployment.")
+    version: str | None = Field(default=None, description="Version of the lookup file currently staged for deployment.")
     """Version of the lookup file currently staged for deployment."""
 
 
@@ -1723,7 +1723,7 @@ class ConfigGroupLookups(CriblModel):
 class ConfigGroupCloud(CriblModel):
     """Cloud provider and region details for a Cribl.Cloud Worker Group."""
 
-    provider: Literal["aws", "azure"] | None = Field(None, description="Cloud provider for the Worker Group.")
+    provider: Literal["aws", "azure"] | None = Field(default=None, description="Cloud provider for the Worker Group.")
     """Cloud provider for the Worker Group."""
     region: str = Field(description="Cloud region where the Worker Group is deployed.")
     """Cloud region where the Worker Group is deployed."""
@@ -1732,71 +1732,71 @@ class ConfigGroupCloud(CriblModel):
 class ConfigGroupGit(CriblModel):
     """Git status of a Worker Group, Outpost Group, or Edge Fleet configuration."""
 
-    commit: str | None = Field(None, description="Commit hash of the currently committed configuration version.")
+    commit: str | None = Field(default=None, description="Commit hash of the currently committed configuration version.")
     """Commit hash of the currently committed configuration version."""
-    localChanges: int | None = Field(None, description="Number of local configuration changes not yet committed.")
+    localChanges: int | None = Field(default=None, description="Number of local configuration changes not yet committed.")
     """Number of local configuration changes not yet committed."""
-    log: list[GitCommitEntry] | None = Field(None, description="List of recent configuration commits.")
+    log: list[GitCommitEntry] | None = Field(default=None, description="List of recent configuration commits.")
     """List of recent configuration commits."""
 
 
 class ConfigGroup(CriblModel):
     """A Worker Group, Outpost Group, or Edge Fleet configuration."""
 
-    id: str | None = Field(None, description="Unique identifier.")
+    id: str | None = Field(default=None, description="Unique identifier.")
     """Unique identifier."""
-    name: str | None = Field(None, description="Name of the Worker Group, Outpost Group, or Edge Fleet.")
+    name: str | None = Field(default=None, description="Name of the Worker Group, Outpost Group, or Edge Fleet.")
     """Name of the Worker Group, Outpost Group, or Edge Fleet."""
-    description: str | None = Field(None, description="Brief description of the Worker Group, Outpost Group, or Edge Fleet.")
+    description: str | None = Field(default=None, description="Brief description of the Worker Group, Outpost Group, or Edge Fleet.")
     """Brief description of the Worker Group, Outpost Group, or Edge Fleet."""
-    type: Literal["edge", "lake_access", "local_search", "outpost", "search", "stream"] | None = Field(None, description="Explicit type of the Worker Group, Outpost Group, or Edge Fleet.")
+    type: Literal["edge", "lake_access", "local_search", "outpost", "search", "stream"] | None = Field(default=None, description="Explicit type of the Worker Group, Outpost Group, or Edge Fleet.")
     """Explicit type of the Worker Group, Outpost Group, or Edge Fleet."""
-    configVersion: str | None = Field(None, description="Commit hash of the deployed configuration version for the Worker Group, Outpost Group, or Edge Fleet.")
+    configVersion: str | None = Field(default=None, description="Commit hash of the deployed configuration version for the Worker Group, Outpost Group, or Edge Fleet.")
     """Commit hash of the deployed configuration version for the Worker Group, Outpost Group, or Edge Fleet."""
-    cloud: ConfigGroupCloud | None = Field(None, description="Cloud provider and region details for a Cribl.Cloud Worker Group.")
+    cloud: ConfigGroupCloud | None = Field(default=None, description="Cloud provider and region details for a Cribl.Cloud Worker Group.")
     """Cloud provider and region details for a Cribl.Cloud Worker Group."""
-    estimatedIngestRate: int | None = Field(None, description="Estimated ingest rate for a Cribl.Cloud Worker Group, in GB/sec.")
+    estimatedIngestRate: int | None = Field(default=None, description="Estimated ingest rate for a Cribl.Cloud Worker Group, in GB/sec.")
     """Estimated ingest rate for a Cribl.Cloud Worker Group, in GB/sec."""
-    git: ConfigGroupGit | None = Field(None, description="Git status of the Worker Group, Outpost Group, or Edge Fleet configuration.")
+    git: ConfigGroupGit | None = Field(default=None, description="Git status of the Worker Group, Outpost Group, or Edge Fleet configuration.")
     """Git status of the Worker Group, Outpost Group, or Edge Fleet configuration."""
-    inherits: str | None = Field(None, description="The id of the parent Edge Fleet. If provided, this Fleet inherits configuration from the parent.")
+    inherits: str | None = Field(default=None, description="The id of the parent Edge Fleet. If provided, this Fleet inherits configuration from the parent.")
     """The id of the parent Edge Fleet. If provided, this Fleet inherits configuration from the parent."""
-    onPrem: bool | None = Field(None, description="If true, the Worker Group, Outpost Group, or Edge Fleet uses customer-hosted (on-prem) infrastructure.")
+    onPrem: bool | None = Field(default=None, description="If true, the Worker Group, Outpost Group, or Edge Fleet uses customer-hosted (on-prem) infrastructure.")
     """If true, the Worker Group, Outpost Group, or Edge Fleet uses customer-hosted (on-prem) infrastructure."""
-    provisioned: bool | None = Field(None, description="If true, the Cribl.Cloud Worker Group has active Workers provisioned.")
+    provisioned: bool | None = Field(default=None, description="If true, the Cribl.Cloud Worker Group has active Workers provisioned.")
     """If true, the Cribl.Cloud Worker Group has active Workers provisioned."""
-    streamtags: list[str] | None = Field(None, description="Metadata tags attached to the Worker Group, Outpost Group, or Edge Fleet for categorization and filtering.")
+    streamtags: list[str] | None = Field(default=None, description="Metadata tags attached to the Worker Group, Outpost Group, or Edge Fleet for categorization and filtering.")
     """Metadata tags attached to the Worker Group, Outpost Group, or Edge Fleet for categorization and filtering."""
-    workerCount: int | None = Field(None, description="Number of Workers or Nodes currently in the Worker Group, Outpost Group, or Edge Fleet.")
+    workerCount: int | None = Field(default=None, description="Number of Workers or Nodes currently in the Worker Group, Outpost Group, or Edge Fleet.")
     """Number of Workers or Nodes currently in the Worker Group, Outpost Group, or Edge Fleet."""
-    deployingWorkerCount: int | None = Field(None, description="Number of Workers or Nodes that are currently deploying the latest configuration version.")
+    deployingWorkerCount: int | None = Field(default=None, description="Number of Workers or Nodes that are currently deploying the latest configuration version.")
     """Number of Workers or Nodes that are currently deploying the latest configuration version."""
-    incompatibleWorkerCount: int | None = Field(None, description="Number of Workers or Nodes running a Cribl version that is incompatible with the current upgrade target.")
+    incompatibleWorkerCount: int | None = Field(default=None, description="Number of Workers or Nodes running a Cribl version that is incompatible with the current upgrade target.")
     """Number of Workers or Nodes running a Cribl version that is incompatible with the current upgrade target."""
-    workerRemoteAccess: bool | None = Field(None, description="If true, the Leader allows remote access (teleporting) into the Workers or Nodes.")
+    workerRemoteAccess: bool | None = Field(default=None, description="If true, the Leader allows remote access (teleporting) into the Workers or Nodes.")
     """If true, the Leader allows remote access (teleporting) into the Workers or Nodes."""
-    collectorsHaEnabled: bool | None = Field(None, description="Keeps Collector jobs running if the Leader Node fails. Applies only to Stream Worker Groups.")
+    collectorsHaEnabled: bool | None = Field(default=None, description="Keeps Collector jobs running if the Leader Node fails. Applies only to Stream Worker Groups.")
     """Keeps Collector jobs running if the Leader Node fails. Applies only to Stream Worker Groups."""
-    maxWorkerAge: str | None = Field(None, description="Maximum duration a Worker or Node can remain disconnected before the Leader removes it.")
+    maxWorkerAge: str | None = Field(default=None, description="Maximum duration a Worker or Node can remain disconnected before the Leader removes it.")
     """Maximum duration a Worker or Node can remain disconnected before the Leader removes it."""
-    upgradeVersion: str | None = Field(None, description="Target software upgrade version. Applies only to Outpost Groups and Edge Fleets.")
+    upgradeVersion: str | None = Field(default=None, description="Target software upgrade version. Applies only to Outpost Groups and Edge Fleets.")
     """Target software upgrade version. Applies only to Outpost Groups and Edge Fleets."""
-    lookupDeployments: list[ConfigGroupLookups] | None = Field(None, description="Lookup deployment status per Worker or Node context.")
+    lookupDeployments: list[ConfigGroupLookups] | None = Field(default=None, description="Lookup deployment status per Worker or Node context.")
     """Lookup deployment status per Worker or Node context."""
-    isFleet: bool | None = Field(None, description="Indicates whether this is an Edge Fleet. Deprecated: use type='edge' instead.")
+    isFleet: bool | None = Field(default=None, description="Indicates whether this is an Edge Fleet. Deprecated: use type='edge' instead.")
     """Indicates whether this is an Edge Fleet. Deprecated: use type='edge' instead."""
-    isSearch: bool | None = Field(None, description="Indicates whether this is an internal Search Group. Deprecated: use type='search' instead.")
+    isSearch: bool | None = Field(default=None, description="Indicates whether this is an internal Search Group. Deprecated: use type='search' instead.")
     """Indicates whether this is an internal Search Group. Deprecated: use type='search' instead."""
-    tags: str | None = Field(None, description="Legacy system-level tags. Use streamtags instead.")
+    tags: str | None = Field(default=None, description="Legacy system-level tags. Use streamtags instead.")
     """Legacy system-level tags. Use streamtags instead."""
     srcGroup: str | None = Field(
-        None,
+        default=None,
         alias="__srcGroup",
         description="Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted.",
     )
     """Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted."""
     srcOverridden: bool | None = Field(
-        None,
+        default=None,
         alias="__srcOverridden",
         description="If true, the child fleet has a local overlay on an inherited entity. Omitted when inherited and unmodified, or when local and not inherited. Display-only; never persisted.",
     )
@@ -1903,9 +1903,9 @@ class AuthTokenConfOutputCriblHttp(CriblModel):
 
     tokenSecret: str = Field(description="Select or create a stored text secret")
     """Select or create a stored text secret."""
-    enabled: bool | None = Field(None, description="Enable token")
+    enabled: bool | None = Field(default=None, description="Enable token")
     """Enable token."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
 
 
@@ -1914,10 +1914,10 @@ class UrlConfOutputCriblHttp(CriblModel):
 
     url: str = Field(description="URL of a Cribl Worker to send events to, such as http://localhost:10200")
     """URL of a Cribl Worker to send events to, such as http://localhost:10200."""
-    weight: float | None = Field(None, description="Assign a weight (>0) to each endpoint to indicate its traffic-handling capability")
+    weight: float | None = Field(default=None, description="Assign a weight (>0) to each endpoint to indicate its traffic-handling capability")
     """Assign a weight (>0) to each endpoint to indicate its traffic-handling capability."""
     xtemplate_url: str | None = Field(
-        None,
+        default=None,
         alias="__template_url",
         description="Binds 'url' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'url' at runtime.",
     )
@@ -1927,7 +1927,7 @@ class UrlConfOutputCriblHttp(CriblModel):
 class ExtraHttpHeaderConfInputElastic(CriblModel):
     """Additional HTTP header configuration."""
 
-    name: str | None = Field(None, description="Field Name")
+    name: str | None = Field(default=None, description="Field Name")
     """Field Name."""
     value: str = Field(description="Field Value")
     """Field Value."""
@@ -1938,11 +1938,11 @@ class ResponseRetrySettingConfOutputWebhook(CriblModel):
 
     httpStatus: float = Field(description="The HTTP response status code that will trigger retries")
     """The HTTP response status code that will trigger retries."""
-    initialBackoff: float | None = Field(None, description="How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes).")
+    initialBackoff: float | None = Field(default=None, description="How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes).")
     """How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes)."""
-    backoffRate: float | None = Field(None, description="Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc.")
+    backoffRate: float | None = Field(default=None, description="Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc.")
     """Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc."""
-    maxBackoff: float | None = Field(None, description="The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds).")
+    maxBackoff: float | None = Field(default=None, description="The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds).")
     """The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds)."""
 
 
@@ -1951,65 +1951,65 @@ class TimeoutRetrySettingsType(CriblModel):
 
     timeoutRetry: bool = Field(description="Retry timed-out HTTP requests")
     """Retry timed-out HTTP requests."""
-    initialBackoff: float | None = Field(None, description="How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes).")
+    initialBackoff: float | None = Field(default=None, description="How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes).")
     """How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes)."""
-    backoffRate: float | None = Field(None, description="Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc.")
+    backoffRate: float | None = Field(default=None, description="Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc.")
     """Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc."""
-    maxBackoff: float | None = Field(None, description="The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds).")
+    maxBackoff: float | None = Field(default=None, description="The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds).")
     """The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds)."""
 
 
 class AuthTokenExtConf(CriblModel):
     """Manual or secret-backed authentication token."""
 
-    authType: Literal["manual", "secret"] | None = Field(None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
+    authType: Literal["manual", "secret"] | None = Field(default=None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
     """Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
-    token: str | None = Field(None, description="Shared secret to be provided by any client (Authorization: <token>)")
+    token: str | None = Field(default=None, description="Shared secret to be provided by any client (Authorization: <token>)")
     """Shared secret to be provided by any client (Authorization: <token>)."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this token")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this token")
     """Fields to add to events referencing this token."""
 
 
 class FirehoseAuthTokenExtConf(CriblModel):
     """Authentication token for a Firehose Source."""
 
-    authType: Literal["manual", "secret"] | None = Field(None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
+    authType: Literal["manual", "secret"] | None = Field(default=None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
     """Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
     token: str = Field(description="Shared secret to be provided by any client (Authorization: <token>)")
     """Shared secret to be provided by any client (Authorization: <token>)."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this token")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this token")
     """Fields to add to events referencing this token."""
 
 
 class AuthTokenSecretExtConf(CriblModel):
     """Secret-backed authentication token."""
 
-    authType: Literal["secret"] | None = Field(None, description="Select Secret to use a text secret to authenticate")
+    authType: Literal["secret"] | None = Field(default=None, description="Select Secret to use a text secret to authenticate")
     """Select Secret to use a text secret to authenticate."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
-    token: str | None = Field(None, description="Shared secret to be provided by any client (Authorization: <token>)")
+    token: str | None = Field(default=None, description="Shared secret to be provided by any client (Authorization: <token>)")
     """Shared secret to be provided by any client (Authorization: <token>)."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this token")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this token")
     """Fields to add to events referencing this token."""
 
 
 class HecAuthTokenConf(AuthTokenSecretExtConf):
     """HEC authentication token."""
 
-    enabled: bool | None = Field(None, description="Enable token")
+    enabled: bool | None = Field(default=None, description="Enable token")
     """Enable token."""
-    allowedIndexesAtToken: list[str] | None = Field(None, description="Enter the values you want to allow in the HEC event index field at the token level. Supports wildcards. To skip validation, leave blank.")
+    allowedIndexesAtToken: list[str] | None = Field(default=None, description="Enter the values you want to allow in the HEC event index field at the token level. Supports wildcards. To skip validation, leave blank.")
     """Enter the values you want to allow in the HEC event index field at the token level. Supports wildcards. To skip validation, leave blank."""
 
 
@@ -2018,51 +2018,51 @@ class OtlpAuthMethodExtConf(CriblModel):
 
     authType: Literal["token", "tokenSecret", "basic", "basicSecret", "oauth"] = Field(description="Authentication type")
     """Authentication type."""
-    token: str | None = Field(None, description="Bearer token for Authorization header")
+    token: str | None = Field(default=None, description="Bearer token for Authorization header")
     """Bearer token for Authorization header."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this auth method")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this auth method")
     """Fields to add to events referencing this auth method."""
-    enabled: bool | None = Field(None, description="Enable")
+    enabled: bool | None = Field(default=None, description="Enable")
     """Enable."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
-    username: str | None = Field(None, description="Username")
+    username: str | None = Field(default=None, description="Username")
     """Username."""
-    password: str | None = Field(None, description="Password")
+    password: str | None = Field(default=None, description="Password")
     """Password."""
-    credentialsSecret: str | None = Field(None, description="Select or create a secret that references your credentials")
+    credentialsSecret: str | None = Field(default=None, description="Select or create a secret that references your credentials")
     """Select or create a secret that references your credentials."""
-    issuer: str | None = Field(None, description="Expected token issuer (iss claim)")
+    issuer: str | None = Field(default=None, description="Expected token issuer (iss claim)")
     """Expected token issuer (iss claim)."""
-    jwksUri: str | None = Field(None, description="URL of the JWKS endpoint used to fetch signing keys")
+    jwksUri: str | None = Field(default=None, description="URL of the JWKS endpoint used to fetch signing keys")
     """URL of the JWKS endpoint used to fetch signing keys."""
-    audience: str | None = Field(None, description="Expected token audience (aud claim)")
+    audience: str | None = Field(default=None, description="Expected token audience (aud claim)")
     """Expected token audience (aud claim)."""
-    scopes: list[str] | None = Field(None, description="Scopes the token must grant (optional)")
+    scopes: list[str] | None = Field(default=None, description="Scopes the token must grant (optional)")
     """Scopes the token must grant (optional)."""
 
 
 class HttpAuthTokenExtConf(CriblModel):
     """Authentication token for an HTTP Source."""
 
-    authType: Literal["manual", "secret"] | None = Field(None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
+    authType: Literal["manual", "secret"] | None = Field(default=None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
     """Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
-    token: str | None = Field(None, description="Shared secret to be provided by any client (Authorization: <token>)")
+    token: str | None = Field(default=None, description="Shared secret to be provided by any client (Authorization: <token>)")
     """Shared secret to be provided by any client (Authorization: <token>)."""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description."""
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this token")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this token")
     """Fields to add to events referencing this token."""
 
 
 class SplunkHecTokenMetadataConf(CriblModel):
     """Splunk HEC settings for an authentication token."""
 
-    enabled: bool | None = Field(None, description="When enabled, the token value is available on events as __hecToken")
+    enabled: bool | None = Field(default=None, description="When enabled, the token value is available on events as __hecToken")
     """When enabled, the token value is available on events as __hecToken."""
     defaultDataset: str | None = None
     allowedIndexesAtToken: list[str] | None = None
@@ -2071,7 +2071,7 @@ class SplunkHecTokenMetadataConf(CriblModel):
 class ElasticsearchTokenMetadataConf(CriblModel):
     """Elasticsearch settings for an authentication token."""
 
-    enabled: bool | None = Field(None, description="Elasticsearch")
+    enabled: bool | None = Field(default=None, description="Elasticsearch")
     """Elasticsearch."""
     defaultDataset: str | None = None
 
@@ -2079,14 +2079,14 @@ class ElasticsearchTokenMetadataConf(CriblModel):
 class CriblLakeHttpAuthTokenConf(CriblModel):
     """Authentication token for a Cribl Lake HTTP Source."""
 
-    authType: Literal["manual", "secret"] | None = Field(None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
+    authType: Literal["manual", "secret"] | None = Field(default=None, description="Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate")
     """Select Manual to enter an auth token directly, or select Secret to use a text secret to authenticate."""
-    tokenSecret: str | None = Field(None, description="Select or create a stored text secret")
+    tokenSecret: str | None = Field(default=None, description="Select or create a stored text secret")
     """Select or create a stored text secret."""
     token: str = Field(description="Token")
     """Token."""
     description: str | None = None
-    metadata: list[HecTokenMetadataParam] | None = Field(None, description="Fields to add to events referencing this token")
+    metadata: list[HecTokenMetadataParam] | None = Field(default=None, description="Fields to add to events referencing this token")
     """Fields to add to events referencing this token."""
     splunkHecMetadata: SplunkHecTokenMetadataConf | None = None
     elasticsearchMetadata: ElasticsearchTokenMetadataConf | None = None
@@ -2107,59 +2107,59 @@ class Pipeline(BaseModel):
 class PackTags(CriblModel):
     """Categorization tags for a Pack."""
 
-    dataType: list[str] | None = Field(None, description="List of data type tags for the Pack.")
+    dataType: list[str] | None = Field(default=None, description="List of data type tags for the Pack.")
     """List of data type tags for the Pack."""
-    domain: list[str] | None = Field(None, description="List of domain tags for the Pack.")
+    domain: list[str] | None = Field(default=None, description="List of domain tags for the Pack.")
     """List of domain tags for the Pack."""
-    streamtags: list[str] | None = Field(None, description="List of stream tags for routing and filtering.")
+    streamtags: list[str] | None = Field(default=None, description="List of stream tags for routing and filtering.")
     """List of stream tags for routing and filtering."""
-    technology: list[str] | None = Field(None, description="List of technology tags for the Pack.")
+    technology: list[str] | None = Field(default=None, description="List of technology tags for the Pack.")
     """List of technology tags for the Pack."""
 
 
 class PackInfo(CriblModel):
     """Information about a content pack."""
 
-    id: str | None = Field(None, description="Unique identifier.")
+    id: str | None = Field(default=None, description="Unique identifier.")
     """Unique identifier."""
-    displayName: str | None = Field(None, description="Human-readable display name for the Pack.")
+    displayName: str | None = Field(default=None, description="Human-readable display name for the Pack.")
     """Human-readable display name for the Pack."""
-    description: str | None = Field(None, description="Brief description of the Pack and its purpose.")
+    description: str | None = Field(default=None, description="Brief description of the Pack and its purpose.")
     """Brief description of the Pack and its purpose."""
-    author: str | None = Field(None, description="Name or identifier of the Pack author.")
+    author: str | None = Field(default=None, description="Name or identifier of the Pack author.")
     """Name or identifier of the Pack author."""
-    version: str | None = Field(None, description="Version of the Pack, following semantic versioning.")
+    version: str | None = Field(default=None, description="Version of the Pack, following semantic versioning.")
     """Version of the Pack, following semantic versioning."""
-    source: str | None = Field(None, description="Source of the Pack — a file path, URL, or Git URL from which the Pack was installed.")
+    source: str | None = Field(default=None, description="Source of the Pack — a file path, URL, or Git URL from which the Pack was installed.")
     """Source of the Pack — a file path, URL, or Git URL from which the Pack was installed."""
-    spec: str | None = Field(None, description="Semver range constraint that was applied when the Pack was installed.")
+    spec: str | None = Field(default=None, description="Semver range constraint that was applied when the Pack was installed.")
     """Semver range constraint that was applied when the Pack was installed."""
-    collectors: float | None = Field(None, description="Number of Collectors (saved jobs) configured within the Pack.")
+    collectors: float | None = Field(default=None, description="Number of Collectors (saved jobs) configured within the Pack.")
     """Number of Collectors (saved jobs) configured within the Pack."""
-    inputs: float | None = Field(None, description="Number of Sources configured within the Pack.")
+    inputs: float | None = Field(default=None, description="Number of Sources configured within the Pack.")
     """Number of Sources configured within the Pack."""
-    outputs: float | None = Field(None, description="Number of Destinations configured within the Pack.")
+    outputs: float | None = Field(default=None, description="Number of Destinations configured within the Pack.")
     """Number of Destinations configured within the Pack."""
-    exports: list[str] | None = Field(None, description="List of entity IDs exported by this Pack and available for use outside the Pack context.")
+    exports: list[str] | None = Field(default=None, description="List of entity IDs exported by this Pack and available for use outside the Pack context.")
     """List of entity IDs exported by this Pack and available for use outside the Pack context."""
-    dependencies: dict[str, str] | None = Field(None, description="Map of Pack dependency identifiers to their version constraints.")
+    dependencies: dict[str, str] | None = Field(default=None, description="Map of Pack dependency identifiers to their version constraints.")
     """Map of Pack dependency identifiers to their version constraints."""
-    settings: dict[str, Any] | None = Field(None, description="Pack-specific settings object. Contents vary by Pack.")
+    settings: dict[str, Any] | None = Field(default=None, description="Pack-specific settings object. Contents vary by Pack.")
     """Pack-specific settings object. Contents vary by Pack."""
-    tags: PackTags | None = Field(None, description="Categorization tags for the Pack.")
+    tags: PackTags | None = Field(default=None, description="Categorization tags for the Pack.")
     """Categorization tags for the Pack."""
-    isDisabled: bool | None = Field(None, description="If true, the Pack is disabled.")
+    isDisabled: bool | None = Field(default=None, description="If true, the Pack is disabled.")
     """If true, the Pack is disabled."""
-    minLogStreamVersion: str | None = Field(None, description="Minimum version of Cribl Stream required to run this Pack.")
+    minLogStreamVersion: str | None = Field(default=None, description="Minimum version of Cribl Stream required to run this Pack.")
     """Minimum version of Cribl Stream required to run this Pack."""
     srcGroup: str | None = Field(
-        None,
+        default=None,
         alias="__srcGroup",
         description="Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted.",
     )
     """Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted."""
     srcOverridden: bool | None = Field(
-        None,
+        default=None,
         alias="__srcOverridden",
         description="If true, the child fleet has a local overlay on an inherited entity. Omitted when inherited and unmodified, or when local and not inherited. Display-only; never persisted.",
     )
@@ -2169,48 +2169,48 @@ class PackInfo(CriblModel):
 class PackInstallInfo(CriblModel):
     """Information about an installed pack."""
 
-    id: str | None = Field(None, description="Unique identifier.")
+    id: str | None = Field(default=None, description="Unique identifier.")
     """Unique identifier."""
-    displayName: str | None = Field(None, description="Human-readable display name for the Pack.")
+    displayName: str | None = Field(default=None, description="Human-readable display name for the Pack.")
     """Human-readable display name for the Pack."""
-    description: str | None = Field(None, description="Brief description of the Pack and its purpose.")
+    description: str | None = Field(default=None, description="Brief description of the Pack and its purpose.")
     """Brief description of the Pack and its purpose."""
-    author: str | None = Field(None, description="Name or identifier of the Pack author.")
+    author: str | None = Field(default=None, description="Name or identifier of the Pack author.")
     """Name or identifier of the Pack author."""
-    version: str | None = Field(None, description="Version of the Pack, following semantic versioning.")
+    version: str | None = Field(default=None, description="Version of the Pack, following semantic versioning.")
     """Version of the Pack, following semantic versioning."""
-    source: str | None = Field(None, description="Source of the Pack — a file path, URL, or Git URL from which the Pack was installed.")
+    source: str | None = Field(default=None, description="Source of the Pack — a file path, URL, or Git URL from which the Pack was installed.")
     """Source of the Pack — a file path, URL, or Git URL from which the Pack was installed."""
-    spec: str | None = Field(None, description="Semver range constraint that was applied when the Pack was installed.")
+    spec: str | None = Field(default=None, description="Semver range constraint that was applied when the Pack was installed.")
     """Semver range constraint that was applied when the Pack was installed."""
-    collectors: float | None = Field(None, description="Number of Collectors (saved jobs) configured within the Pack.")
+    collectors: float | None = Field(default=None, description="Number of Collectors (saved jobs) configured within the Pack.")
     """Number of Collectors (saved jobs) configured within the Pack."""
-    inputs: float | None = Field(None, description="Number of Sources configured within the Pack.")
+    inputs: float | None = Field(default=None, description="Number of Sources configured within the Pack.")
     """Number of Sources configured within the Pack."""
-    outputs: float | None = Field(None, description="Number of Destinations configured within the Pack.")
+    outputs: float | None = Field(default=None, description="Number of Destinations configured within the Pack.")
     """Number of Destinations configured within the Pack."""
-    exports: list[str] | None = Field(None, description="List of entity IDs exported by this Pack and available for use outside the Pack context.")
+    exports: list[str] | None = Field(default=None, description="List of entity IDs exported by this Pack and available for use outside the Pack context.")
     """List of entity IDs exported by this Pack and available for use outside the Pack context."""
-    dependencies: dict[str, str] | None = Field(None, description="Map of Pack dependency identifiers to their version constraints.")
+    dependencies: dict[str, str] | None = Field(default=None, description="Map of Pack dependency identifiers to their version constraints.")
     """Map of Pack dependency identifiers to their version constraints."""
-    settings: dict[str, Any] | None = Field(None, description="Pack-specific settings object. Contents vary by Pack.")
+    settings: dict[str, Any] | None = Field(default=None, description="Pack-specific settings object. Contents vary by Pack.")
     """Pack-specific settings object. Contents vary by Pack."""
-    tags: PackTags | None = Field(None, description="Categorization tags for the Pack.")
+    tags: PackTags | None = Field(default=None, description="Categorization tags for the Pack.")
     """Categorization tags for the Pack."""
-    isDisabled: bool | None = Field(None, description="If true, the Pack is disabled.")
+    isDisabled: bool | None = Field(default=None, description="If true, the Pack is disabled.")
     """If true, the Pack is disabled."""
-    minLogStreamVersion: str | None = Field(None, description="Minimum version of Cribl Stream required to run this Pack.")
+    minLogStreamVersion: str | None = Field(default=None, description="Minimum version of Cribl Stream required to run this Pack.")
     """Minimum version of Cribl Stream required to run this Pack."""
-    warnings: list[str] | None = Field(None, description="List of warning messages generated during Pack installation, if any.")
+    warnings: list[str] | None = Field(default=None, description="List of warning messages generated during Pack installation, if any.")
     """List of warning messages generated during Pack installation, if any."""
     srcGroup: str | None = Field(
-        None,
+        default=None,
         alias="__srcGroup",
         description="Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted.",
     )
     """Fleet or group id this entity was inherited from when served by a Config Helper for a child fleet. Present when inherited from parent, including when the child has a local overlay. Omitted when the entity is local and not inherited. Display-only; never persisted."""
     srcOverridden: bool | None = Field(
-        None,
+        default=None,
         alias="__srcOverridden",
         description="If true, the child fleet has a local overlay on an inherited entity. Omitted when inherited and unmodified, or when local and not inherited. Display-only; never persisted.",
     )
@@ -2239,26 +2239,26 @@ class UploadPackResponse(BaseModel):
 class Source(CriblModel):
     """A data source (input). Base type for all input variants."""
 
-    id: str | None = Field(None, description="Unique identifier for this source.")
+    id: str | None = Field(default=None, description="Unique identifier for this source.")
     """Unique identifier for this source."""
-    type: str | None = Field(None, description="Source type (e.g. 'syslog', 'http', 'splunk_hec').")
+    type: str | None = Field(default=None, description="Source type (e.g. 'syslog', 'http', 'splunk_hec').")
     """Source type (e.g. 'syslog', 'http', 'splunk_hec')."""
-    disabled: bool | None = Field(None, description="If true, source is not active.")
+    disabled: bool | None = Field(default=None, description="If true, source is not active.")
     """If true, source is not active."""
-    pipeline: str | None = Field(None, description="Pipeline ID to process events from this source.")
+    pipeline: str | None = Field(default=None, description="Pipeline ID to process events from this source.")
     """Pipeline ID to process events from this source."""
 
 
 class Destination(CriblModel):
     """A data destination (output). Base type for all output variants."""
 
-    id: str | None = Field(None, description="Unique identifier for this destination.")
+    id: str | None = Field(default=None, description="Unique identifier for this destination.")
     """Unique identifier for this destination."""
-    type: str | None = Field(None, description="Destination type (e.g. 's3', 'splunk', 'elastic').")
+    type: str | None = Field(default=None, description="Destination type (e.g. 's3', 'splunk', 'elastic').")
     """Destination type (e.g. 's3', 'splunk', 'elastic')."""
-    disabled: bool | None = Field(None, description="If true, destination is not active.")
+    disabled: bool | None = Field(default=None, description="If true, destination is not active.")
     """If true, destination is not active."""
-    pipeline: str | None = Field(None, description="Post-processing pipeline ID.")
+    pipeline: str | None = Field(default=None, description="Post-processing pipeline ID.")
     """Post-processing pipeline ID."""
 
 
@@ -2267,20 +2267,20 @@ class StatusError(CriblModel):
 
     message: str = Field(description="Human-readable message that describes the error.")
     """Human-readable message that describes the error."""
-    details: dict[str, Any] | None = Field(None, description="Additional error details.")
+    details: dict[str, Any] | None = Field(default=None, description="Additional error details.")
     """Additional error details."""
 
 
 class HealthCountType(CriblModel):
     """Counts of health statuses across all Worker Processes."""
 
-    Green: int | None = Field(None, description="Number of Worker Processes reporting a healthy (Green) status.")
+    Green: int | None = Field(default=None, description="Number of Worker Processes reporting a healthy (Green) status.")
     """Number of Worker Processes reporting a healthy (Green) status."""
-    Red: int | None = Field(None, description="Number of Worker Processes reporting a critical (Red) status.")
+    Red: int | None = Field(default=None, description="Number of Worker Processes reporting a critical (Red) status.")
     """Number of Worker Processes reporting a critical (Red) status."""
-    Unknown: int | None = Field(None, description="Number of Worker Processes reporting an unknown health status.")
+    Unknown: int | None = Field(default=None, description="Number of Worker Processes reporting an unknown health status.")
     """Number of Worker Processes reporting an unknown health status."""
-    Yellow: int | None = Field(None, description="Number of Worker Processes reporting a degraded (Yellow) status.")
+    Yellow: int | None = Field(default=None, description="Number of Worker Processes reporting a degraded (Yellow) status.")
     """Number of Worker Processes reporting a degraded (Yellow) status."""
 
 
@@ -2293,7 +2293,7 @@ class AggregatedPQStatus(CriblModel):
     """Counts of persistent queue health statuses for the Source or Destination across all Worker Processes. Includes only statuses with non-zero counts."""
     timestamp: int = Field(description="Timestamp (in Unix time) when the persistent queue status was last updated.")
     """Timestamp (in Unix time) when the persistent queue status was last updated."""
-    error: StatusError | None = Field(None, description="Error information for the persistent queue, if applicable.")
+    error: StatusError | None = Field(default=None, description="Error information for the persistent queue, if applicable.")
     """Error information for the persistent queue, if applicable."""
 
 
@@ -2306,11 +2306,11 @@ class AggregatedInputOutputStatusBody(CriblModel):
     """Counts of health statuses for the Source or Destination across all Worker Processes. Includes only statuses with non-zero counts."""
     timestamp: int = Field(description="Timestamp (in Unix time) when the status was last updated.")
     """Timestamp (in Unix time) when the status was last updated."""
-    error: StatusError | None = Field(None, description="Error information, if applicable.")
+    error: StatusError | None = Field(default=None, description="Error information, if applicable.")
     """Error information, if applicable."""
-    metrics: dict[str, Any] | None = Field(None, description="Metrics data for the Source or Destination, including base metrics, aggregated across all Worker Processes. For load-balanced Destinations, includes item-level metrics.")
+    metrics: dict[str, Any] | None = Field(default=None, description="Metrics data for the Source or Destination, including base metrics, aggregated across all Worker Processes. For load-balanced Destinations, includes item-level metrics.")
     """Metrics data for the Source or Destination, including base metrics, aggregated across all Worker Processes. For load-balanced Destinations, includes item-level metrics."""
-    pq: AggregatedPQStatus | None = Field(None, description="Persistent queue status information (if persistent queue is enabled).")
+    pq: AggregatedPQStatus | None = Field(default=None, description="Persistent queue status information (if persistent queue is enabled).")
     """Persistent queue status information (if persistent queue is enabled)."""
 
 
@@ -2321,7 +2321,7 @@ class InputStatus(BaseModel):
     """Unique identifier of the Source."""
     status: AggregatedInputOutputStatusBody = Field(description="Status information for the Source.")
     """Status information for the Source."""
-    type: str | None = Field(None, description="Type of the Source.")
+    type: str | None = Field(default=None, description="Type of the Source.")
     """Type of the Source."""
 
 
@@ -2332,7 +2332,7 @@ class OutputStatus(BaseModel):
     """Unique identifier of the Destination."""
     status: AggregatedInputOutputStatusBody = Field(description="Status information for the Destination.")
     """Status information for the Destination."""
-    type: str | None = Field(None, description="Type of the Destination.")
+    type: str | None = Field(default=None, description="Type of the Destination.")
     """Type of the Destination."""
 
 
@@ -2348,35 +2348,35 @@ class WorkerPQStatus(CriblModel):
     """Persistent-queue metrics reported for the Worker Process."""
     timestamp: int = Field(description="Timestamp (in Unix time) when the persistent queue status was last reported for the Worker Process, in milliseconds.")
     """Timestamp (in Unix time) when the persistent queue status was last reported for the Worker Process, in milliseconds."""
-    error: StatusError | None = Field(None, description="Error information for the persistent queue, if applicable.")
+    error: StatusError | None = Field(default=None, description="Error information for the persistent queue, if applicable.")
     """Error information for the persistent queue, if applicable."""
 
 
 class StatusType(CriblModel):
     """Runtime status: health, metrics, and optional persistent-queue info."""
 
-    health: Literal["Green", "Red", "Unknown", "Yellow"] | None = Field(None, description="Overall health status of the Source or Destination.")
+    health: Literal["Green", "Red", "Unknown", "Yellow"] | None = Field(default=None, description="Overall health status of the Source or Destination.")
     """Overall health status of the Source or Destination."""
-    metrics: dict[str, Any] | None = Field(None, description="Metrics data for the Source or Destination.")
+    metrics: dict[str, Any] | None = Field(default=None, description="Metrics data for the Source or Destination.")
     """Metrics data for the Source or Destination."""
-    timestamp: int | None = Field(None, description="Timestamp (in Unix time) when the status was last updated.")
+    timestamp: int | None = Field(default=None, description="Timestamp (in Unix time) when the status was last updated.")
     """Timestamp (in Unix time) when the status was last updated."""
-    pq: WorkerPQStatus | None = Field(None, description="Persistent queue status information (if persistent queue is enabled).")
+    pq: WorkerPQStatus | None = Field(default=None, description="Persistent queue status information (if persistent queue is enabled).")
     """Persistent queue status information (if persistent queue is enabled)."""
-    error: StatusError | None = Field(None, description="Error information, if applicable.")
+    error: StatusError | None = Field(default=None, description="Error information, if applicable.")
     """Error information, if applicable."""
-    useStatusFromLB: bool | None = Field(None, description="Set to prefer status from the LB process, not from the worker process.")
+    useStatusFromLB: bool | None = Field(default=None, description="Set to prefer status from the LB process, not from the worker process.")
     """Set to prefer status from the LB process, not from the worker process."""
 
 
 class NotificationSmtpTargetConfig(CriblModel):
     """SMTP configuration for a Notification target."""
 
-    body: str | None = Field(None, description="Email body.")
+    body: str | None = Field(default=None, description="Email body.")
     """Email body."""
-    emailRecipient: dict[str, str] | None = Field(None, description="Email recipient settings (to, cc, bcc addresses).")
+    emailRecipient: dict[str, str] | None = Field(default=None, description="Email recipient settings (to, cc, bcc addresses).")
     """Email recipient settings (to, cc, bcc addresses)."""
-    subject: str | None = Field(None, description="Email subject.")
+    subject: str | None = Field(default=None, description="Email subject.")
     """Email subject."""
 
 
@@ -2385,7 +2385,7 @@ class NotificationTargetConfig(CriblModel):
 
     id: str = Field(description="The id of the Notification target.")
     """The id of the Notification target."""
-    conf: NotificationSmtpTargetConfig | None = Field(None, description="SMTP configuration for the Notification target.")
+    conf: NotificationSmtpTargetConfig | None = Field(default=None, description="SMTP configuration for the Notification target.")
     """SMTP configuration for the Notification target."""
 
 
@@ -2421,33 +2421,33 @@ class Notification(CriblModel):
 
     model_config = ConfigDict(populate_by_name=True, extra="allow")
 
-    src_group: str | None = Field(None, alias="__srcGroup", description="Fleet or group id this entity was inherited from. Display-only; never persisted.")
+    src_group: str | None = Field(default=None, alias="__srcGroup", description="Fleet or group id this entity was inherited from. Display-only; never persisted.")
     """Fleet or group id this entity was inherited from. Display-only; never persisted."""
-    src_overridden: bool | None = Field(None, alias="__srcOverridden", description="If true, the child fleet has a local overlay on an inherited entity. Display-only; never persisted.")
+    src_overridden: bool | None = Field(default=None, alias="__srcOverridden", description="If true, the child fleet has a local overlay on an inherited entity. Display-only; never persisted.")
     """If true, the child fleet has a local overlay on an inherited entity. Display-only; never persisted."""
-    id: str | None = Field(None, description="Unique identifier.")
+    id: str | None = Field(default=None, description="Unique identifier.")
     """Unique identifier."""
-    condition: str | None = Field(None, description="The condition that triggers the Notification.")
+    condition: str | None = Field(default=None, description="The condition that triggers the Notification.")
     """The condition that triggers the Notification."""
-    conf: dict[str, Any] | None = Field(None, description="Configuration for the condition that triggers the Notification. Supported fields vary depending on the condition.")
+    conf: dict[str, Any] | None = Field(default=None, description="Configuration for the condition that triggers the Notification. Supported fields vary depending on the condition.")
     """Configuration for the condition that triggers the Notification. Supported fields vary depending on the condition."""
-    disabled: bool | None = Field(None, description="If true, the Notification is disabled and the specified condition will not trigger it.")
+    disabled: bool | None = Field(default=None, description="If true, the Notification is disabled and the specified condition will not trigger it.")
     """If true, the Notification is disabled and the specified condition will not trigger it."""
-    group: str | None = Field(None, description="The id of the Worker Group or Edge Fleet that the Notification applies to.")
+    group: str | None = Field(default=None, description="The id of the Worker Group or Edge Fleet that the Notification applies to.")
     """The id of the Worker Group or Edge Fleet that the Notification applies to."""
-    metadata: list[MetadataItem] | None = Field(None, description="Metadata tags for the Notification.")
+    metadata: list[MetadataItem] | None = Field(default=None, description="Metadata tags for the Notification.")
     """Metadata tags for the Notification."""
-    mode: Literal["direct", "policy"] | None = Field(None, description="Delivery mode for Notifications. 'direct': sent directly to targets in templateTargetPairs. 'policy': routed through Notification Policies.")
+    mode: Literal["direct", "policy"] | None = Field(default=None, description="Delivery mode for Notifications. 'direct': sent directly to targets in templateTargetPairs. 'policy': routed through Notification Policies.")
     """Delivery mode for Notifications. 'direct': sent directly to targets in templateTargetPairs. 'policy': routed through Notification Policies."""
-    pack: str | None = Field(None, description="The id of the Pack the Notification belongs to.")
+    pack: str | None = Field(default=None, description="The id of the Pack the Notification belongs to.")
     """The id of the Pack the Notification belongs to."""
-    targetConfigs: list[NotificationTargetConfig] | None = Field(None, description="Override settings to apply for each referenced Notification target.")
+    targetConfigs: list[NotificationTargetConfig] | None = Field(default=None, description="Override settings to apply for each referenced Notification target.")
     """Override settings to apply for each referenced Notification target."""
-    targetDetails: list[NotificationTargetDetails] | None = Field(None, description="Additional details about referenced Notification targets. Optionally populated on request.")
+    targetDetails: list[NotificationTargetDetails] | None = Field(default=None, description="Additional details about referenced Notification targets. Optionally populated on request.")
     """Additional details about referenced Notification targets. Optionally populated on request."""
-    targets: list[str] | None = Field(None, description="List of the id values for the Notification targets to send the Notification to.")
+    targets: list[str] | None = Field(default=None, description="List of the id values for the Notification targets to send the Notification to.")
     """List of the id values for the Notification targets to send the Notification to."""
-    templateTargetPairs: list[TemplateTargetPair] | None = Field(None, description="Pairs of Notification target and template ids.")
+    templateTargetPairs: list[TemplateTargetPair] | None = Field(default=None, description="Pairs of Notification target and template ids.")
     """Pairs of Notification target and template ids."""
 
 
@@ -2459,17 +2459,17 @@ class SourceResponse(CriblModel):
     explicitly for type-checker visibility.
     """
 
-    id: str | None = Field(None, description="Unique identifier for this source.")
+    id: str | None = Field(default=None, description="Unique identifier for this source.")
     """Unique identifier for this source."""
-    type: str | None = Field(None, description="Source type (e.g. 'syslog', 'http').")
+    type: str | None = Field(default=None, description="Source type (e.g. 'syslog', 'http').")
     """Source type (e.g. 'syslog', 'http')."""
-    disabled: bool | None = Field(None, description="If true, source is not active.")
+    disabled: bool | None = Field(default=None, description="If true, source is not active.")
     """If true, source is not active."""
-    pipeline: str | None = Field(None, description="Post-processing pipeline ID.")
+    pipeline: str | None = Field(default=None, description="Post-processing pipeline ID.")
     """Post-processing pipeline ID."""
-    status: StatusType | None = Field(None, description="Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable.")
+    status: StatusType | None = Field(default=None, description="Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable.")
     """Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable."""
-    notifications: list[Notification] | None = Field(None, description="Notifications attached to the Source.")
+    notifications: list[Notification] | None = Field(default=None, description="Notifications attached to the Source.")
     """Notifications attached to the Source."""
 
 
@@ -2481,17 +2481,17 @@ class DestinationResponse(CriblModel):
     explicitly for type-checker visibility.
     """
 
-    id: str | None = Field(None, description="Unique identifier for this destination.")
+    id: str | None = Field(default=None, description="Unique identifier for this destination.")
     """Unique identifier for this destination."""
-    type: str | None = Field(None, description="Destination type (e.g. 's3', 'splunk', 'elastic').")
+    type: str | None = Field(default=None, description="Destination type (e.g. 's3', 'splunk', 'elastic').")
     """Destination type (e.g. 's3', 'splunk', 'elastic')."""
-    disabled: bool | None = Field(None, description="If true, destination is not active.")
+    disabled: bool | None = Field(default=None, description="If true, destination is not active.")
     """If true, destination is not active."""
-    pipeline: str | None = Field(None, description="Post-processing pipeline ID.")
+    pipeline: str | None = Field(default=None, description="Post-processing pipeline ID.")
     """Post-processing pipeline ID."""
-    status: StatusType | None = Field(None, description="Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable.")
+    status: StatusType | None = Field(default=None, description="Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable.")
     """Runtime status: health, metrics, and optional persistent-queue info. Fields may be absent when data is unavailable."""
-    notifications: list[Notification] | None = Field(None, description="Notifications attached to the Destination.")
+    notifications: list[Notification] | None = Field(default=None, description="Notifications attached to the Destination.")
     """Notifications attached to the Destination."""
 
 
@@ -2563,35 +2563,35 @@ class RouteConfParam(TypedDict, total=False):
 class RouteConf(CriblModel):
     """A single route configuration within a routing table."""
 
-    id: str | None = Field(None, description="Unique identifier for the Route. If omitted, the server generates a deterministic identifier.")
+    id: str | None = Field(default=None, description="Unique identifier for the Route. If omitted, the server generates a deterministic identifier.")
     """Unique identifier for the Route. If omitted, the server generates a deterministic identifier."""
-    name: str | None = Field(None, description="Name of the Route.")
+    name: str | None = Field(default=None, description="Name of the Route.")
     """Name of the Route."""
-    filter: str | None = Field(None, description="JavaScript expression to select events for routing.")
+    filter: str | None = Field(default=None, description="JavaScript expression to select events for routing.")
     """JavaScript expression to select events for routing."""
-    pipeline: str | None = Field(None, description="Pipeline that the Route sends matching events to.")
+    pipeline: str | None = Field(default=None, description="Pipeline that the Route sends matching events to.")
     """Pipeline that the Route sends matching events to."""
-    output: str | None = Field(None, description="Destination that the Route sends matching events to after the Pipeline processes the events.")
+    output: str | None = Field(default=None, description="Destination that the Route sends matching events to after the Pipeline processes the events.")
     """Destination that the Route sends matching events to after the Pipeline processes the events."""
-    outputExpression: str | None = Field(None, description="JavaScript expression to evaluate for dynamic Destination selection. Evaluation occurs when the Route is constructed, not for each event.")
+    outputExpression: str | None = Field(default=None, description="JavaScript expression to evaluate for dynamic Destination selection. Evaluation occurs when the Route is constructed, not for each event.")
     """JavaScript expression to evaluate for dynamic Destination selection. Evaluation occurs when the Route is constructed, not for each event."""
-    enableOutputExpression: bool | None = Field(None, description="If true, use the outputExpression for dynamic Destination selection.")
+    enableOutputExpression: bool | None = Field(default=None, description="If true, use the outputExpression for dynamic Destination selection.")
     """If true, use the outputExpression for dynamic Destination selection."""
-    final_: bool | None = Field(None, alias="final", description="If true (default), matched events do not continue to the next Route. If false, all events continue to the next Route. Must be false to clone events.")
+    final_: bool | None = Field(default=None, alias="final", description="If true (default), matched events do not continue to the next Route. If false, all events continue to the next Route. Must be false to clone events.")
     """If true (default), matched events do not continue to the next Route. If false, all events continue to the next Route. Must be false to clone events."""
-    disabled: bool | None = Field(None, description="If true, disable the Route.")
+    disabled: bool | None = Field(default=None, description="If true, disable the Route.")
     """If true, disable the Route."""
-    description: str | None = Field(None, description="Brief description of the Route.")
+    description: str | None = Field(default=None, description="Brief description of the Route.")
     """Brief description of the Route."""
-    clones: list[dict[str, str]] | None = Field(None, description="Array of clone configurations, each with a key-value pair to set or overwrite in cloned events.")
+    clones: list[dict[str, str]] | None = Field(default=None, description="Array of clone configurations, each with a key-value pair to set or overwrite in cloned events.")
     """Array of clone configurations, each with a key-value pair to set or overwrite in cloned events."""
-    groupId: str | None = Field(None, description="Unique identifier for the Route Group that the Route is associated with.")
+    groupId: str | None = Field(default=None, description="Unique identifier for the Route Group that the Route is associated with.")
     """Unique identifier for the Route Group that the Route is associated with."""
-    context: str | None = Field(None, description="Context for the Route: 'group' (Worker Group or Edge Fleet) or 'pack'.")
+    context: str | None = Field(default=None, description="Context for the Route: 'group' (Worker Group or Edge Fleet) or 'pack'.")
     """Context for the Route: 'group' (Worker Group or Edge Fleet) or 'pack'."""
-    targetContext: str | None = Field(None, description="Target context for subsequent event processing after applying the Route.")
+    targetContext: str | None = Field(default=None, description="Target context for subsequent event processing after applying the Route.")
     """Target context for subsequent event processing after applying the Route."""
-    autoParse: bool | None = Field(None, description="If true, detect each matched event's datatype and extract fields from _raw before the Pipeline processes the event, so Functions and Filters can reference the extracted fields. Otherwise, false (the default).")
+    autoParse: bool | None = Field(default=None, description="If true, detect each matched event's datatype and extract fields from _raw before the Pipeline processes the event, so Functions and Filters can reference the extracted fields. Otherwise, false (the default).")
     """If true, detect each matched event's datatype and extract fields from _raw before the Pipeline processes the event, so Functions and Filters can reference the extracted fields. Otherwise, false (the default)."""
 
 
@@ -2604,7 +2604,7 @@ class RouteComment(CriblModel):
     """Unique identifier for the comment."""
     index: int = Field(description="Relative position of the comment among all comments for the Route.")
     """Relative position of the comment among all comments for the Route."""
-    groupId: str | None = Field(None, description="Unique identifier for the Route Group that the Route is associated with.")
+    groupId: str | None = Field(default=None, description="Unique identifier for the Route Group that the Route is associated with.")
     """Unique identifier for the Route Group that the Route is associated with."""
 
 
@@ -2615,20 +2615,20 @@ class RouteGroup(CriblModel):
     """Name of the Route Group."""
     index: int = Field(description="Relative position of the Route Group among all Route Groups.")
     """Relative position of the Route Group among all Route Groups."""
-    description: str | None = Field(None, description="Brief description of the Route Group.")
+    description: str | None = Field(default=None, description="Brief description of the Route Group.")
     """Brief description of the Route Group."""
 
 
 class Routes(CriblModel):
     """A routing table containing route definitions."""
 
-    id: str | None = Field(None, description="Unique identifier for the Routing table. The supported value is 'default'.")
+    id: str | None = Field(default=None, description="Unique identifier for the Routing table. The supported value is 'default'.")
     """Unique identifier for the Routing table. The supported value is 'default'."""
-    routes: list[RouteConf] | None = Field(None, description="Array of Route configurations that define how events are processed and routed.")
+    routes: list[RouteConf] | None = Field(default=None, description="Array of Route configurations that define how events are processed and routed.")
     """Array of Route configurations that define how events are processed and routed."""
-    comments: list[RouteComment] | None = Field(None, description="Array of user-provided comments that describe or annotate Routes.")
+    comments: list[RouteComment] | None = Field(default=None, description="Array of user-provided comments that describe or annotate Routes.")
     """Array of user-provided comments that describe or annotate Routes."""
-    groups: dict[str, RouteGroup] | None = Field(None, description="Information about the Route Groups that the Route is associated with.")
+    groups: dict[str, RouteGroup] | None = Field(default=None, description="Information about the Route Groups that the Route is associated with.")
     """Information about the Route Groups that the Route is associated with."""
 
 
@@ -2638,9 +2638,9 @@ class Routes(CriblModel):
 class SavedJob(CriblModel):
     """A saved job (collector) configuration."""
 
-    id: str | None = Field(None, description="Unique name for this Job")
+    id: str | None = Field(default=None, description="Unique name for this Job")
     """Unique name for this Job"""
-    type: str | None = Field(None, description="Job type")
+    type: str | None = Field(default=None, description="Job type")
     """Job type"""
 
 
@@ -2652,23 +2652,23 @@ class TLSClientConfig(CriblModel):
 
     disabled: bool = Field(description="If true, TLS is disabled for the connection.")
     """If true, TLS is disabled for the connection."""
-    caPath: str | None = Field(None, description="Path to the Certificate Authority (CA) certificate file in PEM format.")
+    caPath: str | None = Field(default=None, description="Path to the Certificate Authority (CA) certificate file in PEM format.")
     """Path to the Certificate Authority (CA) certificate file in PEM format."""
-    certPath: str | None = Field(None, description="Path to the client certificate file in PEM format.")
+    certPath: str | None = Field(default=None, description="Path to the client certificate file in PEM format.")
     """Path to the client certificate file in PEM format."""
-    certificateName: str | None = Field(None, description="Name of a certificate stored in Cribl.")
+    certificateName: str | None = Field(default=None, description="Name of a certificate stored in Cribl.")
     """Name of a certificate stored in Cribl."""
-    maxVersion: Literal["TLSv1.3", "TLSv1.2", "TLSv1.1", "TLSv1"] | None = Field(None, description="Maximum TLS version to allow for the connection.")
+    maxVersion: Literal["TLSv1.3", "TLSv1.2", "TLSv1.1", "TLSv1"] | None = Field(default=None, description="Maximum TLS version to allow for the connection.")
     """Maximum TLS version to allow for the connection."""
-    minVersion: Literal["TLSv1.3", "TLSv1.2", "TLSv1.1", "TLSv1"] | None = Field(None, description="Minimum TLS version to allow for the connection.")
+    minVersion: Literal["TLSv1.3", "TLSv1.2", "TLSv1.1", "TLSv1"] | None = Field(default=None, description="Minimum TLS version to allow for the connection.")
     """Minimum TLS version to allow for the connection."""
-    passphrase: str | None = Field(None, description="Passphrase for the private key.")
+    passphrase: str | None = Field(default=None, description="Passphrase for the private key.")
     """Passphrase for the private key."""
-    privKeyPath: str | None = Field(None, description="Path to the private key file in PEM format.")
+    privKeyPath: str | None = Field(default=None, description="Path to the private key file in PEM format.")
     """Path to the private key file in PEM format."""
-    rejectUnauthorized: bool | None = Field(None, description="If true, reject connections to servers with unverified TLS certificates.")
+    rejectUnauthorized: bool | None = Field(default=None, description="If true, reject connections to servers with unverified TLS certificates.")
     """If true, reject connections to servers with unverified TLS certificates."""
-    servername: str | None = Field(None, description="Server name for TLS Server Name Indication (SNI) extension.")
+    servername: str | None = Field(default=None, description="Server name for TLS Server Name Indication (SNI) extension.")
     """Server name for TLS Server Name Indication (SNI) extension."""
 
 
@@ -2682,51 +2682,51 @@ class DatabaseConnectionPem(CriblModel):
 class DatabaseConnectionConfig(CriblModel):
     """A database connection configuration."""
 
-    id: str | None = Field(None, description="Unique identifier for the Database Connection.")
+    id: str | None = Field(default=None, description="Unique identifier for the Database Connection.")
     """Unique identifier for the Database Connection."""
-    databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"] | None = Field(None, description="Type of database engine for the connection.")
+    databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"] | None = Field(default=None, description="Type of database engine for the connection.")
     """Type of database engine for the connection."""
-    authType: Literal["configObj", "connectionString", "secret", "secrets"] | None = Field(None, description="Authentication method for the Database Connection.")
+    authType: Literal["configObj", "connectionString", "secret", "secrets"] | None = Field(default=None, description="Authentication method for the Database Connection.")
     """Authentication method for the Database Connection."""
-    description: str | None = Field(None, description="Brief description of the Database Connection.")
+    description: str | None = Field(default=None, description="Brief description of the Database Connection.")
     """Brief description of the Database Connection."""
-    connectionString: str | None = Field(None, description="Database connection string with embedded credentials or server information.")
+    connectionString: str | None = Field(default=None, description="Database connection string with embedded credentials or server information.")
     """Database connection string with embedded credentials or server information."""
-    configObj: str | None = Field(None, description="JSON configuration object for advanced SQL Server connection settings.")
+    configObj: str | None = Field(default=None, description="JSON configuration object for advanced SQL Server connection settings.")
     """JSON configuration object for advanced SQL Server connection settings."""
-    connectionTimeout: int | None = Field(None, description="Maximum time (in milliseconds) to wait when establishing the database connection.")
+    connectionTimeout: int | None = Field(default=None, description="Maximum time (in milliseconds) to wait when establishing the database connection.")
     """Maximum time (in milliseconds) to wait when establishing the database connection."""
-    requestTimeout: int | None = Field(None, description="Maximum time (in milliseconds) to wait for a database query to complete.")
+    requestTimeout: int | None = Field(default=None, description="Maximum time (in milliseconds) to wait for a database query to complete.")
     """Maximum time (in milliseconds) to wait for a database query to complete."""
-    database: str | None = Field(None, description="Database to connect to instead of the server default.")
+    database: str | None = Field(default=None, description="Database to connect to instead of the server default.")
     """Database to connect to instead of the server default."""
-    host: str | None = Field(None, description="Hostname of the server to connect to.")
+    host: str | None = Field(default=None, description="Hostname of the server to connect to.")
     """Hostname of the server to connect to."""
-    user: str | None = Field(None, description="Database username for authentication. Used with Oracle connections.")
+    user: str | None = Field(default=None, description="Database username for authentication. Used with Oracle connections.")
     """Database username for authentication. Used with Oracle connections."""
-    password: str | None = Field(None, description="Database password for authentication. Used with Oracle connections.")
+    password: str | None = Field(default=None, description="Database password for authentication. Used with Oracle connections.")
     """Database password for authentication. Used with Oracle connections."""
-    credentialsSecret: str | None = Field(None, description="Name of the stored credentials secret containing username and password for SQL Server configObj auth.")
+    credentialsSecret: str | None = Field(default=None, description="Name of the stored credentials secret containing username and password for SQL Server configObj auth.")
     """Name of the stored credentials secret containing username and password for SQL Server configObj auth."""
-    credsSecrets: str | None = Field(None, description="Name of the stored credentials secret containing username and password. Used with Oracle connections.")
+    credsSecrets: str | None = Field(default=None, description="Name of the stored credentials secret containing username and password. Used with Oracle connections.")
     """Name of the stored credentials secret containing username and password. Used with Oracle connections."""
-    logOnMechanism: str | None = Field(None, description="Log On Mechanism for databases that support multiple, like Teradata.")
+    logOnMechanism: str | None = Field(default=None, description="Log On Mechanism for databases that support multiple, like Teradata.")
     """Log On Mechanism for databases that support multiple, like Teradata."""
-    textSecret: str | None = Field(None, description="Name of the stored text secret containing the connection string.")
+    textSecret: str | None = Field(default=None, description="Name of the stored text secret containing the connection string.")
     """Name of the stored text secret containing the connection string."""
-    sslmode: str | None = Field(None, description="HTTPS/TLS connection mode for Teradata. Controls certificate verification behavior.")
+    sslmode: str | None = Field(default=None, description="HTTPS/TLS connection mode for Teradata. Controls certificate verification behavior.")
     """HTTPS/TLS connection mode for Teradata. Controls certificate verification behavior."""
-    tags: str | None = Field(None, description="Comma-separated list of tags for categorizing and filtering Database Connections.")
+    tags: str | None = Field(default=None, description="Comma-separated list of tags for categorizing and filtering Database Connections.")
     """Comma-separated list of tags for categorizing and filtering Database Connections."""
-    tls: TLSClientConfig | None = Field(None, description="TLS client configuration for the database connection.")
+    tls: TLSClientConfig | None = Field(default=None, description="TLS client configuration for the database connection.")
     """TLS client configuration for the database connection."""
-    accountIdentifier: str | None = Field(None, description="Snowflake account identifier in org-account format (example: MYORG-MYACCOUNT).")
+    accountIdentifier: str | None = Field(default=None, description="Snowflake account identifier in org-account format (example: MYORG-MYACCOUNT).")
     """Snowflake account identifier in org-account format (example: MYORG-MYACCOUNT)."""
-    pem: DatabaseConnectionPem | None = Field(None, description="RSA private key configuration for Snowflake key-pair authentication.")
+    pem: DatabaseConnectionPem | None = Field(default=None, description="RSA private key configuration for Snowflake key-pair authentication.")
     """RSA private key configuration for Snowflake key-pair authentication."""
-    role: str | None = Field(None, description="Snowflake role to use for the session. When set, requests a role-scoped token.")
+    role: str | None = Field(default=None, description="Snowflake role to use for the session. When set, requests a role-scoped token.")
     """Snowflake role to use for the session. When set, requests a role-scoped token."""
-    warehouse: str | None = Field(None, description="Snowflake warehouse to use for queries.")
+    warehouse: str | None = Field(default=None, description="Snowflake warehouse to use for queries.")
     """Snowflake warehouse to use for queries."""
 
 
@@ -2736,11 +2736,11 @@ class DatabaseConnectionConfig(CriblModel):
 class FunctionDef(CriblModel):
     """A Cribl function definition."""
 
-    id: str | None = Field(None, description="Unique identifier (function type name).")
+    id: str | None = Field(default=None, description="Unique identifier (function type name).")
     """Unique identifier (function type name)."""
-    category: str | None = Field(None, description="Function category for grouping.")
+    category: str | None = Field(default=None, description="Function category for grouping.")
     """Function category for grouping."""
-    description: str | None = Field(None, description="What this function does.")
+    description: str | None = Field(default=None, description="What this function does.")
     """What this function does."""
 
 
@@ -2750,39 +2750,39 @@ class FunctionDef(CriblModel):
 class CriblLakeDataset(CriblModel):
     """A Cribl Lake dataset."""
 
-    id: str | None = Field(None, description="Unique identifier for the Dataset.")
+    id: str | None = Field(default=None, description="Unique identifier for the Dataset.")
     """Unique identifier for the Dataset."""
-    name: str | None = Field(None, description="Dataset name.")
+    name: str | None = Field(default=None, description="Dataset name.")
     """Dataset name."""
-    description: str | None = Field(None, description="Brief description of the Dataset.")
+    description: str | None = Field(default=None, description="Brief description of the Dataset.")
     """Brief description of the Dataset."""
-    format: Literal["ddss", "json", "netskope", "parquet"] | None = Field(None, description="Storage format used for data persisted in the Dataset.")
+    format: Literal["ddss", "json", "netskope", "parquet"] | None = Field(default=None, description="Storage format used for data persisted in the Dataset.")
     """Storage format used for data persisted in the Dataset."""
-    storageClass: Literal["Archive", "Cold", "Cool", "DEEP_ARCHIVE", "GLACIER", "GLACIER_IR", "Hot", "Inferred", "INTELLIGENT_TIERING", "ONEZONE_IA", "STANDARD", "STANDARD_IA"] | None = Field(None, description="Storage class used for objects written to the Dataset.")
+    storageClass: Literal["Archive", "Cold", "Cool", "DEEP_ARCHIVE", "GLACIER", "GLACIER_IR", "Hot", "Inferred", "INTELLIGENT_TIERING", "ONEZONE_IA", "STANDARD", "STANDARD_IA"] | None = Field(default=None, description="Storage class used for objects written to the Dataset.")
     """Storage class used for objects written to the Dataset."""
-    retentionPeriodInDays: int | None = Field(None, description="Dataset retention period, in days.")
+    retentionPeriodInDays: int | None = Field(default=None, description="Dataset retention period, in days.")
     """Dataset retention period, in days."""
-    bucketName: str | None = Field(None, description="Name of the legacy Cribl Lake bucket that backs the Dataset.")
+    bucketName: str | None = Field(default=None, description="Name of the legacy Cribl Lake bucket that backs the Dataset.")
     """Name of the legacy Cribl Lake bucket that backs the Dataset."""
-    storageLocationId: str | None = Field(None, description="Unique identifier for the Storage Location that backs the Dataset.")
+    storageLocationId: str | None = Field(default=None, description="Unique identifier for the Storage Location that backs the Dataset.")
     """Unique identifier for the Storage Location that backs the Dataset."""
-    providerPath: str | None = Field(None, description="Storage path within the provider (for example an S3 prefix or Azure container).")
+    providerPath: str | None = Field(default=None, description="Storage path within the provider (for example an S3 prefix or Azure container).")
     """Storage path within the provider (for example an S3 prefix or Azure container)."""
-    viewName: str | None = Field(None, description="Name of the ClickHouse view for the Dataset on the Lakehouse.")
+    viewName: str | None = Field(default=None, description="Name of the ClickHouse view for the Dataset on the Lakehouse.")
     """Name of the ClickHouse view for the Dataset on the Lakehouse."""
-    acceleratedFields: list[str] | None = Field(None, description="Accelerated fields for the Dataset. Data is partitioned by these fields in storage to improve query performance.")
+    acceleratedFields: list[str] | None = Field(default=None, description="Accelerated fields for the Dataset. Data is partitioned by these fields in storage to improve query performance.")
     """Accelerated fields for the Dataset. Data is partitioned by these fields in storage to improve query performance."""
-    allowRecordErasure: bool | None = Field(None, description="If true, the Dataset is opted in to Lake Record Erasure.")
+    allowRecordErasure: bool | None = Field(default=None, description="If true, the Dataset is opted in to Lake Record Erasure.")
     """If true, the Dataset is opted in to Lake Record Erasure."""
-    httpDAUsed: bool | None = Field(None, description="If true, the Dataset is used by Direct Access HTTP.")
+    httpDAUsed: bool | None = Field(default=None, description="If true, the Dataset is used by Direct Access HTTP.")
     """If true, the Dataset is used by Direct Access HTTP."""
-    deletionStartedAt: float | None = Field(None, description="Timestamp (in Unix time) when Dataset deletion was initiated, in milliseconds.")
+    deletionStartedAt: float | None = Field(default=None, description="Timestamp (in Unix time) when Dataset deletion was initiated, in milliseconds.")
     """Timestamp (in Unix time) when Dataset deletion was initiated, in milliseconds."""
-    cacheConnection: CacheConnectionParam | None = Field(None, description="Lakehouse cache connection settings for the Dataset.")
+    cacheConnection: CacheConnectionParam | None = Field(default=None, description="Lakehouse cache connection settings for the Dataset.")
     """Lakehouse cache connection settings for the Dataset."""
-    metrics: DatasetMetricsParam | None = Field(None, description="Most recent Dataset metrics snapshot.")
+    metrics: DatasetMetricsParam | None = Field(default=None, description="Most recent Dataset metrics snapshot.")
     """Most recent Dataset metrics snapshot."""
-    searchConfig: DatasetSearchConfigParam | None = Field(None, description="Search configuration for the Dataset.")
+    searchConfig: DatasetSearchConfigParam | None = Field(default=None, description="Search configuration for the Dataset.")
     """Search configuration for the Dataset."""
 
 
@@ -2794,9 +2794,9 @@ class TaskErrorInfo(CriblModel):
 
     message: str = Field(description="Human-readable error message.")
     """Human-readable error message."""
-    name: str | None = Field(None, description="Error name, if available.")
+    name: str | None = Field(default=None, description="Error name, if available.")
     """Error name, if available."""
-    stack: str | None = Field(None, description="Truncated stack trace of the error.")
+    stack: str | None = Field(default=None, description="Truncated stack trace of the error.")
     """Truncated stack trace of the error."""
 
 
@@ -2805,11 +2805,11 @@ class TaskErrorDetail(CriblModel):
 
     message: str = Field(description="Human-readable error message.")
     """Human-readable error message."""
-    name: str | None = Field(None, description="Error name, if available.")
+    name: str | None = Field(default=None, description="Error name, if available.")
     """Error name, if available."""
-    reason: TaskErrorInfo | None = Field(None, description="Nested cause of the error, if any.")
+    reason: TaskErrorInfo | None = Field(default=None, description="Nested cause of the error, if any.")
     """Nested cause of the error, if any."""
-    stack: str | None = Field(None, description="Truncated stack trace of the error.")
+    stack: str | None = Field(default=None, description="Truncated stack trace of the error.")
     """Truncated stack trace of the error."""
 
 
@@ -2818,38 +2818,38 @@ class JobStatus(CriblModel):
 
     state: JobState | int = Field(description="State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown, 9=Length).")
     """State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown, 9=Length)."""
-    reason: TaskErrorDetail | None = Field(None, description="Reason the job entered its current state, typically populated upon failure.")
+    reason: TaskErrorDetail | None = Field(default=None, description="Reason the job entered its current state, typically populated upon failure.")
     """Reason the job entered its current state, typically populated upon failure."""
 
 
 class JobRunConfig(CriblModel):
     """Run configuration for a job."""
 
-    mode: Literal["list", "preview", "run"] | None = Field(None, description="Job run mode. Preview will either return up to N matching results, or will run until capture time T is reached. Discovery will gather the list of files to turn into streaming tasks, without running the data collection job. Full Run will run the collection job.")
+    mode: Literal["list", "preview", "run"] | None = Field(default=None, description="Job run mode. Preview will either return up to N matching results, or will run until capture time T is reached. Discovery will gather the list of files to turn into streaming tasks, without running the data collection job. Full Run will run the collection job.")
     """Job run mode. Preview will either return up to N matching results, or will run until capture time T is reached. Discovery will gather the list of files to turn into streaming tasks, without running the data collection job. Full Run will run the collection job."""
-    rescheduleDroppedTasks: bool | None = Field(None, description="Reschedule tasks that failed with non-fatal errors")
+    rescheduleDroppedTasks: bool | None = Field(default=None, description="Reschedule tasks that failed with non-fatal errors")
     """Reschedule tasks that failed with non-fatal errors"""
-    maxTaskReschedule: float | None = Field(None, description="Maximum number of times a task can be rescheduled")
+    maxTaskReschedule: float | None = Field(default=None, description="Maximum number of times a task can be rescheduled")
     """Maximum number of times a task can be rescheduled"""
-    logLevel: str | None = Field(None, description="Level at which to set task logging")
+    logLevel: str | None = Field(default=None, description="Level at which to set task logging")
     """Level at which to set task logging"""
-    jobTimeout: str | None = Field(None, description="Maximum time the job is allowed to run. Time unit defaults to seconds if not specified (examples: 30, 45s, 15m). Enter 0 for unlimited time.")
+    jobTimeout: str | None = Field(default=None, description="Maximum time the job is allowed to run. Time unit defaults to seconds if not specified (examples: 30, 45s, 15m). Enter 0 for unlimited time.")
     """Maximum time the job is allowed to run. Time unit defaults to seconds if not specified (examples: 30, 45s, 15m). Enter 0 for unlimited time."""
-    timeRangeType: Literal["absolute", "relative"] | None = Field(None, description="Time range")
+    timeRangeType: Literal["absolute", "relative"] | None = Field(default=None, description="Time range")
     """Time range"""
-    earliest: float | str | None = Field(None, description="Earliest time to collect data for the selected timezone")
+    earliest: float | str | None = Field(default=None, description="Earliest time to collect data for the selected timezone")
     """Earliest time to collect data for the selected timezone"""
-    latest: float | str | None = Field(None, description="Latest time to collect data for the selected timezone")
+    latest: float | str | None = Field(default=None, description="Latest time to collect data for the selected timezone")
     """Latest time to collect data for the selected timezone"""
-    timestampTimezone: str | None = Field(None, description="Timezone to use for Earliest and Latest times")
+    timestampTimezone: str | None = Field(default=None, description="Timezone to use for Earliest and Latest times")
     """Timezone to use for Earliest and Latest times"""
-    expression: str | None = Field(None, description="A filter for tokens in the provided collect path and/or the events being collected")
+    expression: str | None = Field(default=None, description="A filter for tokens in the provided collect path and/or the events being collected")
     """A filter for tokens in the provided collect path and/or the events being collected"""
-    minTaskSize: str | None = Field(None, description="Limits the bundle size for small tasks. For example, if your lower bundle size is 1MB, you can bundle up to five 200KB files into one task.")
+    minTaskSize: str | None = Field(default=None, description="Limits the bundle size for small tasks. For example, if your lower bundle size is 1MB, you can bundle up to five 200KB files into one task.")
     """Limits the bundle size for small tasks. For example, if your lower bundle size is 1MB, you can bundle up to five 200KB files into one task."""
-    maxTaskSize: str | None = Field(None, description="Limits the bundle size for files above the lower task bundle size. For example, if your upper bundle size is 10MB, you can bundle up to five 2MB files into one task. Files greater than this size will be assigned to individual tasks.")
+    maxTaskSize: str | None = Field(default=None, description="Limits the bundle size for files above the lower task bundle size. For example, if your upper bundle size is 10MB, you can bundle up to five 2MB files into one task. Files greater than this size will be assigned to individual tasks.")
     """Limits the bundle size for files above the lower task bundle size. For example, if your upper bundle size is 10MB, you can bundle up to five 2MB files into one task. Files greater than this size will be assigned to individual tasks."""
-    discoverToRoutes: bool | None = Field(None, description="Send discover results to Routes")
+    discoverToRoutes: bool | None = Field(default=None, description="Send discover results to Routes")
     """Send discover results to Routes"""
 
 
@@ -2858,37 +2858,37 @@ class JobExecutorConfig(CriblModel):
 
     type: str = Field(description="The type of executor to run")
     """The type of executor to run"""
-    storeTaskResults: bool | None = Field(None, description="Determines whether or not to write task results to disk")
+    storeTaskResults: bool | None = Field(default=None, description="Determines whether or not to write task results to disk")
     """Determines whether or not to write task results to disk"""
-    conf: dict[str, Any] | None = Field(None, description="Executor-type-specific settings object. Shape varies by executor type.")
+    conf: dict[str, Any] | None = Field(default=None, description="Executor-type-specific settings object. Shape varies by executor type.")
     """Executor-type-specific settings object. Shape varies by executor type."""
 
 
 class RunnableJob(CriblModel):
     """Configuration and run settings for a job (collection, executor, or scheduled search)."""
 
-    id: str | None = Field(None, description="Unique name for this Job")
+    id: str | None = Field(default=None, description="Unique name for this Job")
     """Unique name for this Job"""
-    description: str | None = Field(None, description="Description")
+    description: str | None = Field(default=None, description="Description")
     """Description"""
-    type: str | None = Field(None, description="Job type")
+    type: str | None = Field(default=None, description="Job type")
     """Job type"""
-    ttl: str | None = Field(None, description="Time to keep the job's artifacts on disk after job completion. This also affects how long a job is listed in the Job Inspector.")
+    ttl: str | None = Field(default=None, description="Time to keep the job's artifacts on disk after job completion. This also affects how long a job is listed in the Job Inspector.")
     """Time to keep the job's artifacts on disk after job completion. This also affects how long a job is listed in the Job Inspector."""
-    ignoreGroupJobsLimit: bool | None = Field(None, description="When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit. Artifacts will be removed only after the Collector's configured time to live.")
+    ignoreGroupJobsLimit: bool | None = Field(default=None, description="When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit. Artifacts will be removed only after the Collector's configured time to live.")
     """When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit. Artifacts will be removed only after the Collector's configured time to live."""
-    removeFields: list[str] | None = Field(None, description="List of fields to remove from Discover results. Wildcards (for example, aws*) are allowed. This is useful when discovery returns sensitive fields that should not be exposed in the Jobs user interface.")
+    removeFields: list[str] | None = Field(default=None, description="List of fields to remove from Discover results. Wildcards (for example, aws*) are allowed. This is useful when discovery returns sensitive fields that should not be exposed in the Jobs user interface.")
     """List of fields to remove from Discover results. Wildcards (for example, aws*) are allowed. This is useful when discovery returns sensitive fields that should not be exposed in the Jobs user interface."""
-    collector: CriblModel | None = Field(None, description="Collector configuration used to discover and run the Collection job.")
+    collector: CriblModel | None = Field(default=None, description="Collector configuration used to discover and run the Collection job.")
     """Collector configuration used to discover and run the Collection job."""
-    executor: JobExecutorConfig | None = Field(None, description="Executor configuration, including the executor type and its settings.")
+    executor: JobExecutorConfig | None = Field(default=None, description="Executor configuration, including the executor type and its settings.")
     """Executor configuration, including the executor type and its settings."""
-    savedQueryId: str | None = Field(None, description="Identifies which search query to run")
+    savedQueryId: str | None = Field(default=None, description="Identifies which search query to run")
     """Identifies which search query to run"""
     # `run` exists on both the Collection and Executor variants with slightly different spec text
     # ("...the Collection job runs." vs "...the Executor job runs."). The flattened model uses the
     # Collection variant's wording (listed first in the spec's oneOf); either is spec-faithful.
-    run: JobRunConfig | None = Field(None, description="Run settings that control how and when the Collection job runs.")
+    run: JobRunConfig | None = Field(default=None, description="Run settings that control how and when the Collection job runs.")
     """Run settings that control how and when the Collection job runs."""
 
 
@@ -2897,15 +2897,15 @@ class JobInfo(CriblModel):
 
     id: str = Field(description="Unique identifier for the job.")
     """Unique identifier for the job."""
-    status: JobStatus | None = Field(None, description="Status of the job, including its current state and failure reason.")
+    status: JobStatus | None = Field(default=None, description="Status of the job, including its current state and failure reason.")
     """Status of the job, including its current state and failure reason."""
-    args: RunnableJob | None = Field(None, description="Configuration and run settings used to launch the job.")
+    args: RunnableJob | None = Field(default=None, description="Configuration and run settings used to launch the job.")
     """Configuration and run settings used to launch the job."""
-    stats: dict[str, Any] | None = Field(None, description="Counters and metrics collected during job execution.")
+    stats: dict[str, Any] | None = Field(default=None, description="Counters and metrics collected during job execution.")
     """Counters and metrics collected during job execution."""
-    keep: bool | None = Field(None, description="If true, retain the job and its artifacts instead of deleting according to the time-to-live setting.")
+    keep: bool | None = Field(default=None, description="If true, retain the job and its artifacts instead of deleting according to the time-to-live setting.")
     """If true, retain the job and its artifacts instead of deleting according to the time-to-live setting."""
-    workerOwner: str | None = Field(None, description="The GUID of the worker node that owns this artifact.")
+    workerOwner: str | None = Field(default=None, description="The GUID of the worker node that owns this artifact.")
     """The GUID of the worker node that owns this artifact."""
 
 
@@ -2921,7 +2921,7 @@ class ResourcePolicy(CriblModel):
     """String that defines the access control policy for the resource."""
     type: str = Field(description="Resource type that the access control policy applies to.")
     """Resource type that the access control policy applies to."""
-    id: str | None = Field(None, description="Unique identifier for the resource. Omitted for resource type 'groups'.")
+    id: str | None = Field(default=None, description="Unique identifier for the resource. Omitted for resource type 'groups'.")
     """Unique identifier for the resource. Omitted for resource type 'groups'."""
 
 
@@ -3024,7 +3024,7 @@ class WorkspaceRoleSchema(CriblModel):
     workspaceRole: WorkspaceRole = Field(description="Role assigned to the API Credential on the Workspace.")
     """Role assigned to the API Credential on the Workspace."""
     products: list[ProductRoleSchema] | None = Field(
-        None,
+        default=None,
         description="Product-level Roles assigned to the API Credential for the Workspace.",
     )
     """Product-level Roles assigned to the API Credential for the Workspace."""
@@ -3036,7 +3036,7 @@ class ApiCredentialRolesSchema(CriblModel):
     organizationRole: OrganizationRole = Field(description="Organization-level Role assigned to the API Credential.")
     """Organization-level Role assigned to the API Credential."""
     workspaces: list[WorkspaceRoleSchema] | None = Field(
-        None,
+        default=None,
         description="Workspace-level Roles assigned to the API Credential.",
     )
     """Workspace-level Roles assigned to the API Credential."""
@@ -3128,7 +3128,7 @@ class ContractUtilizationSchema(CriblModel):
     contractStartDate: str = Field(description="Contract start date in ISO 8601 format.")
     """Contract start date in ISO 8601 format."""
     contractEndDate: str | None = Field(
-        None,
+        default=None,
         description="Contract end date in ISO 8601 format. Present only when the contract is closed.",
     )
     """Contract end date in ISO 8601 format. Present only when the contract is closed."""
@@ -3178,7 +3178,7 @@ class CreditsStatsContractSchema(CriblModel):
     startDate: str = Field(description="Contract start date in ISO 8601 format.")
     """Contract start date in ISO 8601 format."""
     endDate: str | None = Field(
-        None,
+        default=None,
         description="Contract end date in ISO 8601 format. Present only when the contract is closed.",
     )
     """Contract end date in ISO 8601 format. Present only when the contract is closed."""
@@ -3194,7 +3194,7 @@ class CreditsStatsResponseDTO(CriblModel):
     totalCreditsAcquired: float = Field(description="Credits acquired under the current contract.")
     """Credits acquired under the current contract."""
     contracts: list[CreditsStatsContractSchema] | None = Field(
-        None,
+        default=None,
         description="All contracts for the Organization, ordered by contract start date in reverse chronological order (newest first).",
     )
     """All contracts for the Organization, ordered by contract start date in reverse chronological order (newest first)."""
@@ -3233,11 +3233,11 @@ class WorkspaceSchema(CriblModel):
     """Fully Qualified Domain Name (FQDN) of the Workspace Leader."""
     state: WorkspaceState = Field(description="Current state of the Workspace.")
     """Current state of the Workspace."""
-    alias: str | None = Field(None, description="User-friendly alias for the Workspace.")
+    alias: str | None = Field(default=None, description="User-friendly alias for the Workspace.")
     """User-friendly alias for the Workspace."""
-    description: str | None = Field(None, description="Brief description of the Workspace.")
+    description: str | None = Field(default=None, description="Brief description of the Workspace.")
     """Brief description of the Workspace."""
-    tags: list[str] | None = Field(None, description="Tags associated with the Workspace.")
+    tags: list[str] | None = Field(default=None, description="Tags associated with the Workspace.")
     """Tags associated with the Workspace."""
 
 
@@ -3253,7 +3253,7 @@ class WorkspacesListResponseDTO(CriblModel):
 class CloudHealthStatus(CriblModel):
     """Health status of the Cribl.Cloud platform gateway."""
 
-    status: str | None = Field(None, description="Health status")
+    status: str | None = Field(default=None, description="Health status")
     """Health status"""
 
 
@@ -3276,9 +3276,9 @@ class PaginatedResponse(BaseModel, Generic[T]):
     """List of items in this page."""
     count: int = Field(description="Number of items in this page.")
     """Number of items in this page."""
-    offset: int | None = Field(None, description="Offset of this page from the start.")
+    offset: int | None = Field(default=None, description="Offset of this page from the start.")
     """Offset of this page from the start."""
-    limit: int | None = Field(None, description="Maximum number of items per page.")
+    limit: int | None = Field(default=None, description="Maximum number of items per page.")
     """Maximum number of items per page."""
-    total_count: int | None = Field(None, alias="totalCount", description="Total number of items across all pages.")
+    total_count: int | None = Field(default=None, alias="totalCount", description="Total number of items across all pages.")
     """Total number of items across all pages."""

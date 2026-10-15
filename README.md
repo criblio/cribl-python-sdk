@@ -15,6 +15,7 @@ Same `Security` (OAuth2 client credentials) for both Cloud hosts. On-prem userna
 
 * [Install](#install)
 * [Quickstart](#quickstart)
+* [Authentication](#authentication)
 * [Scoped Client](#scoped-client)
 * [Creating Resources](#creating-resources)
 * [Environment Variables](#environment-variables)
@@ -70,26 +71,104 @@ print(cribl.health.get().data.status)
 
 Run with `uv run script.py`.
 
+## Quickstart
+
+A complete script: check server health, list Worker Groups, then list Sources and Pipelines in one group.
+Replace the placeholders with your own values.
+
+### Cribl.Cloud
+
+```python
+from cribl_python_sdk import Cribl, Security
+
+with Cribl(
+    server_url="https://main-your-org.cribl.cloud",  # your Workspace URL
+    security=Security(client_id="your-client-id", client_secret="your-client-secret"),
+) as cribl:
+    health = cribl.health.get()
+    print(f"Server health: {health.data.status}")
+
+    groups = cribl.groups.list()
+    print(f"Found {groups.data.count} Worker Group(s)")
+
+    # Control-plane calls scoped to one Worker Group
+    with cribl.in_context(group_id="default") as wg:
+        print(f"Found {wg.sources.list().data.count} Source(s)")
+        print(f"Found {wg.pipelines.list().data.count} Pipeline(s)")
+
+    # Cribl.Cloud platform API: same client, same credentials
+    workspaces = cribl.cloud.workspaces.list(organization_id="your-org")
+    print(f"Found {len(workspaces.data.items)} Workspace(s)")
+```
+
+### On-prem
+
+```python
+from cribl_python_sdk import Cribl, Security
+
+with Cribl(
+    server_url="http://localhost:9000",  # your Leader URL
+    security=Security(username="admin", password="admin"),
+) as cribl:
+    health = cribl.health.get()
+    print(f"Server health: {health.data.status}")
+
+    groups = cribl.groups.list()
+    print(f"Found {groups.data.count} Worker Group(s)")
+
+    # Control-plane calls scoped to one Worker Group
+    with cribl.in_context(group_id="default") as wg:
+        print(f"Found {wg.sources.list().data.count} Source(s)")
+        print(f"Found {wg.pipelines.list().data.count} Pipeline(s)")
+```
+
+### Async
+
+Every method has an `_async` twin. Use `async with` inside a coroutine and run it with `asyncio.run()`:
+
+```python
+import asyncio
+
+from cribl_python_sdk import Cribl, Security
+
+
+async def main() -> None:
+    async with Cribl(
+        server_url="http://localhost:9000",
+        security=Security(username="admin", password="admin"),
+    ) as cribl:
+        health = await cribl.health.get_async()
+        print(f"Server health: {health.data.status}")
+
+        groups = await cribl.groups.list_async()
+        print(f"Found {groups.data.count} Worker Group(s)")
+
+
+asyncio.run(main())
+```
+
+See `examples/` for more usage patterns.
+
 ## Authentication
 
-The SDK handles token acquisition and refresh automatically — pass credentials once and the client manages the rest.
+The SDK handles token acquisition and refresh automatically: pass credentials once in `Security(...)`
+and the client manages the rest. Every snippet below plugs into `Cribl(server_url=..., security=security)`
+as in the [Quickstart](#quickstart).
+
+| Deployment | `Security(...)` | Authenticates |
+|------------|-----------------|---------------|
+| On-prem | `username=`, `password=` | Control plane |
+| Cribl.Cloud | `client_id=`, `client_secret=` | Control plane and `cribl.cloud.*` |
+| Any | `bearer_auth=` | Whatever the token is valid for |
 
 ### On-Prem (username/password)
 
 The client calls `POST /auth/login` internally, stores the JWT, and refreshes it before expiry.
 
 ```python
-from cribl_python_sdk import Cribl, Security
+from cribl_python_sdk import Security
 
-cribl = Cribl(
-    server_url="http://localhost:9000",
-    security=Security(username="admin", password="admin"),
-)
-
-pipelines = cribl.pipelines.list()
-print(f"Found {pipelines.data.count} pipeline(s)")
-
-cribl.close()
+security = Security(username="admin", password="admin")
 ```
 
 ### Cloud — Control Plane (OAuth2)
@@ -97,111 +176,82 @@ cribl.close()
 OAuth2 client credentials flow. The SDK fetches and refreshes the access token automatically.
 
 ```python
-from cribl_python_sdk import Cribl, Security
+from cribl_python_sdk import Security
 
-cribl = Cribl(
-    server_url="https://main-your-org.cribl.cloud",
-    security=Security(client_id="…", client_secret="…"),
-)
-
-pipelines = cribl.pipelines.list()
-routes = cribl.routes.list()
-
-cribl.close()
+security = Security(client_id="your-client-id", client_secret="your-client-secret")
 ```
 
 ### Cloud — Management Plane (`cribl.cloud.*`)
 
-Same client, same credentials. Management plane operations live under the `cribl.cloud.*` namespace and route to the gateway (`https://gateway.cribl.cloud` by default).
-
-```python
-from cribl_python_sdk import Cribl, Security
-
-cribl = Cribl(
-    server_url="https://main-your-org.cribl.cloud",
-    security=Security(client_id="…", client_secret="…"),
-)
-
-# Management plane
-workspaces = cribl.cloud.workspaces.list(organization_id="your-org")
-health = cribl.cloud.health.get()
-
-# Control plane (same client)
-pipelines = cribl.pipelines.list()
-
-cribl.close()
-```
+Same client, same credentials. Management plane operations live under the `cribl.cloud.*` namespace and
+route to the gateway (`https://gateway.cribl.cloud` by default), while control-plane calls go to `server_url`.
 
 ### Pre-existing Bearer Token
 
 If you already have a token (e.g. from an external auth flow), pass it directly — no auto-login or refresh:
 
 ```python
-from cribl_python_sdk import Cribl, Security
+from cribl_python_sdk import Security
 
-cribl = Cribl(
-    server_url="https://main-your-org.cribl.cloud",
-    security=Security(bearer_auth="your-token"),
-)
-
-pipelines = cribl.pipelines.list()
-workspaces = cribl.cloud.workspaces.list(organization_id="your-org")
-
-cribl.close()
+security = Security(bearer_auth="your-token")
 ```
-
-## Quickstart
-
-```python
-from cribl_python_sdk import Cribl, Security
-
-cribl = Cribl(
-    server_url="http://localhost:9000",
-    security=Security(username="admin", password="admin"),
-)
-
-# List pipelines (sync)
-pipelines = cribl.pipelines.list()
-
-# Async variant
-pipelines = await cribl.pipelines.list_async()
-
-# Scoped to a worker group (control plane only — not cribl.cloud.*)
-wg = cribl.in_context(group_id="default")
-sources = wg.sources.list()
-```
-
-See `examples/` for more usage patterns.
 
 ## Scoped Client
 
-Instead of manually constructing group/node URLs, use `in_context()`:
+Instead of manually constructing group/node URLs, use `in_context()`. Control-plane calls route to
+`/api/v1/m/{group_id}` automatically; `cribl.cloud.*` is unchanged (still the gateway).
 
 ```python
-# Control-plane calls route to /api/v1/m/{group_id} automatically.
-# cribl.cloud.* is unchanged (still the gateway).
-wg = cribl.in_context(group_id="my_fleet")
-sources = wg.sources.list()
-destinations = wg.destinations.list()
-pipelines = wg.pipelines.list()
+from cribl_python_sdk import Cribl, Security
 
-# Also works as context manager
-with cribl.in_context(group_id="my_fleet") as wg:
+with Cribl(
+    server_url="http://localhost:9000",
+    security=Security(username="admin", password="admin"),
+) as cribl, cribl.in_context(group_id="my_fleet") as wg:
     sources = wg.sources.list()
+    destinations = wg.destinations.list()
+    pipelines = wg.pipelines.list()
 ```
 
 ## Creating Resources
+
+Pipelines take explicit keyword arguments:
+
+```python
+from cribl_python_sdk import Cribl, Security
+
+with Cribl(
+    server_url="http://localhost:9000",
+    security=Security(username="admin", password="admin"),
+) as cribl, cribl.in_context(group_id="default") as wg:
+    wg.pipelines.create(id="my_pipe", conf={"functions": []})
+```
+
+Sources, Destinations and Collectors accept either a typed model or a plain dict. Pick one:
+
+### Typed model
 
 ```python
 from cribl_python_sdk import Cribl, Security
 from cribl_python_sdk.models.inputs import InputSyslog
 
-# Pipelines use explicit kwargs
-cribl.pipelines.create(id="my_pipe", conf={"functions": []})
+with Cribl(
+    server_url="http://localhost:9000",
+    security=Security(username="admin", password="admin"),
+) as cribl, cribl.in_context(group_id="default") as wg:
+    wg.sources.create(InputSyslog(id="syslog_typed", host="0.0.0.0", udpPort=514))
+```
 
-# Sources/Destinations/Collectors accept a typed model or plain dict
-wg.sources.create(InputSyslog(id="syslog:in", host="0.0.0.0", port=514))
-wg.sources.create({"id": "syslog:in", "type": "syslog", "host": "0.0.0.0", "port": 514})
+### Plain dict
+
+```python
+from cribl_python_sdk import Cribl, Security
+
+with Cribl(
+    server_url="http://localhost:9000",
+    security=Security(username="admin", password="admin"),
+) as cribl, cribl.in_context(group_id="default") as wg:
+    wg.sources.create({"id": "syslog_dict", "type": "syslog", "host": "0.0.0.0", "udpPort": 514})
 ```
 
 ## Environment Variables

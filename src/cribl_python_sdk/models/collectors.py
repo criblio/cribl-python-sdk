@@ -24,8 +24,8 @@ class CollectorAzureBlob(CriblModel):
 
     type: Literal["azure_blob"] = "azure_blob"
     conf: AzureBlobCollectorConf = Field(..., description="Configuration specific to the AzureBlob Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorCriblLake(CriblModel):
@@ -33,8 +33,8 @@ class CollectorCriblLake(CriblModel):
 
     type: Literal["cribl_lake"] = "cribl_lake"
     conf: CriblLakeCollectorConf = Field(..., description="Configuration specific to the CriblLake Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorDatabase(CriblModel):
@@ -42,8 +42,8 @@ class CollectorDatabase(CriblModel):
 
     type: Literal["database"] = "database"
     conf: DatabaseCollectorConf = Field(..., description="Configuration specific to the Database Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorFilesystem(CriblModel):
@@ -51,8 +51,8 @@ class CollectorFilesystem(CriblModel):
 
     type: Literal["filesystem"] = "filesystem"
     conf: FilesystemCollectorConf = Field(..., description="Configuration specific to the Filesystem Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorGoogleCloudStorage(CriblModel):
@@ -60,8 +60,8 @@ class CollectorGoogleCloudStorage(CriblModel):
 
     type: Literal["google_cloud_storage"] = "google_cloud_storage"
     conf: GoogleCloudStorageCollectorConf = Field(..., description="Configuration specific to the GoogleCloudStorage Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorHealthCheck(CriblModel):
@@ -69,8 +69,8 @@ class CollectorHealthCheck(CriblModel):
 
     type: Literal["health_check"] = "health_check"
     conf: HealthCheckCollectorConf = Field(..., description="Configuration specific to the HealthCheck Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorRest(CriblModel):
@@ -78,8 +78,8 @@ class CollectorRest(CriblModel):
 
     type: Literal["rest"] = "rest"
     conf: RestCollectorConf = Field(..., description="Configuration specific to the Rest Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorS3(CriblModel):
@@ -87,8 +87,8 @@ class CollectorS3(CriblModel):
 
     type: Literal["s3"] = "s3"
     conf: S3CollectorConf = Field(..., description="Configuration specific to the S3 Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorScript(CriblModel):
@@ -96,8 +96,8 @@ class CollectorScript(CriblModel):
 
     type: Literal["script"] = "script"
     conf: ScriptCollectorConf = Field(..., description="Configuration specific to the Script Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 
 class CollectorSplunk(CriblModel):
@@ -105,8 +105,8 @@ class CollectorSplunk(CriblModel):
 
     type: Literal["splunk"] = "splunk"
     conf: SplunkCollectorConf = Field(..., description="Configuration specific to the Splunk Collector.")
-    destructive: Optional[bool] = Field(None, description="Delete any files collected (where applicable)")
-    encoding: Optional[str] = Field(None, description="Character encoding to use when parsing ingested data.")
+    destructive: Optional[bool] = Field(default=None, description="Delete any files collected (where applicable)")
+    encoding: Optional[str] = Field(default=None, description="Character encoding to use when parsing ingested data.")
 
 # --- Discriminated Union ---
 
