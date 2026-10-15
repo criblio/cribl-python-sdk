@@ -268,6 +268,7 @@ class OutputSyslog(CriblModel):
     messageFormat: Optional[str] = Field(None, description="The syslog message format depending on the receiver's support")
     timestampFormat: Optional[str] = Field(None, description="Timestamp format to use when serializing event's time field")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     octetCountFraming: Optional[bool] = Field(None, description="Prefix messages with the byte count of the message. If disabled, no prefix will be set, and the message will be appended with a \\n.")
     logFailedRequests: Optional[bool] = Field(None, description="Use to troubleshoot issues with sending data")
     description: Optional[str] = Field(None, description="Optional description for this configuration.")
@@ -320,6 +321,7 @@ class OutputSplunk(CriblModel):
     port: float = Field(..., description="The port to connect to on the provided host")
     nestedFields: Optional[Literal['json', 'none']] = Field(None, description="How to serialize nested fields into index-time fields")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
     tls: Optional[TlsSettingsClient] = Field(None, description="TLS settings (client side)")
@@ -373,6 +375,7 @@ class OutputSplunkLb(CriblModel):
     maxConcurrentSenders: Optional[float] = Field(None, description="Maximum number of concurrent connections (per Worker Process). A random set of IPs will be picked on every DNS resolution period. Use 0 for unlimited.")
     nestedFields: Optional[Literal['json', 'none']] = Field(None, description="How to serialize nested fields into index-time fields")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
     tls: Optional[TlsSettingsClient] = Field(None, description="TLS settings (client side)")
@@ -548,6 +551,7 @@ class OutputTcpjson(CriblModel):
     compression: Optional[Literal['none', 'gzip']] = Field(None, description="Codec to use to compress the data before sending")
     logFailedRequests: Optional[bool] = Field(None, description="Use to troubleshoot issues with sending data")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     tls: Optional[TlsSettingsClient] = Field(None, description="TLS settings (client side)")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
@@ -2412,6 +2416,7 @@ class OutputStatsd(CriblModel):
     dnsResolvePeriodSec: Optional[float] = Field(None, description="How often to resolve the destination hostname to an IP address. Ignored if the destination is an IP address. A value of 0 means every batch sent will incur a DNS lookup.")
     description: Optional[str] = Field(None, description="Optional description for this configuration.")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
     # values: queue=Persistent Queue
@@ -2451,6 +2456,7 @@ class OutputStatsdExt(CriblModel):
     dnsResolvePeriodSec: Optional[float] = Field(None, description="How often to resolve the destination hostname to an IP address. Ignored if the destination is an IP address. A value of 0 means every batch sent will incur a DNS lookup.")
     description: Optional[str] = Field(None, description="Optional description for this configuration.")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
     # values: queue=Persistent Queue
@@ -2490,6 +2496,7 @@ class OutputGraphite(CriblModel):
     dnsResolvePeriodSec: Optional[float] = Field(None, description="How often to resolve the destination hostname to an IP address. Ignored if the destination is an IP address. A value of 0 means every batch sent will incur a DNS lookup.")
     description: Optional[str] = Field(None, description="Optional description for this configuration.")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
     # values: queue=Persistent Queue
@@ -3268,6 +3275,7 @@ class OutputCriblTcp(CriblModel):
     compression: Optional[Literal['none', 'gzip']] = Field(None, description="Codec to use to compress the data before sending")
     logFailedRequests: Optional[bool] = Field(None, description="Use to troubleshoot issues with sending data")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     tls: Optional[TlsSettingsClient] = Field(None, description="TLS settings (client side)")
     connectionTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for the connection to establish before retrying")
     writeTimeout: Optional[float] = Field(None, description="Amount of time (milliseconds) to wait for a write to complete before assuming connection is dead")
@@ -3330,6 +3338,7 @@ class OutputCriblHttp(CriblModel):
     failedRequestLoggingMode: Optional[Literal['payload', 'payloadAndHeaders', 'none']] = Field(None, description="Data to log when a request fails. All headers are redacted by default, unless listed as safe headers below.")
     safeHeaders: Optional[list[str]] = Field(None, description="List of headers that are safe to log in plain text")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     responseRetrySettings: Optional[list[ResponseRetrySettingConfOutputWebhook]] = Field(None, description="Automatically retry after unsuccessful response status codes, such as 429 (Too Many Requests) or 503 (Service Unavailable)")
     timeoutRetrySettings: Optional[TimeoutRetrySettingsType] = Field(None, description="Retry settings for HTTP requests that exceed the request timeout.")
     responseHonorRetryAfterHeader: Optional[bool] = Field(None, description="Honor any Retry-After header that specifies a delay (in seconds) no longer than 180 seconds after the retry request. @{product} limits the delay to 180 seconds, even if the Retry-After header specifies a longer delay. When enabled, takes precedence over user-configured retry options. When disabled, all Retry-After headers are ignored.")
@@ -3389,6 +3398,7 @@ class OutputCriblSearchEngine(CriblModel):
     failedRequestLoggingMode: Optional[Literal['payload', 'payloadAndHeaders', 'none']] = Field(None, description="Data to log when a request fails. All headers are redacted by default, unless listed as safe headers below.")
     safeHeaders: Optional[list[str]] = Field(None, description="List of headers that are safe to log in plain text")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     responseRetrySettings: Optional[list[ResponseRetrySettingConfOutputWebhook]] = Field(None, description="Automatically retry after unsuccessful response status codes, such as 429 (Too Many Requests) or 503 (Service Unavailable)")
     timeoutRetrySettings: Optional[TimeoutRetrySettingsType] = Field(None, description="Retry settings for HTTP requests that exceed the request timeout.")
     responseHonorRetryAfterHeader: Optional[bool] = Field(None, description="Honor any Retry-After header that specifies a delay (in seconds) no longer than 180 seconds after the retry request. @{product} limits the delay to 180 seconds, even if the Retry-After header specifies a longer delay. When enabled, takes precedence over user-configured retry options. When disabled, all Retry-After headers are ignored.")
@@ -5369,6 +5379,68 @@ class OutputSecuronix(CriblModel):
     xtemplate_onBackpressure: Optional[str] = Field(None, alias="__template_onBackpressure", description="Binds 'onBackpressure' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'onBackpressure' at runtime.")
     xtemplate_httpReceiverEndpoint: Optional[str] = Field(None, alias="__template_httpReceiverEndpoint", description="Binds 'httpReceiverEndpoint' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'httpReceiverEndpoint' at runtime.")
 
+
+class OutputFortisiem(CriblModel):
+    """OutputFortisiem"""
+
+    type: Literal["fortisiem"] = "fortisiem"
+    id: Optional[str] = Field(None, description="Unique name for this output")
+    pipeline: Optional[str] = Field(None, description="Pipeline to process data before sending out to this output")
+    systemFields: Optional[list[str]] = Field(None, description="Fields to automatically add to events, such as cribl_pipe. Supports wildcards.")
+    environment: Optional[str] = Field(None, description="Optionally, enable this config only on a specified Git branch. If empty, will be enabled everywhere.")
+    streamtags: Optional[list[str]] = Field(None, description="Metadata tags used for categorization and filtering.")
+    keepAlive: Optional[bool] = Field(None, description="Disable to close the connection immediately after sending the outgoing request")
+    concurrency: Optional[float] = Field(None, description="Maximum number of ongoing requests before blocking")
+    maxPayloadSizeKB: Optional[float] = Field(None, description="Maximum size, in KB, of the request body")
+    maxPayloadEvents: Optional[float] = Field(None, description="Maximum number of events to include in the request body. Default is 0 (unlimited).")
+    rejectUnauthorized: Optional[bool] = Field(None, description="Reject certificates not authorized by a CA in the CA certificate path or by another trusted CA (such as the system's).         Enabled by default. When this setting is also present in TLS Settings (Client Side),         that value will take precedence.")
+    timeoutSec: Optional[float] = Field(None, description="Amount of time, in seconds, to wait for a request to complete before canceling it")
+    maxConnectionReuseSec: Optional[float] = Field(None, description="How long, in seconds, to reuse a keep-alive connection after its first use before forcing it closed. Set to 0 to disable the time-based close and reuse connections for as long as the destination server permits.")
+    flushPeriodSec: Optional[float] = Field(None, description="Maximum time between requests. Small values could cause the payload size to be smaller than the configured Body size limit.")
+    extraHttpHeaders: Optional[list[ExtraHttpHeaderConfInputElastic]] = Field(None, description="Headers to add to all events. You can also add headers dynamically on a per-event basis in the __headers field, as explained in [Cribl Docs](https://docs.cribl.io/stream/destinations-webhook/#internal-fields).")
+    useRoundRobinDns: Optional[bool] = Field(None, description="Enable round-robin DNS lookup. When a DNS server returns multiple addresses, @{product} will cycle through them in the order returned. For optimal performance, consider enabling this setting for non-load balanced destinations.")
+    # values: payloadAndHeaders=Payload + Headers
+    failedRequestLoggingMode: Optional[Literal['payload', 'payloadAndHeaders', 'none']] = Field(None, description="Data to log when a request fails. All headers are redacted by default, unless listed as safe headers below.")
+    safeHeaders: Optional[list[str]] = Field(None, description="List of headers that are safe to log in plain text")
+    responseRetrySettings: Optional[list[ResponseRetrySettingConfOutputWebhook]] = Field(None, description="Automatically retry after unsuccessful response status codes, such as 429 (Too Many Requests) or 503 (Service Unavailable)")
+    timeoutRetrySettings: Optional[TimeoutRetrySettingsType] = Field(None, description="Retry settings for HTTP requests that exceed the request timeout.")
+    responseHonorRetryAfterHeader: Optional[bool] = Field(None, description="Honor any Retry-After header that specifies a delay (in seconds) no longer than 180 seconds after the retry request. @{product} limits the delay to 180 seconds, even if the Retry-After header specifies a longer delay. When enabled, takes precedence over user-configured retry options. When disabled, all Retry-After headers are ignored.")
+    # values: queue=Persistent Queue
+    onBackpressure: Optional[Literal['block', 'drop', 'queue']] = Field(None, description="How to handle events when all receivers are exerting backpressure")
+    # values: credentialsSecret=Basic (credentials secret)
+    authType: str = Field(..., description="Authentication method to use for the HTTP request")
+    tls: Optional[TlsSettingsClient] = Field(None, description="TLS settings (client side)")
+    totalMemoryLimitKB: Optional[float] = Field(None, description="Maximum total size of the batches waiting to be sent. If left blank, defaults to 5 times the max body size (if set). If 0, no limit is enforced.")
+    fortisiemUrl: str = Field(..., description="Base URL or host of the FortiSIEM node that receives events, such as https://fortisiem.example. The /rawupload path is added automatically.")
+    vendor: str = Field(..., description="Vendor of the product that generated the logs.")
+    model: str = Field(..., description="Model of the product that generated the logs.")
+    reptIp: str = Field(..., description="Reporting device IP address, the source of the logs.")
+    reptName: str = Field(..., description="Reporting device hostname.")
+    description: Optional[str] = Field(None, description="Optional description for this configuration.")
+    pqStrictOrdering: Optional[bool] = Field(None, description="Use FIFO (first in, first out) processing. Disable to forward new events to receivers before queue is flushed.")
+    pqRatePerSec: Optional[float] = Field(None, description="Throttling rate (in events per second) to impose while writing to Destinations from PQ. Defaults to 0, which disables throttling.")
+    # values: always=Backpressure, backpressure=Always On
+    pqMode: Optional[Literal['error', 'always', 'backpressure']] = Field(None, description="In Error mode, PQ writes events to the filesystem if the Destination is unavailable. In Backpressure mode, PQ writes events to the filesystem when it detects backpressure from the Destination. In Always On mode, PQ always writes events to the filesystem.")
+    pqMaxBufferSize: Optional[float] = Field(None, description="Maximum number of events to hold in memory before writing the events to disk. Deprecated and only supported in workers < v4.17.0. Use pqMaxBufferSizeBytes instead.")
+    pqMaxBackpressureSec: Optional[float] = Field(None, description="How long (in seconds) to wait for backpressure to resolve before engaging the queue")
+    pqMaxFileSize: Optional[str] = Field(None, description="The maximum size to store in each queue file before closing and optionally compressing (KB, MB, etc.)")
+    pqMaxSize: Optional[str] = Field(None, description="The maximum disk space that the queue can consume (as an average per Worker Process) before queueing stops. Enter a numeral with units of KB, MB, etc.")
+    pqPath: Optional[str] = Field(None, description="The location for the persistent queue files. To this field's value, the system will append: //.")
+    pqCompress: Optional[Literal['none', 'gzip']] = Field(None, description="Codec to use to compress the persisted data")
+    # values: drop=Drop new data
+    pqOnBackpressure: Optional[Literal['block', 'drop']] = Field(None, description="How to handle events when the queue is exerting backpressure (full capacity or low disk). 'Block' is the same behavior as non-PQ blocking. 'Drop new data' throws away incoming data, while leaving the contents of the PQ unchanged.")
+    pqMaxBufferSizeBytes: Optional[str] = Field(None, description="The maximum size to hold in memory before writing events to disk. Enter a numeral with units of KB, MB, etc. The minimum value is 64KB and the maximum value is 10MB.")
+    pqControls: Optional[dict[str, Any]] = Field(None, description="Persistent queue controls.")
+    credentialsSecret: Optional[str] = Field(None, description="Select or create a secret that references your credentials")
+    xtemplate_streamtags: Optional[str] = Field(None, alias="__template_streamtags", description="Binds 'streamtags' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'streamtags' at runtime.")
+    xtemplate_failedRequestLoggingMode: Optional[str] = Field(None, alias="__template_failedRequestLoggingMode", description="Binds 'failedRequestLoggingMode' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'failedRequestLoggingMode' at runtime.")
+    xtemplate_onBackpressure: Optional[str] = Field(None, alias="__template_onBackpressure", description="Binds 'onBackpressure' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'onBackpressure' at runtime.")
+    xtemplate_fortisiemUrl: Optional[str] = Field(None, alias="__template_fortisiemUrl", description="Binds 'fortisiemUrl' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'fortisiemUrl' at runtime.")
+    xtemplate_vendor: Optional[str] = Field(None, alias="__template_vendor", description="Binds 'vendor' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'vendor' at runtime.")
+    xtemplate_model: Optional[str] = Field(None, alias="__template_model", description="Binds 'model' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'model' at runtime.")
+    xtemplate_reptIp: Optional[str] = Field(None, alias="__template_reptIp", description="Binds 'reptIp' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'reptIp' at runtime.")
+    xtemplate_reptName: Optional[str] = Field(None, alias="__template_reptName", description="Binds 'reptName' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'reptName' at runtime.")
+
 # --- Discriminated Union ---
 
 from typing import Annotated, Union
@@ -5464,6 +5536,7 @@ Output = Annotated[
         Annotated[OutputIbmCloudS3, Tag("ibm_cloud_s3")],
         Annotated[OutputDatabricksZerobus, Tag("databricks_zerobus")],
         Annotated[OutputSecuronix, Tag("securonix")],
+        Annotated[OutputFortisiem, Tag("fortisiem")],
     ],
     Discriminator("type"),
 ]

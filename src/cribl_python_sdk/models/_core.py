@@ -2638,10 +2638,10 @@ class Routes(CriblModel):
 class SavedJob(CriblModel):
     """A saved job (collector) configuration."""
 
-    id: str | None = Field(None, description="Unique identifier for this saved job.")
-    """Unique identifier for this saved job."""
-    type: str | None = Field(None, description="Job type (e.g. 'collection', 'executor').")
-    """Job type (e.g. 'collection', 'executor')."""
+    id: str | None = Field(None, description="Unique name for this Job")
+    """Unique name for this Job"""
+    type: str | None = Field(None, description="Job type")
+    """Job type"""
 
 
 # --- Database Connections ---
@@ -2825,41 +2825,41 @@ class JobStatus(CriblModel):
 class JobRunConfig(CriblModel):
     """Run configuration for a job."""
 
-    mode: Literal["list", "preview", "run"] = Field(description="Job run mode.")
-    """Job run mode."""
-    rescheduleDroppedTasks: bool | None = Field(None, description="Reschedule tasks that failed with non-fatal errors.")
-    """Reschedule tasks that failed with non-fatal errors."""
-    maxTaskReschedule: float | None = Field(None, description="Maximum number of times a task can be rescheduled.")
-    """Maximum number of times a task can be rescheduled."""
-    logLevel: str | None = Field(None, description="Level at which to set task logging.")
-    """Level at which to set task logging."""
-    jobTimeout: str | None = Field(None, description="Maximum time the job is allowed to run.")
-    """Maximum time the job is allowed to run."""
-    timeRangeType: Literal["absolute", "relative"] | None = Field(None, description="Time range type.")
-    """Time range type."""
-    earliest: float | str | None = Field(None, description="Earliest time to collect data.")
-    """Earliest time to collect data."""
-    latest: float | str | None = Field(None, description="Latest time to collect data.")
-    """Latest time to collect data."""
-    timestampTimezone: str | None = Field(None, description="Timezone to use for Earliest and Latest times.")
-    """Timezone to use for Earliest and Latest times."""
-    expression: str | None = Field(None, description="A filter for tokens in the provided collect path and/or the events being collected.")
-    """A filter for tokens in the provided collect path and/or the events being collected."""
-    minTaskSize: str | None = Field(None, description="Lower task bundle size limit.")
-    """Lower task bundle size limit."""
-    maxTaskSize: str | None = Field(None, description="Upper task bundle size limit.")
-    """Upper task bundle size limit."""
-    discoverToRoutes: bool | None = Field(None, description="Send discover results to Routes.")
-    """Send discover results to Routes."""
+    mode: Literal["list", "preview", "run"] | None = Field(None, description="Job run mode. Preview will either return up to N matching results, or will run until capture time T is reached. Discovery will gather the list of files to turn into streaming tasks, without running the data collection job. Full Run will run the collection job.")
+    """Job run mode. Preview will either return up to N matching results, or will run until capture time T is reached. Discovery will gather the list of files to turn into streaming tasks, without running the data collection job. Full Run will run the collection job."""
+    rescheduleDroppedTasks: bool | None = Field(None, description="Reschedule tasks that failed with non-fatal errors")
+    """Reschedule tasks that failed with non-fatal errors"""
+    maxTaskReschedule: float | None = Field(None, description="Maximum number of times a task can be rescheduled")
+    """Maximum number of times a task can be rescheduled"""
+    logLevel: str | None = Field(None, description="Level at which to set task logging")
+    """Level at which to set task logging"""
+    jobTimeout: str | None = Field(None, description="Maximum time the job is allowed to run. Time unit defaults to seconds if not specified (examples: 30, 45s, 15m). Enter 0 for unlimited time.")
+    """Maximum time the job is allowed to run. Time unit defaults to seconds if not specified (examples: 30, 45s, 15m). Enter 0 for unlimited time."""
+    timeRangeType: Literal["absolute", "relative"] | None = Field(None, description="Time range")
+    """Time range"""
+    earliest: float | str | None = Field(None, description="Earliest time to collect data for the selected timezone")
+    """Earliest time to collect data for the selected timezone"""
+    latest: float | str | None = Field(None, description="Latest time to collect data for the selected timezone")
+    """Latest time to collect data for the selected timezone"""
+    timestampTimezone: str | None = Field(None, description="Timezone to use for Earliest and Latest times")
+    """Timezone to use for Earliest and Latest times"""
+    expression: str | None = Field(None, description="A filter for tokens in the provided collect path and/or the events being collected")
+    """A filter for tokens in the provided collect path and/or the events being collected"""
+    minTaskSize: str | None = Field(None, description="Limits the bundle size for small tasks. For example, if your lower bundle size is 1MB, you can bundle up to five 200KB files into one task.")
+    """Limits the bundle size for small tasks. For example, if your lower bundle size is 1MB, you can bundle up to five 200KB files into one task."""
+    maxTaskSize: str | None = Field(None, description="Limits the bundle size for files above the lower task bundle size. For example, if your upper bundle size is 10MB, you can bundle up to five 2MB files into one task. Files greater than this size will be assigned to individual tasks.")
+    """Limits the bundle size for files above the lower task bundle size. For example, if your upper bundle size is 10MB, you can bundle up to five 2MB files into one task. Files greater than this size will be assigned to individual tasks."""
+    discoverToRoutes: bool | None = Field(None, description="Send discover results to Routes")
+    """Send discover results to Routes"""
 
 
 class JobExecutorConfig(CriblModel):
     """Executor configuration for executor jobs."""
 
-    type: str = Field(description="The type of executor to run.")
-    """The type of executor to run."""
-    storeTaskResults: bool | None = Field(None, description="Determines whether or not to write task results to disk.")
-    """Determines whether or not to write task results to disk."""
+    type: str = Field(description="The type of executor to run")
+    """The type of executor to run"""
+    storeTaskResults: bool | None = Field(None, description="Determines whether or not to write task results to disk")
+    """Determines whether or not to write task results to disk"""
     conf: dict[str, Any] | None = Field(None, description="Executor-type-specific settings object. Shape varies by executor type.")
     """Executor-type-specific settings object. Shape varies by executor type."""
 
@@ -2867,26 +2867,29 @@ class JobExecutorConfig(CriblModel):
 class RunnableJob(CriblModel):
     """Configuration and run settings for a job (collection, executor, or scheduled search)."""
 
-    id: str | None = Field(None, description="Unique ID for this Job.")
-    """Unique ID for this Job."""
-    description: str | None = Field(None, description="Description.")
-    """Description."""
-    type: str | None = Field(None, description="Job type.")
-    """Job type."""
-    ttl: str | None = Field(None, description="Time to keep the job's artifacts on disk after job completion.")
-    """Time to keep the job's artifacts on disk after job completion."""
-    ignoreGroupJobsLimit: bool | None = Field(None, description="When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit.")
-    """When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit."""
-    removeFields: list[str] | None = Field(None, description="List of fields to remove from Discover results.")
-    """List of fields to remove from Discover results."""
-    collector: CriblModel | None = Field(None, description="Collector configuration for collection jobs (discriminated union).")
-    """Collector configuration for collection jobs (discriminated union)."""
-    executor: JobExecutorConfig | None = Field(None, description="Executor configuration for executor jobs.")
-    """Executor configuration for executor jobs."""
-    savedQueryId: str | None = Field(None, description="Saved query ID for scheduled search jobs.")
-    """Saved query ID for scheduled search jobs."""
-    run: JobRunConfig | None = Field(None, description="Run schedule configuration.")
-    """Run schedule configuration."""
+    id: str | None = Field(None, description="Unique name for this Job")
+    """Unique name for this Job"""
+    description: str | None = Field(None, description="Description")
+    """Description"""
+    type: str | None = Field(None, description="Job type")
+    """Job type"""
+    ttl: str | None = Field(None, description="Time to keep the job's artifacts on disk after job completion. This also affects how long a job is listed in the Job Inspector.")
+    """Time to keep the job's artifacts on disk after job completion. This also affects how long a job is listed in the Job Inspector."""
+    ignoreGroupJobsLimit: bool | None = Field(None, description="When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit. Artifacts will be removed only after the Collector's configured time to live.")
+    """When enabled, this job's artifacts are not counted toward the Worker Group's finished job artifacts limit. Artifacts will be removed only after the Collector's configured time to live."""
+    removeFields: list[str] | None = Field(None, description="List of fields to remove from Discover results. Wildcards (for example, aws*) are allowed. This is useful when discovery returns sensitive fields that should not be exposed in the Jobs user interface.")
+    """List of fields to remove from Discover results. Wildcards (for example, aws*) are allowed. This is useful when discovery returns sensitive fields that should not be exposed in the Jobs user interface."""
+    collector: CriblModel | None = Field(None, description="Collector configuration used to discover and run the Collection job.")
+    """Collector configuration used to discover and run the Collection job."""
+    executor: JobExecutorConfig | None = Field(None, description="Executor configuration, including the executor type and its settings.")
+    """Executor configuration, including the executor type and its settings."""
+    savedQueryId: str | None = Field(None, description="Identifies which search query to run")
+    """Identifies which search query to run"""
+    # `run` exists on both the Collection and Executor variants with slightly different spec text
+    # ("...the Collection job runs." vs "...the Executor job runs."). The flattened model uses the
+    # Collection variant's wording (listed first in the spec's oneOf); either is spec-faithful.
+    run: JobRunConfig | None = Field(None, description="Run settings that control how and when the Collection job runs.")
+    """Run settings that control how and when the Collection job runs."""
 
 
 class JobInfo(CriblModel):

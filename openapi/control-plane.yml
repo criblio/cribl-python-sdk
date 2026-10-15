@@ -15,7 +15,7 @@ info:
     - Host (Worker or Edge Node) context: /api/v1/w/{nodeId}
 
     - Search context: /api/v1/m/default_search'
-  version: 4.21.0-dev-hourly.20261012T1402-ca4030ed
+  version: 4.21.0-dev-hourly.20261014T1103-5677bc01
   contact:
     name: Support
     url: https://portal.support.cribl.io
@@ -16820,6 +16820,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         metadata:
           type: array
           title: Fields
@@ -38969,6 +38975,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         octetCountFraming:
           type: boolean
           title: Octet count framing
@@ -39190,6 +39202,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         connectionTimeout:
           type: number
           title: Connection timeout
@@ -39395,6 +39413,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         connectionTimeout:
           type: number
           title: Connection timeout
@@ -40205,6 +40229,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         tls:
           $ref: '#/components/schemas/TlsSettingsClientSideTypeCaPathCertPath'
           description: TLS settings (client side)
@@ -48340,6 +48370,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         connectionTimeout:
           type: number
           title: Connection timeout
@@ -48500,6 +48536,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         connectionTimeout:
           type: number
           title: Connection timeout
@@ -48660,6 +48702,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         connectionTimeout:
           type: number
           title: Connection timeout
@@ -52098,6 +52146,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         tls:
           $ref: '#/components/schemas/TlsSettingsClientSideTypeCaPathCertPath'
           description: TLS settings (client side)
@@ -52373,6 +52427,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         responseRetrySettings:
           type: array
           title: Settings for failed HTTP requests
@@ -52637,6 +52697,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         responseRetrySettings:
           type: array
           title: Settings for failed HTTP requests
@@ -61327,6 +61393,276 @@ components:
           description: Binds 'httpReceiverEndpoint' to a variable for dynamic value resolution. Set to variable ID (pack-scoped)
             or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'httpReceiverEndpoint' at runtime.
       title: OutputSecuronix
+    OutputFortisiem:
+      type: object
+      required:
+      - type
+      - fortisiemUrl
+      - vendor
+      - model
+      - reptIp
+      - reptName
+      - authType
+      properties:
+        id:
+          type: string
+          title: Output ID
+          description: Unique name for this output
+        type:
+          type: string
+          enum:
+          - fortisiem
+          description: Connector type identifier.
+        pipeline:
+          type: string
+          title: Pipeline
+          description: Pipeline to process data before sending out to this output
+        systemFields:
+          type: array
+          title: System fields
+          description: Fields to automatically add to events, such as cribl_pipe. Supports wildcards.
+          items:
+            type: string
+        environment:
+          type: string
+          title: Environment
+          description: Optionally, enable this config only on a specified Git branch. If empty, will be enabled everywhere.
+        streamtags:
+          type: array
+          title: Tags
+          description: Metadata tags used for categorization and filtering.
+          items:
+            type: string
+        keepAlive:
+          type: boolean
+          title: Keep alive
+          description: Disable to close the connection immediately after sending the outgoing request
+        concurrency:
+          type: number
+          title: Request concurrency
+          description: Maximum number of ongoing requests before blocking
+          minimum: 1
+          maximum: 32
+        maxPayloadSizeKB:
+          type: number
+          title: Body size limit (KB)
+          description: Maximum size, in KB, of the request body
+          minimum: 1024
+          maximum: 512000
+        maxPayloadEvents:
+          type: number
+          title: Events-per-request limit
+          description: Maximum number of events to include in the request body. Default is 0 (unlimited).
+          minimum: 0
+        rejectUnauthorized:
+          type: boolean
+          title: Validate server certs
+          description: "Reject certificates not authorized by a CA in the CA certificate path or by another trusted CA (such\
+            \ as the system's).\n        Enabled by default. When this setting is also present in TLS Settings (Client Side),\n\
+            \        that value will take precedence."
+        timeoutSec:
+          type: number
+          minimum: 1
+          maximum: 9007199254740991
+          title: Request timeout
+          description: Amount of time, in seconds, to wait for a request to complete before canceling it
+        maxConnectionReuseSec:
+          type: number
+          minimum: 0
+          title: Max connection reuse (seconds)
+          description: How long, in seconds, to reuse a keep-alive connection after its first use before forcing it closed.
+            Set to 0 to disable the time-based close and reuse connections for as long as the destination server permits.
+        flushPeriodSec:
+          type: number
+          title: Flush period (sec)
+          description: Maximum time between requests. Small values could cause the payload size to be smaller than the configured
+            Body size limit.
+        extraHttpHeaders:
+          type: array
+          title: Extra HTTP headers
+          description: Headers to add to all events. You can also add headers dynamically on a per-event basis in the __headers
+            field, as explained in [Cribl Docs](https://docs.cribl.io/stream/destinations-webhook/#internal-fields).
+          items:
+            $ref: '#/components/schemas/ExtraHttpHeaderConfInputElastic'
+        useRoundRobinDns:
+          type: boolean
+          title: Round-robin DNS
+          description: Enable round-robin DNS lookup. When a DNS server returns multiple addresses, @{product} will cycle
+            through them in the order returned. For optimal performance, consider enabling this setting for non-load balanced
+            destinations.
+        failedRequestLoggingMode:
+          $ref: '#/components/schemas/FailedRequestLoggingModeOptions'
+          description: Data to log when a request fails. All headers are redacted by default, unless listed as safe headers
+            below.
+        safeHeaders:
+          type: array
+          title: Safe headers
+          description: List of headers that are safe to log in plain text
+          items:
+            type: string
+        responseRetrySettings:
+          type: array
+          title: Settings for failed HTTP requests
+          description: Automatically retry after unsuccessful response status codes, such as 429 (Too Many Requests) or 503
+            (Service Unavailable)
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/ResponseRetrySettingConfOutputWebhook'
+        timeoutRetrySettings:
+          $ref: '#/components/schemas/TimeoutRetrySettingsType'
+          description: Retry settings for HTTP requests that exceed the request timeout.
+        responseHonorRetryAfterHeader:
+          type: boolean
+          title: Honor Retry-After header
+          description: Honor any Retry-After header that specifies a delay (in seconds) no longer than 180 seconds after the
+            retry request. @{product} limits the delay to 180 seconds, even if the Retry-After header specifies a longer delay.
+            When enabled, takes precedence over user-configured retry options. When disabled, all Retry-After headers are
+            ignored.
+        onBackpressure:
+          $ref: '#/components/schemas/BackpressureBehaviorOptions'
+          description: How to handle events when all receivers are exerting backpressure
+        authType:
+          type: string
+          title: Authentication type
+          description: Authentication method to use for the HTTP request
+          enum:
+          - credentialsSecret
+          x-speakeasy-enum-descriptions:
+          - Basic (credentials secret)
+          x-speakeasy-unknown-values: allow
+        tls:
+          $ref: '#/components/schemas/TlsSettingsClientSideTypeCaPathCertPathExtended'
+          description: TLS settings (client side)
+        totalMemoryLimitKB:
+          type: number
+          title: Buffer memory limit (KB)
+          description: Maximum total size of the batches waiting to be sent. If left blank, defaults to 5 times the max body
+            size (if set). If 0, no limit is enforced.
+          minimum: 0
+        fortisiemUrl:
+          type: string
+          title: FortiSIEM URL
+          description: Base URL or host of the FortiSIEM node that receives events, such as https://fortisiem.example. The
+            /rawupload path is added automatically.
+          pattern: ^https?://.*
+        vendor:
+          type: string
+          title: Reporting Vendor
+          description: Vendor of the product that generated the logs.
+        model:
+          type: string
+          title: Reporting Model
+          description: Model of the product that generated the logs.
+        reptIp:
+          type: string
+          title: Reporting IP
+          description: Reporting device IP address, the source of the logs.
+        reptName:
+          type: string
+          title: Reporting Device Name
+          description: Reporting device hostname.
+        description:
+          type: string
+          title: Description
+          description: Optional description for this configuration.
+        pqStrictOrdering:
+          title: Strict ordering
+          description: Use FIFO (first in, first out) processing. Disable to forward new events to receivers before queue
+            is flushed.
+          type: boolean
+        pqRatePerSec:
+          type: number
+          title: Drain rate limit (EPS)
+          description: Throttling rate (in events per second) to impose while writing to Destinations from PQ. Defaults to
+            0, which disables throttling.
+          minimum: 0
+        pqMode:
+          $ref: '#/components/schemas/ModeOptions'
+          description: In Error mode, PQ writes events to the filesystem if the Destination is unavailable. In Backpressure
+            mode, PQ writes events to the filesystem when it detects backpressure from the Destination. In Always On mode,
+            PQ always writes events to the filesystem.
+        pqMaxBufferSize:
+          type: number
+          title: Buffer size limit (events - deprecated)
+          description: Maximum number of events to hold in memory before writing the events to disk. Deprecated and only supported
+            in workers < v4.17.0. Use pqMaxBufferSizeBytes instead.
+          minimum: 42
+          maximum: 1000
+        pqMaxBackpressureSec:
+          type: number
+          title: Backpressure duration limit
+          description: How long (in seconds) to wait for backpressure to resolve before engaging the queue
+          minimum: 0
+        pqMaxFileSize:
+          type: string
+          title: File size limit
+          description: The maximum size to store in each queue file before closing and optionally compressing (KB, MB, etc.)
+          pattern: ^\d+\s*(?:\w{2})?$
+        pqMaxSize:
+          type: string
+          title: Queue size limit
+          description: The maximum disk space that the queue can consume (as an average per Worker Process) before queueing
+            stops. Enter a numeral with units of KB, MB, etc.
+          pattern: ^\d+\s*(?:\w{2})?$
+        pqPath:
+          type: string
+          title: Queue file path
+          description: 'The location for the persistent queue files. To this field''s value, the system will append: /<worker-id>/<output-id>.'
+        pqCompress:
+          $ref: '#/components/schemas/CompressionOptionsPq'
+          description: Codec to use to compress the persisted data
+        pqOnBackpressure:
+          $ref: '#/components/schemas/QueueFullBehaviorOptions'
+          description: How to handle events when the queue is exerting backpressure (full capacity or low disk). 'Block' is
+            the same behavior as non-PQ blocking. 'Drop new data' throws away incoming data, while leaving the contents of
+            the PQ unchanged.
+        pqMaxBufferSizeBytes:
+          type: string
+          title: Buffer size limit (bytes)
+          description: The maximum size to hold in memory before writing events to disk. Enter a numeral with units of KB,
+            MB, etc. The minimum value is 64KB and the maximum value is 10MB.
+          pattern: ^\d+\s*(?:\w{2})?$
+        pqControls:
+          type: object
+          title: ''
+          description: Persistent queue controls.
+        credentialsSecret:
+          type: string
+          title: Credentials secret
+          description: Select or create a secret that references your credentials
+        __template_streamtags:
+          type: string
+          description: Binds 'streamtags' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or
+            'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'streamtags' at runtime.
+        __template_failedRequestLoggingMode:
+          type: string
+          description: Binds 'failedRequestLoggingMode' to a variable for dynamic value resolution. Set to variable ID (pack-scoped)
+            or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'failedRequestLoggingMode' at runtime.
+        __template_onBackpressure:
+          type: string
+          description: Binds 'onBackpressure' to a variable for dynamic value resolution. Set to variable ID (pack-scoped)
+            or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'onBackpressure' at runtime.
+        __template_fortisiemUrl:
+          type: string
+          description: Binds 'fortisiemUrl' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or
+            'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'fortisiemUrl' at runtime.
+        __template_vendor:
+          type: string
+          description: Binds 'vendor' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.'
+            prefixed ID (group-scoped). Variable value overrides 'vendor' at runtime.
+        __template_model:
+          type: string
+          description: Binds 'model' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.'
+            prefixed ID (group-scoped). Variable value overrides 'model' at runtime.
+        __template_reptIp:
+          type: string
+          description: Binds 'reptIp' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.'
+            prefixed ID (group-scoped). Variable value overrides 'reptIp' at runtime.
+        __template_reptName:
+          type: string
+          description: Binds 'reptName' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.'
+            prefixed ID (group-scoped). Variable value overrides 'reptName' at runtime.
+      title: OutputFortisiem
     Output:
       oneOf:
       - $ref: '#/components/schemas/OutputDefault'
@@ -61417,6 +61753,7 @@ components:
       - $ref: '#/components/schemas/OutputIbmCloudS3'
       - $ref: '#/components/schemas/OutputDatabricksZerobus'
       - $ref: '#/components/schemas/OutputSecuronix'
+      - $ref: '#/components/schemas/OutputFortisiem'
       discriminator:
         propertyName: type
         mapping:
@@ -61508,6 +61845,7 @@ components:
           ibm_cloud_s3: '#/components/schemas/OutputIbmCloudS3'
           databricks_zerobus: '#/components/schemas/OutputDatabricksZerobus'
           securonix: '#/components/schemas/OutputSecuronix'
+          fortisiem: '#/components/schemas/OutputFortisiem'
       title: Output
     PaginatedOutput:
       type: object
@@ -61667,6 +62005,7 @@ components:
       - databricks_zerobus
       - traversal_otlp
       - securonix
+      - fortisiem
       title: DestinationType
       x-speakeasy-unknown-values: allow
     PaginatedOutputResponse:
@@ -66314,6 +66653,175 @@ components:
       - search
       - type
       title: DashboardChartVisualization
+    MetricsElementConfig:
+      type: object
+      properties:
+        applyMode:
+          $ref: '#/components/schemas/ApplyModeOptionsChartElementConfig'
+          description: 'Override the Dashboard-level auto-apply behavior for the element.<br/><br/> <code>auto</code>: Auto-apply.<br/>
+            <code>manual</code>: Require the Apply button.'
+        applyThreshold:
+          type: boolean
+          description: If <code>true</code>, apply color thresholds to the chart values.
+        axis:
+          $ref: '#/components/schemas/AxisTypeChartElementConfig'
+          description: Axis field mappings for X and Y axes.
+        color:
+          type: string
+          description: CSS color value for single-value counters.
+          examples:
+          - '#5470C6'
+        colorPalette:
+          type: integer
+          description: Index of the color palette to apply to the chart.
+        colorPaletteReversed:
+          type: boolean
+          description: If <code>true</code>, reverse the color palette order.
+        colorThresholds:
+          $ref: '#/components/schemas/ColorThresholdsTypeChartElementConfig'
+          description: Color threshold configuration for conditional coloring.
+        customData:
+          $ref: '#/components/schemas/CustomDataTypeChartElementConfig'
+          description: Custom data transformation and display options.
+        debounceMs:
+          type: integer
+          description: Time (in milliseconds) to wait before auto-apply re-executes queries after Input element changes. Overrides
+            the Dashboard-level setting for <code>autoApplyDebounceMs</code>.
+        decimals:
+          type: integer
+          description: Number of decimal places for numeric display.
+        label:
+          type: string
+          description: Display label for single-value counters.
+        legend:
+          $ref: '#/components/schemas/LegendTypeChartElementConfig'
+          description: Legend display settings.
+        mapDetails:
+          $ref: '#/components/schemas/MapDetailsTypeChartElementConfig'
+          description: Geo-map chart configuration.
+        onClickAction:
+          $ref: '#/components/schemas/OnClickAction'
+          description: Action to perform when a user clicks on the chart.
+        prefix:
+          type: string
+          description: String prepended to the displayed value.
+        separator:
+          type: boolean
+          description: If <code>true</code>, apply thousands separators to numeric values.
+        series:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartSeries'
+          description: Explicit series definitions with individual styling.
+        seriesInfo:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ChartType'
+          description: Map of series names to display overrides (name, color, type, area style).
+        shouldApplyUserChartSettings:
+          type: boolean
+          description: If <code>true</code>, apply user-level chart display preferences.
+        style:
+          type: boolean
+          description: If <code>true</code>, apply custom styling to the chart.
+        suffix:
+          type: string
+          description: String appended to the displayed value.
+        timestats:
+          type: boolean
+          description: If <code>true</code>, displays time statistics on the chart.
+        type:
+          $ref: '#/components/schemas/ChartType'
+          description: Default chart type for all series.
+        visualization:
+          type: object
+          additionalProperties: true
+          description: Registry-native visualization configuration.
+        xAxis:
+          $ref: '#/components/schemas/XAxisTypeChartElementConfig'
+          description: X-axis configuration.
+        yAxis:
+          $ref: '#/components/schemas/YAxisTypeChartElementConfig'
+          description: Y-axis configuration.
+      title: MetricsElementConfig
+    MetricsVisualizationElementType:
+      type: string
+      enum:
+      - chart.area
+      - chart.column
+      - chart.funnel
+      - chart.gauge
+      - chart.horizontalBar
+      - chart.line
+      - chart.map
+      - chart.pie
+      - chart.scatter
+      - counter.single
+      - viz-counter.gauge
+      - viz-counter.single
+      - viz-counter.wordCloud
+      title: MetricsVisualizationElementType
+      x-speakeasy-unknown-values: allow
+    DashboardMetricsVisualization:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/MetricsElementConfig'
+          description: Metrics-specific configuration (axes, series, colors, thresholds, etc.).
+        description:
+          type: string
+          description: Brief description of the element, shown as a tooltip or subtitle.
+        empty:
+          type: boolean
+          description: If <code>true</code>, the element has no associated query or data.
+        group:
+          type: string
+          description: Key from the Dashboard <code>groups</code> object that associates the element with a group.
+        hidePanel:
+          type: boolean
+          description: If <code>true</code>, hide the element's panel.
+        horizontalChart:
+          type: boolean
+          description: If <code>true</code>, render the chart with a horizontal orientation.
+        id:
+          type: string
+          description: Unique identifier for the element.
+        index:
+          type: integer
+          description: Zero-based index of the element in the Dashboard <code>elements</code> array.
+        layout:
+          $ref: '#/components/schemas/DashboardLayout'
+          description: Grid layout position and size for the element.
+        search:
+          $ref: '#/components/schemas/MetricSearchQuery'
+          description: Metric search query configuration that drives this visualization.
+        tableConfig:
+          $ref: '#/components/schemas/TableViewSettings'
+          description: Table view settings for column filter, format, sort, and order.
+        title:
+          type: string
+          description: Text displayed in the header of the element's panel.
+        titleAction:
+          $ref: '#/components/schemas/TitleAction'
+          description: Clickable action link displayed alongside the element title.
+        type:
+          $ref: '#/components/schemas/MetricsVisualizationElementType'
+          description: Display type used to render the metric panel.
+          examples:
+          - chart.line
+        variant:
+          type: string
+          enum:
+          - metrics
+          - visualization
+          description: Element variant, either 'metrics' or 'visualization'.
+          x-speakeasy-unknown-values: allow
+      required:
+      - id
+      - layout
+      - search
+      - type
+      title: DashboardMetricsVisualization
     ColumnInfo:
       type: object
       properties:
@@ -66560,6 +67068,7 @@ components:
     DashboardVisualization:
       oneOf:
       - $ref: '#/components/schemas/DashboardChartVisualization'
+      - $ref: '#/components/schemas/DashboardMetricsVisualization'
       - $ref: '#/components/schemas/DashboardEventsVisualization'
       - $ref: '#/components/schemas/DashboardCustomVisualization'
       title: DashboardVisualization
@@ -73502,6 +74011,17 @@ components:
     SharingConfig:
       type: object
       properties:
+        apps:
+          type: object
+          maxProperties: 0
+          additionalProperties: false
+          description: 'Grants the folder to the App Platform. An empty object shares the folder with every app in the workspace.
+            A v1 update replaces <code>sharing</code>, so sending <code>sharing</code> without <code>apps</code> removes the
+            grant. A v2 merge-patch keeps <code>apps</code> when the patch omits it, and <code>apps: null</code> removes it.
+            Adding the grant fails while App Platform sharing is not enabled. A saved grant stays in place if App Platform
+            sharing is later disabled.'
+          examples:
+          - {}
         fleetIds:
           type: array
           items:
@@ -83481,6 +84001,10 @@ components:
           type: array
           items:
             type: string
+        panelId:
+          type: string
+          description: Projected panel element id (panel-<sourceId>) this row belongs to; the Review join key. Absent on plans
+            assessed before this field existed and on alert-rule rows.
         preflight:
           type: string
           description: 'Preflight verdict from executing the query: <code>ok</code>, <code>no-data-in-window</code>, <code>unsupported-execution</code>,
@@ -94216,6 +94740,14 @@ components:
           description: 'Upgrade source: <code>cribl</code> for official Cribl packages or <code>custom</code> for a custom
             package URL.'
       title: UpgradeSettings
+    ClusterSchedulingPolicy:
+      type: string
+      enum:
+      - auto
+      - rr
+      - none
+      title: ClusterSchedulingPolicy
+      x-speakeasy-unknown-values: allow
     SystemSettingsConf:
       type: object
       properties:
@@ -94915,6 +95447,13 @@ components:
               type: boolean
               description: If <code>true</code>, automatically restart Worker Processes that become unresponsive. Otherwise,
                 <code>false</code>.
+            schedulingPolicy:
+              $ref: '#/components/schemas/ClusterSchedulingPolicy'
+              description: 'Consult Cribl Support before adjusting this advanced setting. How the API process distributes
+                inbound data-plane connections to Worker Processes: <code>auto</code> lets Cribl choose the policy for the
+                platform, <code>rr</code> round-robins accepted sockets from the API process, and <code>none</code> lets Worker
+                Processes accept directly from the shared listen socket. Applies to Stream Worker Nodes and single-instance
+                deployments only; all other node types always use <code>auto</code>. Takes effect after a restart.'
             startupMaxConns:
               type: integer
               description: Maximum number of connections to accept during Worker Process startup before throttling begins.
@@ -105242,6 +105781,7 @@ components:
       enum:
       - chart
       - events
+      - metrics
       - visualization
       description: 'Broad type of the element that determines the editor or renderer to use.<br/><br/> <code>visualization</code>:
         Visual panels like charts, counters, tables, and events.<br/> <code>input</code>: Input elements like dropdown menus,
@@ -105800,6 +106340,13 @@ components:
         restartUnresponsiveProcesses:
           type: boolean
           description: If <code>true</code>, automatically restart Worker Processes that become unresponsive. Otherwise, <code>false</code>.
+        schedulingPolicy:
+          $ref: '#/components/schemas/ClusterSchedulingPolicy'
+          description: 'Consult Cribl Support before adjusting this advanced setting. How the API process distributes inbound
+            data-plane connections to Worker Processes: <code>auto</code> lets Cribl choose the policy for the platform, <code>rr</code>
+            round-robins accepted sockets from the API process, and <code>none</code> lets Worker Processes accept directly
+            from the shared listen socket. Applies to Stream Worker Nodes and single-instance deployments only; all other
+            node types always use <code>auto</code>. Takes effect after a restart.'
         startupMaxConns:
           type: integer
           description: Maximum number of connections to accept during Worker Process startup before throttling begins.
@@ -106885,6 +107432,12 @@ components:
           description: 'Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte
             units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.'
           pattern: ^[\d.]+(\s[KMGTPEZYkmgtpezy][Bb])?$
+        throttleBurstDisabled:
+          type: boolean
+          title: Disable bursts
+          description: When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the
+            throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed
+            by default. Applies only when Throttling is set.
         metadata:
           type: array
           title: Fields
@@ -111726,6 +112279,21 @@ components:
         tls:
           disabled: false
       description: Example request body for creating a Securonix Destination.
+    OutputCreateExamplesFortiSIEM:
+      summary: FortiSIEM
+      value:
+        id: fortisiem-output
+        type: fortisiem
+        fortisiemUrl: https://fortisiem.example
+        vendor: Fortinet
+        model: FortiGate
+        reptIp: 192.0.2.10
+        reptName: cribl-stream
+        authType: credentialsSecret
+        credentialsSecret: fortisiem-basic-credentials
+        tls:
+          disabled: false
+      description: Example request body for creating a FortiSIEM Destination.
     OutputCreateExamplesPrometheus:
       summary: Prometheus
       value:
@@ -112691,6 +113259,22 @@ components:
         tls:
           disabled: false
       description: Example request body for updating a Securonix Destination.<br/><br/>The request body must include a complete
+        representation of the Destination that you want to update. This endpoint does not support partial updates.
+    UpdateOutputExamplesFortiSIEM:
+      summary: FortiSIEM
+      value:
+        id: fortisiem-output
+        type: fortisiem
+        fortisiemUrl: https://fortisiem.example
+        vendor: Fortinet
+        model: FortiGate
+        reptIp: 192.0.2.10
+        reptName: cribl-stream
+        authType: credentialsSecret
+        credentialsSecret: fortisiem-basic-credentials
+        tls:
+          disabled: false
+      description: Example request body for updating a FortiSIEM Destination.<br/><br/>The request body must include a complete
         representation of the Destination that you want to update. This endpoint does not support partial updates.
     UpdateOutputExamplesPrometheus:
       summary: Prometheus
@@ -120888,6 +121472,7 @@ components:
             fleetIds:
             - '*'
             lake: {}
+            apps: {}
           secretCount: 3
           secretStoreType: cribl
           lastReloadAt: 1717027200000
@@ -120904,6 +121489,7 @@ components:
           fleetIds:
           - '*'
           lake: {}
+          apps: {}
         cloneSecrets: false
     CloneSecretFolderExamplesCloneWithSecrets:
       summary: Clone a secret folder and its secrets
@@ -120930,6 +121516,7 @@ components:
           fleetIds:
           - '*'
           lake: {}
+          apps: {}
     SecretFolderListResponseExamplesSecretFolderList:
       summary: List all secret folders
       description: Example response for listing all configured secret folders.
@@ -120945,6 +121532,7 @@ components:
             fleetIds:
             - '*'
             lake: {}
+            apps: {}
           secretCount: 3
           secretStoreType: cribl
           lastReloadAt: 1717027200000
@@ -120999,6 +121587,17 @@ components:
       value:
         id: finance
         description: Shared authentication credentials for finance systems
+        sharing:
+          groupIds:
+          - team-a
+          - team-b
+          lake: {}
+          apps: {}
+    UpdateSecretFolderExamplesRemoveAppsGrant:
+      summary: Remove the App Platform grant
+      description: Example v1 request body for removing the App Platform grant from a secret folder.
+      value:
+        id: finance
         sharing:
           groupIds:
           - team-a
@@ -138935,6 +139534,8 @@ paths:
                 $ref: '#/components/examples/OutputCreateExamplesWebhook'
               OutputCreateExamplesSecuronix:
                 $ref: '#/components/examples/OutputCreateExamplesSecuronix'
+              OutputCreateExamplesFortiSIEM:
+                $ref: '#/components/examples/OutputCreateExamplesFortiSIEM'
               OutputCreateExamplesPrometheus:
                 $ref: '#/components/examples/OutputCreateExamplesPrometheus'
               OutputCreateExamplesAmazonManagedPrometheus:
@@ -139236,6 +139837,8 @@ paths:
                 $ref: '#/components/examples/UpdateOutputExamplesWebhook'
               UpdateOutputExamplesSecuronix:
                 $ref: '#/components/examples/UpdateOutputExamplesSecuronix'
+              UpdateOutputExamplesFortiSIEM:
+                $ref: '#/components/examples/UpdateOutputExamplesFortiSIEM'
               UpdateOutputExamplesPrometheus:
                 $ref: '#/components/examples/UpdateOutputExamplesPrometheus'
               UpdateOutputExamplesAmazonManagedPrometheus:
@@ -139858,6 +140461,8 @@ paths:
                 $ref: '#/components/examples/OutputCreateExamplesWebhook'
               OutputCreateExamplesSecuronix:
                 $ref: '#/components/examples/OutputCreateExamplesSecuronix'
+              OutputCreateExamplesFortiSIEM:
+                $ref: '#/components/examples/OutputCreateExamplesFortiSIEM'
               OutputCreateExamplesPrometheus:
                 $ref: '#/components/examples/OutputCreateExamplesPrometheus'
               OutputCreateExamplesAmazonManagedPrometheus:
@@ -140173,6 +140778,8 @@ paths:
                 $ref: '#/components/examples/UpdateOutputExamplesWebhook'
               UpdateOutputExamplesSecuronix:
                 $ref: '#/components/examples/UpdateOutputExamplesSecuronix'
+              UpdateOutputExamplesFortiSIEM:
+                $ref: '#/components/examples/UpdateOutputExamplesFortiSIEM'
               UpdateOutputExamplesPrometheus:
                 $ref: '#/components/examples/UpdateOutputExamplesPrometheus'
               UpdateOutputExamplesAmazonManagedPrometheus:
@@ -165874,7 +166481,7 @@ paths:
                 SecretFolderResponseExamplesSecretFolder:
                   $ref: '#/components/examples/SecretFolderResponseExamplesSecretFolder'
         '400':
-          description: Invalid request body, unknown secret store, or unavailable Cribl Lake sharing grant
+          description: Invalid request body, unknown secret store, or unavailable Cribl Lake or App Platform sharing grant
         '401':
           description: Authentication failed (missing or invalid credentials or Bearer token).
           content:
@@ -165970,6 +166577,8 @@ paths:
             examples:
               UpdateSecretFolderExamplesUpdateDescriptionAndSharing:
                 $ref: '#/components/examples/UpdateSecretFolderExamplesUpdateDescriptionAndSharing'
+              UpdateSecretFolderExamplesRemoveAppsGrant:
+                $ref: '#/components/examples/UpdateSecretFolderExamplesRemoveAppsGrant'
       responses:
         '200':
           description: The updated SecretFolderWithRuntimeState object in a single-item list.
@@ -165981,7 +166590,7 @@ paths:
                 SecretFolderResponseExamplesSecretFolder:
                   $ref: '#/components/examples/SecretFolderResponseExamplesSecretFolder'
         '400':
-          description: Invalid request body or unavailable Cribl Lake sharing grant
+          description: Invalid request body or unavailable Cribl Lake or App Platform sharing grant
         '401':
           description: Authentication failed (missing or invalid credentials or Bearer token).
           content:
@@ -166329,7 +166938,7 @@ paths:
                 SecretFolderResponseExamplesSecretFolder:
                   $ref: '#/components/examples/SecretFolderResponseExamplesSecretFolder'
         '400':
-          description: Invalid request body, reserved folder name, or unavailable Cribl Lake sharing grant
+          description: Invalid request body, reserved folder name, or unavailable Cribl Lake or App Platform sharing grant
         '401':
           description: Authentication failed (missing or invalid credentials or Bearer token).
           content:
@@ -166345,8 +166954,6 @@ paths:
                     message: Authentication failed (missing or invalid credentials or Bearer token).
         '404':
           description: The requested resource does not exist — source secret folder not found
-        '405':
-          description: Cribl Lake sharing is not enabled — remove the Cribl Lake grant and try again
         '500':
           description: Unexpected server error.
           content:
@@ -180498,6 +181105,9 @@ paths:
                   value:
                     status: error
                     message: Authentication failed (missing or invalid credentials or Bearer token).
+        '403':
+          description: Not authorized to remove token invalidation — requires permission to delete the user, or to update
+            the API Credential.
         '500':
           description: Unexpected server error.
           content:
@@ -186768,31 +187378,6 @@ paths:
         schema:
           type: string
         description: The <code>overlayId</code> of the overlay artifact.
-      - name: offset
-        in: query
-        required: false
-        schema:
-          type: integer
-          minimum: 0
-        description: Pagination offset
-      - name: limit
-        in: query
-        required: false
-        schema:
-          type: integer
-          minimum: 0
-        description: Maximum number of items to return
-      x-speakeasy-pagination:
-        type: offsetLimit
-        inputs:
-        - name: offset
-          in: parameters
-          type: offset
-        - name: limit
-          in: parameters
-          type: limit
-        outputs:
-          results: $.items
   /overlay/status:
     get:
       operationId: getOverlayStatus
@@ -202276,7 +202861,9 @@ paths:
       x-cribl-api-context:
       - searchGroup
       summary: Get evaluation history for an instance of an alert Monitor
-      description: Get the evaluation history for the specified instance of the specified alert Monitor.
+      description: Get the evaluation history for the specified instance of the specified alert Monitor. On <code>/api/v2</code>,
+        follow <code>nextCursor</code> to read the next page. <code>/api/v1</code> ignores <code>cursor</code> and returns
+        the legacy list.
       responses:
         '200':
           description: Alert instance evaluations
@@ -202324,19 +202911,29 @@ paths:
         required: false
         schema:
           type: integer
-        description: The start of the time range in Unix timestamp milliseconds.
+        description: The start of the time range in Unix timestamp milliseconds, inclusive. On <code>/api/v2</code> it must
+          be a non-negative integer no greater than <code>latest</code>. <code>/api/v1</code> keeps its existing parsing.
       - name: latest
         in: query
         required: false
         schema:
           type: integer
-        description: The end of the time range in Unix timestamp milliseconds.
+        description: The end of the time range in Unix timestamp milliseconds, inclusive. On <code>/api/v2</code> it must
+          be a non-negative integer. <code>/api/v1</code> keeps its existing parsing.
       - name: limit
         in: query
         required: false
         schema:
           type: integer
-        description: The maximum number of evaluations to return.
+        description: The maximum number of evaluations to return. On <code>/api/v2</code> the default is 25, <code>0</code>
+          uses the default, and values above 100 are clamped to 100. <code>/api/v1</code> does not apply that default or clamp.
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Opaque pagination cursor. On <code>/api/v2</code>, pass <code>nextCursor</code> from the previous page
+          verbatim. <code>/api/v1</code> ignores this parameter.
   /alert/history:
     get:
       operationId: getAlertHistory

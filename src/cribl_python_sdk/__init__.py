@@ -3,7 +3,7 @@ from importlib.metadata import version
 
 __version__ = version("cribl-python-sdk")
 __gen_version__ = "0.2.0"
-__openapi_doc_version__ = "4.21.0-dev-hourly.20261012T1402-ca4030ed"
+__openapi_doc_version__ = "4.21.0-dev-hourly.20261014T1103-5677bc01"
 __openapi_mgmt_doc_version__ = "1.0"
 
 from ._response import SDKResponse

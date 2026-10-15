@@ -167,7 +167,7 @@ pipelines = cribl.pipelines.list()
 pipelines = await cribl.pipelines.list_async()
 
 # Scoped to a worker group (control plane only — not cribl.cloud.*)
-wg = cribl.scoped(group_id="default")
+wg = cribl.in_context(group_id="default")
 sources = wg.sources.list()
 ```
 
@@ -175,18 +175,18 @@ See `examples/` for more usage patterns.
 
 ## Scoped Client
 
-Instead of manually constructing group/node URLs, use `scoped()`:
+Instead of manually constructing group/node URLs, use `in_context()`:
 
 ```python
 # Control-plane calls route to /api/v1/m/{group_id} automatically.
 # cribl.cloud.* is unchanged (still the gateway).
-wg = cribl.scoped(group_id="my_fleet")
+wg = cribl.in_context(group_id="my_fleet")
 sources = wg.sources.list()
 destinations = wg.destinations.list()
 pipelines = wg.pipelines.list()
 
 # Also works as context manager
-with cribl.scoped(group_id="my_fleet") as wg:
+with cribl.in_context(group_id="my_fleet") as wg:
     sources = wg.sources.list()
 ```
 

@@ -109,6 +109,7 @@ class InputCollection(CriblModel):
     staleChannelFlushMs: Optional[float] = Field(None, description="How long (in milliseconds) the Event Breaker will wait for new data to be sent to a specific channel before flushing the data stream out, as is, to the Pipelines")
     preprocess: Optional[PreprocessType] = Field(None, description="Optional preprocessing step that pipes collected data through an external command before ingestion.")
     throttleRatePerSec: Optional[str] = Field(None, description="Rate (in bytes per second) to throttle while writing to an output. Accepts values with multiple-byte units, such as KB, MB, and GB. (Example: 42 MB) Default value of 0 specifies no throttling.")
+    throttleBurstDisabled: Optional[bool] = Field(None, description="When bursts are disabled, the throttle rate is a hard limit and applies immediately. Otherwise, the throttle rate is an average over 1 hour and traffic may temporarily exceed the limit (bursts). Bursts are allowed by default. Applies only when Throttling is set.")
     metadata: Optional[list[HecTokenMetadataParam]] = Field(None, description="Fields to add to events from this input")
     output: Optional[str] = Field(None, description="Destination to send results to")
     xtemplate_environment: Optional[str] = Field(None, alias="__template_environment", description="Binds 'environment' to a variable for dynamic value resolution. Set to variable ID (pack-scoped) or 'cribl.'/'edge.' prefixed ID (group-scoped). Variable value overrides 'environment' at runtime.")

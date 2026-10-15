@@ -14,7 +14,7 @@ DestinationType = Literal[
     "default", "router", "tcpjson", "splunk", "splunk_lb", "splunk_hec", "syslog",
     "filesystem", "s3", "azure_blob", "azure_data_explorer", "sentinel", "azure_logs",
     "kafka", "confluent_cloud", "msk", "kinesis", "elastic", "elastic_cloud",
-    "microsoft_fabric", "cloudflare_r2", "honeycomb", "newrelic", "newrelic_events",
+    "elastic_serverless", "microsoft_fabric", "cloudflare_r2", "honeycomb", "newrelic", "newrelic_events",
     "snmp", "influxdb", "minio", "devnull", "cloudwatch", "azure_eventhub", "statsd",
     "statsd_ext", "graphite", "wavefront", "signalfx", "sqs", "google_cloud_storage",
     "sumo_logic", "datadog", "webhook", "prometheus", "amazon_managed_prometheus",
@@ -27,7 +27,7 @@ DestinationType = Literal[
     "xsiam", "netflow", "dynatrace_http", "databricks", "wiz_hec", "nutanix_objects",
     "storj_s3", "alphasoc_s3", "dell_s3", "cloudian_s3", "scality_s3",
     "alibaba_cloud_s3", "snowflake_streaming", "ibm_cloud_s3",
-    "databricks_zerobus", "traversal_otlp", "securonix",
+    "databricks_zerobus", "traversal_otlp", "securonix", "fortisiem",
 ]
 
 
