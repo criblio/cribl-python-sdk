@@ -16,16 +16,7 @@ jobs:
         with:
           persist-credentials: false
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
-      - name: Check tag matches pyproject version
-        run: |
-          v=$(grep -m1 '^version' pyproject.toml | cut -d'"' -f2)
-          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != v$v"; exit 1; }
-      - name: Check version is canonical PEP 440
-        run: |
-          v=$(grep -m1 '^version' pyproject.toml | cut -d'"' -f2)
-          uv run --no-project --with packaging python -c "
-          import sys; from packaging.version import Version
-          v = sys.argv[1]; c = str(Version(v))
-          sys.exit(0 if c == v else f'{v} is not canonical PEP 440 (use {c})')" "$v"
+      - name: Check version (PEP 440, matches tag)
+        run: uv run --no-project --python 3.14 --with packaging python .github/scripts/check_version.py "$GITHUB_REF_NAME"
       - run: uv build
       - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
