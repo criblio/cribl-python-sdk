@@ -123,7 +123,6 @@ class JobState(IntEnum):
         FAILED: Failed
         ORPHANED: Orphaned
         UNKNOWN: Unknown
-        LENGTH: Length
     """
 
     INITIALIZING = 0
@@ -135,7 +134,6 @@ class JobState(IntEnum):
     FAILED = 6
     ORPHANED = 7
     UNKNOWN = 8
-    LENGTH = 9
 
 
 class SyslogFacility(IntEnum):
@@ -2816,8 +2814,8 @@ class TaskErrorDetail(CriblModel):
 class JobStatus(CriblModel):
     """Status of a job, including its current state and failure reason."""
 
-    state: JobState | int = Field(description="State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown, 9=Length).")
-    """State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown, 9=Length)."""
+    state: JobState | int = Field(description="State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown).")
+    """State of the Job (0=Initializing, 1=Pending, 2=Running, 3=Paused, 4=Cancelled, 5=Finished, 6=Failed, 7=Orphaned, 8=Unknown)."""
     reason: TaskErrorDetail | None = Field(default=None, description="Reason the job entered its current state, typically populated upon failure.")
     """Reason the job entered its current state, typically populated upon failure."""
 

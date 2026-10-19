@@ -18,7 +18,7 @@ class NodesSummariesResource(BaseResource):
     def get(
         self,
         *,
-        product: Literal["stream", "edge", "outpost"] = "stream",
+        product: Literal["stream", "edge"] = "stream",
         offset: int | None = None,
         limit: int | None = None,
     ) -> SDKResponse[PaginatedResponse[DistributedSummary]]:
@@ -33,7 +33,7 @@ class NodesSummariesResource(BaseResource):
         statistics for Worker or Edge Nodes.
 
         Args:
-            product: Name of the Cribl product to get the summary for. Valid values: "stream", "edge", "outpost". Default: "stream".
+            product: Name of the Cribl product to get the summary for. Valid values: "stream", "edge". Default: "stream".
             offset: Pagination offset.
             limit: Maximum number of items to return.
 
@@ -56,7 +56,7 @@ class NodesSummariesResource(BaseResource):
     async def get_async(
         self,
         *,
-        product: Literal["stream", "edge", "outpost"] = "stream",
+        product: Literal["stream", "edge"] = "stream",
         offset: int | None = None,
         limit: int | None = None,
     ) -> SDKResponse[PaginatedResponse[DistributedSummary]]:
@@ -71,7 +71,7 @@ class NodesSummariesResource(BaseResource):
         statistics for Worker or Edge Nodes.
 
         Args:
-            product: Name of the Cribl product to get the summary for. Valid values: "stream", "edge", "outpost". Default: "stream".
+            product: Name of the Cribl product to get the summary for. Valid values: "stream", "edge". Default: "stream".
             offset: Pagination offset.
             limit: Maximum number of items to return.
 

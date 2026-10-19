@@ -14,7 +14,7 @@ class DatabaseConnectionsResource(BaseResource):
     def list(
         self,
         *,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"] | None = None,
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"] | None = None,
         limit: int | None = None,
         offset: int | None = None,
     ) -> SDKResponse[PaginatedResponse[DatabaseConnectionConfig]]:
@@ -25,7 +25,7 @@ class DatabaseConnectionsResource(BaseResource):
         Args:
             databaseType: Filter results by database engine type. Use this
                 parameter to return only Database Connections for the specified
-                engine. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+                engine. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             limit: Maximum number of Database Connections to return in the
                 response for this request. Use with `offset` to paginate the
                 response into manageable batches.
@@ -52,7 +52,7 @@ class DatabaseConnectionsResource(BaseResource):
     async def list_async(
         self,
         *,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"] | None = None,
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"] | None = None,
         limit: int | None = None,
         offset: int | None = None,
     ) -> SDKResponse[PaginatedResponse[DatabaseConnectionConfig]]:
@@ -63,7 +63,7 @@ class DatabaseConnectionsResource(BaseResource):
         Args:
             databaseType: Filter results by database engine type. Use this
                 parameter to return only Database Connections for the specified
-                engine. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+                engine. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             limit: Maximum number of Database Connections to return in the
                 response for this request. Use with `offset` to paginate the
                 response into manageable batches.
@@ -91,7 +91,7 @@ class DatabaseConnectionsResource(BaseResource):
         self,
         *,
         id: str,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"],
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"],
         authType: Literal["configObj", "connectionString", "secret", "secrets"],
         description: str,
         configObj: str | None = None,
@@ -112,7 +112,7 @@ class DatabaseConnectionsResource(BaseResource):
 
         Args:
             id: Unique identifier for the Database Connection.
-            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             authType: Authentication method for the Database Connection.
                 Determines how credentials are provided. Valid values:
                 "configObj", "connectionString", "secret", "secrets".
@@ -183,7 +183,7 @@ class DatabaseConnectionsResource(BaseResource):
         self,
         *,
         id: str,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"],
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"],
         authType: Literal["configObj", "connectionString", "secret", "secrets"],
         description: str,
         configObj: str | None = None,
@@ -204,7 +204,7 @@ class DatabaseConnectionsResource(BaseResource):
 
         Args:
             id: Unique identifier for the Database Connection.
-            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             authType: Authentication method for the Database Connection.
                 Determines how credentials are provided. Valid values:
                 "configObj", "connectionString", "secret", "secrets".
@@ -311,7 +311,7 @@ class DatabaseConnectionsResource(BaseResource):
         self,
         id: str,
         *,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"],
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"],
         authType: Literal["configObj", "connectionString", "secret", "secrets"],
         description: str,
         configObj: str | None = None,
@@ -341,7 +341,7 @@ class DatabaseConnectionsResource(BaseResource):
 
         Args:
             id: The `id` of the Database Connection to update.
-            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             authType: Authentication method for the Database Connection.
                 Determines how credentials are provided. Valid values:
                 "configObj", "connectionString", "secret", "secrets".
@@ -412,7 +412,7 @@ class DatabaseConnectionsResource(BaseResource):
         self,
         id: str,
         *,
-        databaseType: Literal["mysql", "oracle", "postgres", "sqlserver", "teradata"],
+        databaseType: Literal["mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata"],
         authType: Literal["configObj", "connectionString", "secret", "secrets"],
         description: str,
         configObj: str | None = None,
@@ -442,7 +442,7 @@ class DatabaseConnectionsResource(BaseResource):
 
         Args:
             id: The `id` of the Database Connection to update.
-            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "sqlserver", "teradata".
+            databaseType: Type of database engine for the connection. Valid values: "mysql", "oracle", "postgres", "snowflake", "sqlserver", "teradata".
             authType: Authentication method for the Database Connection.
                 Determines how credentials are provided. Valid values:
                 "configObj", "connectionString", "secret", "secrets".

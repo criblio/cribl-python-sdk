@@ -76,6 +76,14 @@ class DiskSpoolingType(CriblModel):
     compress: Optional[Literal['none', 'gzip']] = Field(default=None, description="Data compression format. Default is gzip.")
 
 
+class ExceptionRetrySettingConfOutputLocalSearchStorage(CriblModel):
+
+    chErrorCode: float = Field(..., description="The ClickHouse exception code (from the x-clickhouse-exception-code header) that triggers retries")
+    initialBackoff: Optional[float] = Field(default=None, description="How long, in milliseconds, Cribl Stream should wait before initiating backoff. Maximum interval is 600,000 ms (10 minutes).")
+    backoffRate: Optional[float] = Field(default=None, description="Base for exponential backoff. A value of 2 (default) means Cribl Stream will retry after 2 seconds, then 4 seconds, then 8 seconds, etc.")
+    maxBackoff: Optional[float] = Field(default=None, description="The maximum backoff interval, in milliseconds, Cribl Stream should apply. Default (and minimum) is 10,000 ms (10 seconds); maximum is 180,000 ms (180 seconds).")
+
+
 class FunctionConfSchemaAggregateMetricsAddItem(CriblModel):
 
     name: Optional[str] = Field(default=None, description="Name of the field to set or add to the event.")
@@ -342,6 +350,10 @@ class FunctionConfSchemaNotifications(CriblModel):
     id: Optional[str] = Field(default=None, description="Notification ID")
     field: Optional[str] = Field(default=None, description="Notification event state field name")
     deduplicate: Optional[bool] = Field(default=None, description="Toggle deduplication.")
+    mode: Optional[str] = Field(default=None, description="Internal no-data window processing")
+    lagToleranceSec: Optional[float] = Field(default=None, description="Minimum no-data window age")
+    maxAgeSec: Optional[float] = Field(default=None, description="Maximum no-data window age")
+    retroMonitor: Optional[bool] = Field(default=None, description="Internal no-data retro-monitor processing")
 
 
 class FunctionConfSchemaNotify(CriblModel):
@@ -1376,20 +1388,6 @@ class OutputLocalSearchStorageColumnMappingsItem(CriblModel):
     columnValueExpression: str = Field(..., description="JavaScript expression to compute value to be inserted into the table")
 
 
-class OutputLocalSearchStorageStatsDestinationConf(CriblModel):
-    """Internal destination settings for batch metadata and statistics."""
-
-    url: Optional[str] = Field(default=None, description="URL of the database that stores batch metadata and statistics.")
-    database: Optional[str] = Field(default=None, description="Name of the database that stores batch metadata and statistics.")
-    tableName: Optional[str] = Field(default=None, description="Name of the table that stores batch metadata and statistics.")
-    authType: Optional[str] = Field(default=None, description="Authentication method for the statistics destination.")
-    username: Optional[str] = Field(default=None, description="Username for the statistics destination.")
-    sqlUsername: Optional[str] = Field(default=None, description="SQL username for the statistics destination.")
-    password: Optional[str] = Field(default=None, description="Password for the statistics destination.")
-    waitForAsyncInserts: Optional[bool] = Field(default=None, description="Whether to wait for asynchronous inserts to complete.")
-    concurrency: Optional[float] = Field(default=None, description="Maximum number of concurrent requests to the statistics destination.")
-
-
 class OutputMicrosoftFabricSaslConf(CriblModel):
     """Authentication parameters to use when connecting to bootstrap server. Using TLS is highly recommended."""
 
@@ -2079,6 +2077,21 @@ class InputWindowsMetricsHostConfCustomConf(CriblModel):
     memory: Optional[InputWindowsMetricsHostConfCustomConfMemoryConf] = Field(default=None, description="Select the level of details for memory metrics")
     network: Optional[InputWindowsMetricsHostConfCustomConfNetworkConf] = Field(default=None, description="Select the level of details for network metrics")
     disk: Optional[InputWindowsMetricsHostConfCustomConfDiskConf] = Field(default=None, description="Select the level of details for disk metrics")
+
+
+class OutputLocalSearchStorageStatsDestinationConf(CriblModel):
+    """Internal destination settings for batch metadata and statistics."""
+
+    url: Optional[str] = Field(default=None, description="URL of the database that stores batch metadata and statistics.")
+    database: Optional[str] = Field(default=None, description="Name of the database that stores batch metadata and statistics.")
+    tableName: Optional[str] = Field(default=None, description="Name of the table that stores batch metadata and statistics.")
+    authType: Optional[str] = Field(default=None, description="Authentication method for the statistics destination.")
+    username: Optional[str] = Field(default=None, description="Username for the statistics destination.")
+    sqlUsername: Optional[str] = Field(default=None, description="SQL username for the statistics destination.")
+    password: Optional[str] = Field(default=None, description="Password for the statistics destination.")
+    waitForAsyncInserts: Optional[bool] = Field(default=None, description="Whether to wait for asynchronous inserts to complete.")
+    concurrency: Optional[float] = Field(default=None, description="Maximum number of concurrent requests to the statistics destination.")
+    exceptionRetrySettings: Optional[list[ExceptionRetrySettingConfOutputLocalSearchStorage]] = Field(default=None, description="Retry automatically when ClickHouse reports a matching exception code, such as 241 (memory limit exceeded) or 202 (too many simultaneous queries). These settings take precedence over Settings for failed HTTP requests.")
 
 
 class OutputSplunkLbIndexerDiscoveryConfigsConf(CriblModel):

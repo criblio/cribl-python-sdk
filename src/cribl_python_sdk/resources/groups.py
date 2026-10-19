@@ -25,7 +25,7 @@ class GroupsAclTeamsResource(BaseResource):
         id: str,
         *,
         product: Literal["stream", "edge", "outpost"] = "stream",
-        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps"] | None = None,
+        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs"] | None = None,
     ) -> SDKResponse[PaginatedResponse[TeamAccessControlList]]:
         """Get the team access control list for a Worker Group, Outpost Group, or Edge Fleet.
 
@@ -44,7 +44,7 @@ class GroupsAclTeamsResource(BaseResource):
         Args:
             id: The `id` of the Worker Group, Outpost Group, or Edge Fleet to get the Team ACL for.
             product: Name of the Cribl product that contains the Worker Group, Outpost Group, or Edge Fleet. Valid values: "stream", "edge", "outpost". Default: "stream".
-            type: Filter for limiting the response to ACL entries for the specified RBAC resource type. Valid values: "groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps".
+            type: Filter for limiting the response to ACL entries for the specified RBAC resource type. Valid values: "groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs".
 
         Returns:
             (200) PaginatedResponse containing a list of TeamAccessControlList objects.
@@ -63,7 +63,7 @@ class GroupsAclTeamsResource(BaseResource):
         id: str,
         *,
         product: Literal["stream", "edge", "outpost"] = "stream",
-        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps"] | None = None,
+        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs"] | None = None,
     ) -> SDKResponse[PaginatedResponse[TeamAccessControlList]]:
         """Get the team access control list for a Worker Group, Outpost Group, or Edge Fleet (async).
 
@@ -82,7 +82,7 @@ class GroupsAclTeamsResource(BaseResource):
         Args:
             id: The `id` of the Worker Group, Outpost Group, or Edge Fleet to get the Team ACL for.
             product: Name of the Cribl product that contains the Worker Group, Outpost Group, or Edge Fleet. Valid values: "stream", "edge", "outpost". Default: "stream".
-            type: Filter for limiting the response to ACL entries for the specified RBAC resource type. Valid values: "groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps".
+            type: Filter for limiting the response to ACL entries for the specified RBAC resource type. Valid values: "groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs".
 
         Returns:
             (200) PaginatedResponse containing a list of TeamAccessControlList objects.
@@ -109,7 +109,7 @@ class GroupsAclResource(BaseResource):
         id: str,
         *,
         product: Literal["stream", "edge", "outpost"] = "stream",
-        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps"] | None = None,
+        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs"] | None = None,
     ) -> SDKResponse[PaginatedResponse[UserAccessControlList]]:
         """Get the user access control list for a Worker Group, Outpost Group, or Edge Fleet.
 
@@ -131,7 +131,8 @@ class GroupsAclResource(BaseResource):
             type: Filter for limiting the response to ACL entries for the
                 specified RBAC resource type. Valid values: "groups",
                 "insights-apps", "datasets", "dataset-providers", "projects",
-                "dashboards", "macros", "notebooks", "notebook-templates", "apps".
+                "dashboards", "macros", "notebooks", "notebook-templates",
+                "apps", "secret-folders", "ai-workflows", "ai-workflow-runs".
 
         Returns:
             (200) PaginatedResponse containing a list of UserAccessControlList objects.
@@ -151,7 +152,7 @@ class GroupsAclResource(BaseResource):
         id: str,
         *,
         product: Literal["stream", "edge", "outpost"] = "stream",
-        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps"] | None = None,
+        type: Literal["groups", "insights-apps", "datasets", "dataset-providers", "projects", "dashboards", "macros", "notebooks", "notebook-templates", "apps", "secret-folders", "ai-workflows", "ai-workflow-runs"] | None = None,
     ) -> SDKResponse[PaginatedResponse[UserAccessControlList]]:
         """Get the user access control list for a Worker Group, Outpost Group, or Edge Fleet (async).
 
@@ -173,7 +174,8 @@ class GroupsAclResource(BaseResource):
             type: Filter for limiting the response to ACL entries for the
                 specified RBAC resource type. Valid values: "groups",
                 "insights-apps", "datasets", "dataset-providers", "projects",
-                "dashboards", "macros", "notebooks", "notebook-templates", "apps".
+                "dashboards", "macros", "notebooks", "notebook-templates",
+                "apps", "secret-folders", "ai-workflows", "ai-workflow-runs".
 
         Returns:
             (200) PaginatedResponse containing a list of UserAccessControlList objects.
