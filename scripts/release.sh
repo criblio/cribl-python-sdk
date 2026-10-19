@@ -34,7 +34,8 @@ case "${1:-}" in
     [[ $v =~ (a|b|rc|\.dev)[0-9]+$ ]] && pre=(--prerelease)
     read -rp "Release v$v from origin/$base${pre:+ (pre-release)}? [y/N] " ok
     [ "$ok" = y ] || exit 1
-    gh release create "v$v" --target "$base" --generate-notes ${pre[@]+"${pre[@]}"}
+    gh release create "v$v" --target "$base" --generate-notes \
+        --notes "📦 PyPI: https://pypi.org/project/cribl-python-sdk/$v/" ${pre[@]+"${pre[@]}"}
     ;;
   *)
     sed -n '2,6p' "$0" | sed 's/^# \{0,1\}//'
