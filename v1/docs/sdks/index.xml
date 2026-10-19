@@ -163,9 +163,9 @@ await client.databaseconnections.create_async(...)&lt;/code&gt;&lt;/pre&gt;&lt;/
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;databaseType&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;code&gt;Literal[&amp;quot;mysql&amp;quot;, &amp;quot;oracle&amp;quot;, &amp;quot;postgres&amp;quot;, &amp;quot;sqlserver&amp;quot;, &amp;quot;teradata&amp;quot;]&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;details&gt;&lt;summary&gt;&lt;code&gt;Literal[…]&lt;/code&gt; (6 values)&lt;/summary&gt;&lt;code&gt;Literal[&amp;quot;mysql&amp;quot;, &amp;quot;oracle&amp;quot;, &amp;quot;postgres&amp;quot;, &amp;quot;snowflake&amp;quot;, &amp;quot;sqlserver&amp;quot;, &amp;quot;teradata&amp;quot;]&lt;/code&gt;&lt;/details&gt;&lt;/td&gt;
 					&lt;td&gt;Yes&lt;/td&gt;
-					&lt;td&gt;Type of database engine for the connection. Valid values: &amp;ldquo;mysql&amp;rdquo;, &amp;ldquo;oracle&amp;rdquo;, &amp;ldquo;postgres&amp;rdquo;, &amp;ldquo;sqlserver&amp;rdquo;, &amp;ldquo;teradata&amp;rdquo;&lt;/td&gt;
+					&lt;td&gt;Type of database engine for the connection. Valid values: &amp;ldquo;mysql&amp;rdquo;, &amp;ldquo;oracle&amp;rdquo;, &amp;ldquo;postgres&amp;rdquo;, &amp;ldquo;snowflake&amp;rdquo;, &amp;ldquo;sqlserver&amp;rdquo;, &amp;ldquo;teradata&amp;rdquo;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;code&gt;authType&lt;/code&gt;&lt;/td&gt;
