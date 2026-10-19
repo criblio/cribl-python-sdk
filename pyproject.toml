@@ -1,6 +1,6 @@
 [project]
 name = "cribl-python-sdk"
-version = "0.0.1"
+version = "0.0.1a1"
 description = "Python SDK for the Cribl Control Plane API"
 readme = "README-PYPI.md"
 license = "Apache-2.0"
