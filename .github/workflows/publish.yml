@@ -17,5 +17,12 @@ jobs:
         run: |
           v=$(grep -m1 '^version' pyproject.toml | cut -d'"' -f2)
           [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != v$v"; exit 1; }
+      - name: Check version is canonical PEP 440
+        run: |
+          v=$(grep -m1 '^version' pyproject.toml | cut -d'"' -f2)
+          uv run --no-project --with packaging python -c "
+          import sys; from packaging.version import Version
+          v = sys.argv[1]; c = str(Version(v))
+          sys.exit(0 if c == v else f'{v} is not canonical PEP 440 (use {c})')" "$v"
       - run: uv build
       - uses: pypa/gh-action-pypi-publish@release/v1
